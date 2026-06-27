@@ -20,34 +20,38 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50">
-          <div className="max-w-7xl mx-auto flex">
-            {/* Main content - large central column */}
-            <main className="flex-1 p-6">
-              {children}
-            </main>
-            
-            {/* Sidebar - small column on the right */}
-            <aside className="w-64 p-6 bg-white border-l border-gray-200">
-              <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-gray-900">Navigation</h3>
-                <nav className="space-y-2">
-                  <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">Home</a>
-                  <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">About</a>
-                  <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">Contact</a>
-                </nav>
-                
-                <div className="pt-4 border-t border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Categories</h3>
-                  <ul className="space-y-2">
-                    <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Technology</a></li>
-                    <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Design</a></li>
-                    <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Business</a></li>
-                  </ul>
+        <div className="min-h-screen bg-gray-50 flex flex-col">
+          {/* Header */}
+          <header className="bg-white shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center">
+                  <h1 className="text-xl font-bold text-gray-900">My Simple Blog</h1>
                 </div>
+                <nav className="hidden md:block">
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">About</a>
+                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Contact</a>
+                  </div>
+                </nav>
               </div>
-            </aside>
-          </div>
+            </div>
+          </header>
+
+          {/* Main Content */}
+          <main className="flex-grow">
+            {children}
+          </main>
+
+          {/* Footer */}
+          <footer className="bg-white border-t border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+              <div className="text-center text-sm text-gray-500">
+                <p>© {new Date().getFullYear()} My Simple Blog. All rights reserved.</p>
+              </div>
+            </div>
+          </footer>
         </div>
       </body>
     </html>
