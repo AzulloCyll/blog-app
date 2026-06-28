@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Simple Blog",
-  description: "A simple blog built with Next.js",
+  title: "The Developer Journal",
+  description: "A modern, responsive blog sharing tutorials, design insights, and engineering practices.",
 };
 
 export default function RootLayout({
@@ -18,23 +20,45 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className={`${inter.className} antialiased text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-900 transition-colors duration-200`}>
+        <div className="min-h-screen flex flex-col">
           {/* Header */}
-          <header className="bg-white shadow-sm">
+          <header className="sticky top-0 z-40 w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-100 dark:border-gray-800/80 transition-all duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center h-16">
                 <div className="flex items-center">
-                  <h1 className="text-xl font-bold text-gray-900">My Simple Blog</h1>
+                  <Link href="/" id="header-logo" className="text-xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+                    The Dev Journal
+                  </Link>
                 </div>
-                <nav className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Home</a>
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">About</a>
-                    <a href="#" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Contact</a>
+                <div className="flex items-center space-x-4">
+                  <nav className="hidden md:block">
+                    <div className="flex items-baseline space-x-6">
+                      <Link href="/" id="header-nav-home" className="text-sm font-semibold text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-50/50 dark:hover:bg-blue-900/30 transition-all">Home</Link>
+                      <Link href="/about" id="header-nav-about" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">About</Link>
+                      <Link href="/contact" id="header-nav-contact" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">Contact</Link>
+                    </div>
+                  </nav>
+                  <div className="pl-2 border-l border-gray-200 dark:border-gray-800">
+                    <ThemeToggle />
                   </div>
-                </nav>
+                </div>
               </div>
             </div>
           </header>
@@ -45,10 +69,14 @@ export default function RootLayout({
           </main>
 
           {/* Footer */}
-          <footer className="bg-white border-t border-gray-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-              <div className="text-center text-sm text-gray-500">
-                <p>© {new Date().getFullYear()} My Simple Blog. All rights reserved.</p>
+          <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400 dark:text-gray-500 font-medium">
+                <p>© {new Date().getFullYear()} The Developer Journal. All rights reserved.</p>
+                <div className="flex space-x-6">
+                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
+                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
+                </div>
               </div>
             </div>
           </footer>

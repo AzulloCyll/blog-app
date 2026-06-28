@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to my blog",
+    "content": "This is the content of my first blog post. I'm excited to share my thoughts with you. We'll explore modern web technologies, design systems, and best practices for developer experience.",
+    "date": "2023-06-01",
+    "category": "Design",
+    "readTime": "3 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
+    "tags": ["Design", "Intro", "Web"],
+    "author": { 
+      "name": "Alex Zullo", 
+      "role": "UI/UX Designer"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Getting started with Next.js",
+    "content": "Next.js is a powerful framework for building React applications with server-side rendering, static site generation, and state-of-the-art developer tooling. In this guide, we cover the app router, routing dynamics, and performance optimizations.",
+    "date": "2023-06-05",
+    "category": "Technology",
+    "readTime": "6 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+    "tags": ["Next.js", "React", "Frontend"],
+    "author": { 
+      "name": "Sarah Connor", 
+      "role": "Frontend Lead"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Modern Web Development",
+    "content": "The landscape of web development continues to evolve rapidly with new tools, bundlers, and frameworks emerging regularly. Keeping up requires understanding the fundamentals of rendering patterns, edge caching, and component architectures.",
+    "date": "2023-06-10",
+    "category": "Technology",
+    "readTime": "5 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+    "tags": ["WebDev", "Architecture", "API"],
+    "author": { 
+      "name": "John Doe", 
+      "role": "Software Engineer"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Mastering Tailwind CSS",
+    "content": "Tailwind CSS has changed the way we style our web applications. By utilizing utility classes, we can build custom designs quickly without leaving our HTML. Let's learn about custom configurations, plugins, and dark mode design patterns.",
+    "date": "2023-06-15",
+    "category": "Design",
+    "readTime": "4 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&w=600&q=80",
+    "tags": ["CSS", "Tailwind", "Styling"],
+    "author": { 
+      "name": "Alex Zullo", 
+      "role": "UI/UX Designer"
+    }
+  },
+  {
+    "id": 5,
+    "title": "The Future of AI Coding Assistants",
+    "content": "AI tools are reshaping developer workflows. From autocomplete to fully agentic pair programmers, the way we write, test, and deploy code is undergoing a massive shift. Learn how to integrate these workflows into your development lifecycle.",
+    "date": "2023-06-20",
+    "category": "Business",
+    "readTime": "8 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    "tags": ["AI", "Coding", "Automation"],
+    "author": { 
+      "name": "Emma Watson", 
+      "role": "Product Manager"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Understanding Server Actions",
+    "content": "Next.js Server Actions allow you to run server-side code directly from your components without creating manual API endpoints. We explore security practices, form validation with Zod, and optimistic updates.",
+    "date": "2023-06-25",
+    "category": "Technology",
+    "readTime": "7 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
+    "tags": ["Next.js", "ServerActions", "React"],
+    "author": { 
+      "name": "Sarah Connor", 
+      "role": "Frontend Lead"
+    }
+  }
+]

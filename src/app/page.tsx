@@ -1,88 +1,80 @@
-import BlogPost from "./components/BlogPost";
-import NavigationMenu from "./components/NavigationMenu";
+import Link from "next/link";
+import PostList from "@/components/PostList";
+import NavigationMenu from "@/components/NavigationMenu";
 
 export default function Home() {
-  const posts = [
-    {
-      id: 1,
-      title: "Welcome to my blog",
-      content: "This is the content of my first blog post. I'm excited to share my thoughts with you.",
-      date: "2023-06-01"
-    },
-    {
-      id: 2,
-      title: "Getting started with Next.js",
-      content: "Next.js is a powerful framework for building React applications with server-side rendering and static site generation capabilities.",
-      date: "2023-06-05"
-    },
-    {
-      id: 3,
-      title: "Modern Web Development",
-      content: "The landscape of web development continues to evolve rapidly with new tools and frameworks emerging regularly.",
-      date: "2023-06-10"
-    }
-  ];
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900">My Simple Blog</h1>
-        <p className="mt-2 text-gray-600">Sharing thoughts and ideas</p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Hero section */}
+      <div className="text-center mb-16 space-y-4">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          The Developer Journal
+        </h1>
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-500 dark:text-gray-400 font-medium">
+          Sharing thoughts, tutorials, and insights on modern web development, UI/UX design, and AI.
+        </p>
       </div>
       
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Main content area - large central column */}
-        <main className="flex-1">
-          <div className="space-y-8">
-            {posts.map((post) => (
-              <BlogPost 
-                key={post.id}
-                title={post.title}
-                content={post.content}
-                date={post.date}
-              />
-            ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-              Load More Posts
-            </button>
-          </div>
+      <div className="flex flex-col lg:flex-row gap-10">
+        {/* Main content area */}
+        <main className="flex-grow lg:max-w-[calc(100%-18rem)]">
+          <PostList />
         </main>
 
-        {/* Sidebar - small column on the right */}
+        {/* Sidebar */}
         <aside className="w-full lg:w-64 flex-shrink-0">
-          <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Navigation</h3>
-            <nav className="space-y-2">
-              <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">Home</a>
-              <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">About</a>
-              <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md">Contact</a>
-            </nav>
-            
-            <div className="pt-4 border-t border-gray-200 mt-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Categories</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Technology</a></li>
-                <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Design</a></li>
-                <li><a href="#" className="block px-3 py-1 text-gray-600 hover:text-blue-600">Business</a></li>
-              </ul>
+          <div className="space-y-6 sticky top-24">
+            {/* Navigation Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/50 p-6 shadow-sm">
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                Navigation
+              </h3>
+              <nav className="space-y-1">
+                <Link 
+                  id="nav-link-home"
+                  href="/" 
+                  className="flex items-center px-3 py-2 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl transition-all"
+                >
+                  <svg className="mr-3 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                  Home
+                </Link>
+                <Link 
+                  id="nav-link-about"
+                  href="/about" 
+                  className="flex items-center px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-xl transition-all"
+                >
+                  <svg className="mr-3 h-4 w-4 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  About
+                </Link>
+                <Link 
+                  id="nav-link-contact"
+                  href="/contact" 
+                  className="flex items-center px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-xl transition-all"
+                >
+                  <svg className="mr-3 h-4 w-4 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Contact
+                </Link>
+              </nav>
             </div>
 
-            <div className="pt-4 border-t border-gray-200 mt-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Quick Menu</h3>
-              <div className="px-3 py-2">
+            {/* Quick Menu Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/50 p-6 shadow-sm">
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3">
+                Quick Menu
+              </h3>
+              <div className="pt-1">
                 <NavigationMenu />
               </div>
             </div>
           </div>
         </aside>
       </div>
-
-      <footer className="mt-16 text-center text-gray-500 text-sm">
-        <p>© {new Date().getFullYear()} My Simple Blog. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
