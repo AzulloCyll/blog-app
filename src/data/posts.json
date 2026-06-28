@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Welcome to my blog",
-    "content": "This is the content of my first blog post. I'm excited to share my thoughts with you. We'll explore modern web technologies, design systems, and best practices for developer experience.",
+    "title": "Witaj na moim blogu",
+    "content": "To jest treść mojego pierwszego wpisu na blogu. Chętnie dzielę się z Wami swoimi przemyśleniami. Będziemy eksplorować nowoczesne technologie internetowe, systemy projektowania i najlepsze praktyki w zakresie deweloperskiego doświadczenia.",
     "date": "2023-06-01",
     "category": "Design",
     "readTime": "3 min read",
@@ -15,8 +15,8 @@
   },
   {
     "id": 2,
-    "title": "Getting started with Next.js",
-    "content": "Next.js is a powerful framework for building React applications with server-side rendering, static site generation, and state-of-the-art developer tooling. In this guide, we cover the app router, routing dynamics, and performance optimizations.",
+    "title": "Rozpoczęcie pracy z Next.js",
+    "content": "Next.js to potężny framework do budowania aplikacji React z renderowaniem po stronie serwera, statycznym generowaniem stron oraz nowoczesnymi narzędziami dla programistów. W tym przewodniku omówimy App Router, dynamikę routingu i optymalizacje wydajnościowe.",
     "date": "2023-06-05",
     "category": "Technology",
     "readTime": "6 min read",
@@ -24,13 +24,13 @@
     "tags": ["Next.js", "React", "Frontend"],
     "author": { 
       "name": "Sarah Connor", 
-      "role": "Frontend Lead"
+      "role": "Lider Frontendu"
     }
   },
   {
     "id": 3,
-    "title": "Modern Web Development",
-    "content": "The landscape of web development continues to evolve rapidly with new tools, bundlers, and frameworks emerging regularly. Keeping up requires understanding the fundamentals of rendering patterns, edge caching, and component architectures.",
+    "title": "Współczesny rozwój stron internetowych",
+    "content": "Landscape rozwoju webu stale się dynamizuje — pojawiają się nowe narzędzia, bundlery i frameworki. Aby nadążyć za trendami, trzeba rozumieć podstawy wzorców renderowania, cache'owania na brzegu (edge) oraz architektury komponentów.",
     "date": "2023-06-10",
     "category": "Technology",
     "readTime": "5 min read",
@@ -43,8 +43,8 @@
   },
   {
     "id": 4,
-    "title": "Mastering Tailwind CSS",
-    "content": "Tailwind CSS has changed the way we style our web applications. By utilizing utility classes, we can build custom designs quickly without leaving our HTML. Let's learn about custom configurations, plugins, and dark mode design patterns.",
+    "title": "Opanowanie Tailwind CSS",
+    "content": "Tailwind CSS zmienił sposób stylizowania naszych aplikacji webowych. Wykorzystując klasy utility, możemy szybko budować personalizowane projekty nie opuszczając HTML-a. Przyjrzymy się konfiguracji niestandardowej, pluginom oraz wzorcjom projektowania trybu ciemnego.",
     "date": "2023-06-15",
     "category": "Design",
     "readTime": "4 min read",
@@ -57,8 +57,8 @@
   },
   {
     "id": 5,
-    "title": "The Future of AI Coding Assistants",
-    "content": "AI tools are reshaping developer workflows. From autocomplete to fully agentic pair programmers, the way we write, test, and deploy code is undergoing a massive shift. Learn how to integrate these workflows into your development lifecycle.",
+    "title": "Przyszłość AI asystentów kodowania",
+    "content": "Narzędzia AI na nowo definiują przepływ pracy programistów. Od uzupełniania kodu po całkowicie autonomicznych partnerów do programowania — sposób, w jaki piszemy, testujemy i wdrażamy kod, przechodzi ogromną transformację. Dowiedz się, jak integrować te przepływy pracy w cyklu rozwoju oprogramowania.",
     "date": "2023-06-20",
     "category": "Business",
     "readTime": "8 min read",
@@ -71,8 +71,8 @@
   },
   {
     "id": 6,
-    "title": "Understanding Server Actions",
-    "content": "Next.js Server Actions allow you to run server-side code directly from your components without creating manual API endpoints. We explore security practices, form validation with Zod, and optimistic updates.",
+    "title": "Zrozumienie funkcji Server Actions",
+    "content": "Funkcja Next.js Server Actions pozwala uruchamiać kod po stronie serwera bezpośrednio z komponentów bez tworzenia ręcznych endpointów API. Omawiamy praktyki bezpieczeństwa, walidację formularzy z użyciem Zod oraz optymistyczne aktualizacje.",
     "date": "2023-06-25",
     "category": "Technology",
     "readTime": "7 min read",

@@ -109,10 +109,10 @@ export default async function PostDetailPage({ params }: PageProps) {
         <div className="prose prose-blue dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-6 text-base sm:text-lg leading-relaxed pt-4">
           <p>{post.content}</p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Akapit ten służy jako przykładowy tekst demonstracyjny mający na celu zaprezentowanie układu typograficznego i formatowania treści na stronie. W procesie projektowania stron internetowych oraz tworzenia szablonów, tego rodzaju tekst pozwala ocenić czytelność czcionek, rozmieszczenie elementów graficznych oraz odstępy między blokami tekstu przed wprowadzeniem ostatecznej zawartości przez redaktorów.
           </p>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            Dzięki temu projektanci i deweloperzy mogą skupić się na aspektach wizualnych i technicznych interfejsu, zamiast rozpraszać się czytaniem sensownej treści. Współczesne narzędzia i generatory pozwalają na dynamiczne tworzenie takich tekstów wypełniających w wielu językach, co ułatwia budowanie responsywnych i dostępnych witryn dla użytkowników na całym świecie.
           </p>
         </div>
 

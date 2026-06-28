@@ -15,9 +15,9 @@ describe('PostList Component', () => {
     expect(screen.getByRole('button', { name: 'Design' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Business' })).toBeInTheDocument();
 
-    // Check that first few posts from posts.json (Welcome to my blog, Getting started with Next.js, Modern Web Development) are rendered
-    expect(screen.getByText('Welcome to my blog')).toBeInTheDocument();
-    expect(screen.getByText('Getting started with Next.js')).toBeInTheDocument();
+    // Check that first few posts from posts.json (Witaj na moim blogu, Rozpoczęcie pracy z Next.js, Współczesny rozwój stron internetowych) are rendered
+    expect(screen.getByText('Witaj na moim blogu')).toBeInTheDocument();
+    expect(screen.getByText('Rozpoczęcie pracy z Next.js')).toBeInTheDocument();
   });
 
   it('filters posts based on search input query', () => {
@@ -28,9 +28,9 @@ describe('PostList Component', () => {
     // Type "Next.js"
     fireEvent.change(searchInput, { target: { value: 'Next.js' } });
 
-    // "Getting started with Next.js" should be in document, but "Welcome to my blog" should not
-    expect(screen.getByText('Getting started with Next.js')).toBeInTheDocument();
-    expect(screen.queryByText('Welcome to my blog')).not.toBeInTheDocument();
+    // "Rozpoczęcie pracy z Next.js" should be in document, but "Witaj na moim blogu" should not
+    expect(screen.getByText('Rozpoczęcie pracy z Next.js')).toBeInTheDocument();
+    expect(screen.queryByText('Witaj na moim blogu')).not.toBeInTheDocument();
   });
 
   it('filters posts based on selected category badge', () => {
@@ -41,9 +41,9 @@ describe('PostList Component', () => {
     // Click "Design" category filter
     fireEvent.click(designButton);
 
-    // "Welcome to my blog" (Design) should remain, "Getting started with Next.js" (Technology) should be filtered out
-    expect(screen.getByText('Welcome to my blog')).toBeInTheDocument();
-    expect(screen.queryByText('Getting started with Next.js')).not.toBeInTheDocument();
+    // "Witaj na moim blogu" (Design) should remain, "Rozpoczęcie pracy z Next.js" (Technology) should be filtered out
+    expect(screen.getByText('Witaj na moim blogu')).toBeInTheDocument();
+    expect(screen.queryByText('Rozpoczęcie pracy z Next.js')).not.toBeInTheDocument();
   });
 
   it('shows no posts screen when search query matches nothing', () => {
@@ -70,7 +70,7 @@ describe('PostList Component', () => {
 
     // Wait for the async mock load to finish (simulated with 800ms setTimeout)
     await waitFor(() => {
-      expect(screen.getByText('Mastering Tailwind CSS')).toBeInTheDocument();
+      expect(screen.getByText('Opanowanie Tailwind CSS')).toBeInTheDocument();
     }, { timeout: 1200 });
 
     // Load more button should disappear after all posts are loaded
