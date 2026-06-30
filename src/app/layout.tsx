@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Developer Journal",
-  description: "A modern, responsive blog sharing tutorials, design insights, and engineering practices.",
+  title: "Dziennik Dewelopera",
+  description: "Nowoczesny, responsywny blog dzielący się tutorialami, inspiracjami projektowymi i praktykami inżynieryjnymi.",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="pl" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -44,15 +44,15 @@ export default function RootLayout({
               <div className="flex justify-between items-center h-16">
                 <div className="flex items-center">
                   <Link href="/" id="header-logo" className="text-xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
-                    The Dev Journal
+                    Dziennik Dewelopera
                   </Link>
                 </div>
                 <div className="flex items-center space-x-4">
                   <nav className="hidden md:block">
                     <div className="flex items-baseline space-x-6">
-                      <Link href="/" id="header-nav-home" className="text-sm font-semibold text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-50/50 dark:hover:bg-blue-900/30 transition-all">Home</Link>
-                      <Link href="/about" id="header-nav-about" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">About</Link>
-                      <Link href="/contact" id="header-nav-contact" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">Contact</Link>
+                      <Link href="/" id="header-nav-home" className="text-sm font-semibold text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-50/50 dark:hover:bg-blue-900/30 transition-all">Strona główna</Link>
+                      <Link href="/about" id="header-nav-about" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">O nas</Link>
+                      <Link href="/contact" id="header-nav-contact" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">Kontakt</Link>
                     </div>
                   </nav>
                   <div className="pl-2 border-l border-gray-200 dark:border-gray-800">
@@ -72,10 +72,10 @@ export default function RootLayout({
           <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400 dark:text-gray-500 font-medium">
-                <p>© {new Date().getFullYear()} The Developer Journal. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} Dziennik Dewelopera. Wszelkie prawa zastrzeżone.</p>
                 <div className="flex space-x-6">
-                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
-                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
+                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Polityka prywatności</Link>
+                  <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Warunki korzystania</Link>
                 </div>
               </div>
             </div>

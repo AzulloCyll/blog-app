@@ -23,13 +23,13 @@ const BlogPost: React.FC<BlogPostProps> = ({
   content, 
   date, 
   category = "Technology", 
-  readTime = "5 min read",
+  readTime = "5 min czytania",
   imageUrl,
   tags = [],
   author = { name: "Alex Zullo", role: "Author" }
 }) => {
   // Format the date into a nicer format
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  const formattedDate = new Date(date).toLocaleDateString('pl-PL', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'

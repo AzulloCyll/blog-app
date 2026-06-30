@@ -31,16 +31,16 @@ export default async function PostDetailPage({ params }: PageProps) {
   if (!post) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Post not found</h1>
-        <p className="mt-2 text-gray-500 dark:text-gray-400">The post you are looking for does not exist.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Nie znaleziono wpisu</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">Szukany wpis nie istnieje.</p>
         <Link href="/" className="mt-6 inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline">
-          &larr; Back to Home
+          &larr; Powrót do strony głównej
         </Link>
       </div>
     );
   }
 
-  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  const formattedDate = new Date(post.date).toLocaleDateString('pl-PL', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -53,7 +53,7 @@ export default async function PostDetailPage({ params }: PageProps) {
       <div className="space-y-6">
         {/* Back Link */}
         <Link href="/" className="inline-flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-          &larr; Back to Home
+          &larr; Powrót do strony głównej
         </Link>
 
         {/* Category & Read Time */}
