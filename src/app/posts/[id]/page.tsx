@@ -2,14 +2,23 @@ import React from 'react';
 import Link from 'next/link';
 import allPostsData from '@/data/posts.json';
 
+interface ContentImage {
+  url: string;
+  alt: string;
+  caption?: string;
+  insertAfterParagraph: number;
+}
+
 interface Post {
   id: number;
   title: string;
   content: string;
+  contentImages?: ContentImage[];
   date: string;
   category: string;
   readTime: string;
   imageUrl?: string;
+  coverAlt?: string;
   tags?: string[];
   author: {
     name: string;
@@ -99,7 +108,7 @@ export default async function PostDetailPage({ params }: PageProps) {
           <div className="aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-800">
             <img 
               src={post.imageUrl} 
-              alt={post.title} 
+              alt={post.coverAlt ?? post.title}
               className="w-full h-full object-cover"
             />
           </div>
@@ -107,13 +116,27 @@ export default async function PostDetailPage({ params }: PageProps) {
 
         {/* Article Body */}
         <div className="prose prose-blue dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 space-y-6 text-base sm:text-lg leading-relaxed pt-4">
-          <p>{post.content}</p>
-          <p>
-            Akapit ten służy jako przykładowy tekst demonstracyjny mający na celu zaprezentowanie układu typograficznego i formatowania treści na stronie. W procesie projektowania stron internetowych oraz tworzenia szablonów, tego rodzaju tekst pozwala ocenić czytelność czcionek, rozmieszczenie elementów graficznych oraz odstępy między blokami tekstu przed wprowadzeniem ostatecznej zawartości przez redaktorów.
-          </p>
-          <p>
-            Dzięki temu projektanci i deweloperzy mogą skupić się na aspektach wizualnych i technicznych interfejsu, zamiast rozpraszać się czytaniem sensownej treści. Współczesne narzędzia i generatory pozwalają na dynamiczne tworzenie takich tekstów wypełniających w wielu językach, co ułatwia budowanie responsywnych i dostępnych witryn dla użytkowników na całym świecie.
-          </p>
+          {post.content.split('\n\n').map((paragraph, index) => (
+            <React.Fragment key={index}>
+              <p>{paragraph}</p>
+              {post.contentImages
+                ?.filter((img) => img.insertAfterParagraph === index)
+                .map((img, imgIndex) => (
+                  <figure key={imgIndex} className="my-8">
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="w-full rounded-2xl object-cover border border-gray-100 dark:border-gray-800"
+                    />
+                    {img.caption && (
+                      <figcaption className="mt-3 text-center text-sm italic text-gray-400 dark:text-gray-500">
+                        {img.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+            </React.Fragment>
+          ))}
         </div>
 
         {/* Tags */}

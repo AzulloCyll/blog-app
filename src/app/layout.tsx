@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
@@ -14,28 +15,17 @@ export const metadata: Metadata = {
   description: "Nowoczesny, responsywny blog dzielący się tutorialami, inspiracjami projektowymi i praktykami inżynieryjnymi.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme')?.value;
+  const isDark = theme === 'dark';
+
   return (
-    <html lang="pl" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark')
-                } else {
-                  document.documentElement.classList.remove('dark')
-                }
-              } catch (_) {}
-            `,
-          }}
-        />
-      </head>
+    <html lang="pl" className={`scroll-smooth${isDark ? ' dark' : ''}`} suppressHydrationWarning>
       <body className={`${inter.className} antialiased text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-900 transition-colors duration-200`}>
         <div className="min-h-screen flex flex-col">
           {/* Header */}

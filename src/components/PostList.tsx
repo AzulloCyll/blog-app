@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import BlogPost from './BlogPost';
 import allPostsData from '@/data/posts.json';
 
@@ -12,6 +12,7 @@ interface Post {
   category: string;
   readTime: string;
   imageUrl?: string;
+  coverAlt?: string;
   tags?: string[];
   author: {
     name: string;
@@ -22,59 +23,46 @@ interface Post {
 
 // Cast imported JSON data to Post type
 const ALL_POSTS = allPostsData as Post[];
-
-// We split the posts: first 3 as initial, and remaining as extra posts
-const INITIAL_POSTS = ALL_POSTS.slice(0, 3);
-const EXTRA_POSTS = ALL_POSTS.slice(3);
+const PAGE_SIZE = 4;
 
 export default function PostList() {
-  const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(ALL_POSTS.length > INITIAL_POSTS.length);
 
   // Categories list derived dynamically
   const categories = ["Wszystkie", "Technologia", "Design", "Biznes"];
 
-  // Filtered posts based on search query and category
-  const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const matchesSearch = 
+  // Reset paginacji przy zmianie filtra
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [searchQuery, selectedCategory]);
+
+  // Wszystkie pasujące posty (bez limitu)
+  const allFiltered = useMemo(() => {
+    return ALL_POSTS.filter((post) => {
+      const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
-      
       const matchesCategory =
-        selectedCategory === "Wszystkie" ||
-        post.category === selectedCategory;
-
+        selectedCategory === "Wszystkie" || post.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [posts, searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory]);
+
+  const isFiltering = !!(searchQuery || selectedCategory !== "Wszystkie");
+  const filteredPosts = allFiltered.slice(0, visibleCount);
+  const hasMore = visibleCount < allFiltered.length;
 
   const handleLoadMore = () => {
     if (isLoading || !hasMore) return;
-    
     setIsLoading(true);
-    
-    // Simulate API fetch delay
     setTimeout(() => {
-      setPosts((prevPosts) => {
-        const currentIds = prevPosts.map(p => p.id);
-        const nextBatch = EXTRA_POSTS.filter(p => !currentIds.includes(p.id));
-        
-        if (nextBatch.length === 0) {
-          setHasMore(false);
-          return prevPosts;
-        }
-
-        const updated = [...prevPosts, ...nextBatch];
-        setHasMore(false); // Loaded all remaining posts
-        return updated;
-      });
+      setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, allFiltered.length));
       setIsLoading(false);
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -131,7 +119,7 @@ export default function PostList() {
       {filteredPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredPosts.map((post) => (
-            <BlogPost 
+            <BlogPost
               key={post.id}
               id={post.id}
               title={post.title}
@@ -140,6 +128,7 @@ export default function PostList() {
               category={post.category}
               readTime={post.readTime}
               imageUrl={post.imageUrl}
+              coverAlt={post.coverAlt}
               tags={post.tags}
               author={post.author}
             />
@@ -156,7 +145,7 @@ export default function PostList() {
       )}
 
       {/* Load More Button */}
-      {hasMore && (
+      {hasMore && !isFiltering && (
         <div className="mt-12 text-center">
           <button
             id="load-more-posts-btn"

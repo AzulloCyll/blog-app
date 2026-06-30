@@ -9,6 +9,7 @@ interface BlogPostProps {
   category?: string;
   readTime?: string;
   imageUrl?: string;
+  coverAlt?: string;
   tags?: string[];
   author?: {
     name: string;
@@ -17,14 +18,15 @@ interface BlogPostProps {
   };
 }
 
-const BlogPost: React.FC<BlogPostProps> = ({ 
+const BlogPost: React.FC<BlogPostProps> = ({
   id,
-  title, 
-  content, 
-  date, 
-  category = "Technology", 
+  title,
+  content,
+  date,
+  category = "Technology",
   readTime = "5 min czytania",
   imageUrl,
+  coverAlt,
   tags = [],
   author = { name: "Alex Zullo", role: "Author" }
 }) => {
@@ -47,7 +49,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <div className="relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-700 cursor-pointer">
               <img 
                 src={imageUrl} 
-                alt={title} 
+                alt={coverAlt ?? title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>

@@ -2,85 +2,177 @@
   {
     "id": 1,
     "title": "Witaj na moim blogu",
-    "content": "To jest treść mojego pierwszego wpisu na blogu. Chętnie dzielę się z Wami swoimi przemyśleniami. Będziemy eksplorować nowoczesne technologie internetowe, systemy projektowania i najlepsze praktyki w zakresie deweloperskiego doświadczenia.",
-    "date": "2023-06-01",
+    "content": "Witaj! Cieszę się, że tu jesteś — to pierwszy wpis na moim blogu i chciałem go poświęcić temu, o czym w ogóle będziemy tutaj rozmawiać. Przez ostatnich kilka lat pracowałem jako UI/UX designer i coraz bardziej fascynuje mnie punkt styku między estetyką a technologią. Nie chodzi tylko o to, żeby coś ładnie wyglądało — chodzi o to, żeby działało intuicyjnie, szybko i z sensem.\n\nNa tym blogu będę dzielił się tym, czego nauczyłem się w codziennej pracy: jak projektować systemy wizualne, które skalują się razem z produktem, jak współpracować z deweloperami, żeby wizja designera nie ginęła w implementacji, i jak nowoczesne narzędzia — od Figmy po Next.js — zmieniają sam sposób myślenia o tworzeniu interfejsów.\n\nPlanuję pisać regularnie o Tailwind CSS i podejściu utility-first, o tym jak działa App Router w Next.js i dlaczego zmienia architekturę frontendu, o trendach w design systemach i dlaczego tokeny projektowe to nie moda, ale konieczność.\n\nChcę też poruszać tematy, które rzadziej trafiają do technicznych blogów: jak utrzymać spójność UX w rosnącym zespole, kiedy uprościć, a kiedy dodać warstwę abstrakcji, i jaką rolę odgrywa dokumentacja w codziennej pracy designera.\n\nJeśli jesteś developerem, który chce lepiej rozumieć design — dobrze trafiłeś. Jeśli jesteś designerem, który chce bliżej poznać technologię — też. A jeśli po prostu lubisz czytać o tym, jak się robi dobre produkty cyfrowe — zapraszam. Będę starał się pisać konkretnie, bez zbędnego żargonu, i zawsze z przykładami z realnych projektów. Do zobaczenia w kolejnym wpisie!",
+    "contentImages": [
+      {
+        "url": "/images/posts/projektant-przestrzen-pracy-biurko-ui.jpg",
+        "alt": "Przestrzeń projektanta — biurko z monitorem i szkicami UI",
+        "caption": "Projektowanie to nie tylko estetyka — to rozwiązywanie problemów.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/design-system-komponenty-narzedzia.jpg",
+        "alt": "Narzędzia do projektowania — komponenty design systemu na ekranie",
+        "caption": "Nowoczesne design systemy pozwalają budować spójne produkty na dużą skalę.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-06-01",
     "category": "Design",
-    "readTime": "3 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
-    "tags": ["Design", "Intro", "Web"],
-    "author": { 
-      "name": "Alex Zullo", 
+    "readTime": "5 min czytania",
+    "imageUrl": "/images/posts/witaj-na-moim-blogu-cover.jpg",
+    "tags": [
+      "Design",
+      "Intro",
+      "Web"
+    ],
+    "author": {
+      "name": "Alex Zullo",
       "role": "UI/UX Designer"
-    }
+    },
+    "coverAlt": "Przestrzeń pracy UI/UX designera — monitor, szkice interfejsów i narzędzia projektowe"
   },
   {
     "id": 2,
     "title": "Rozpoczęcie pracy z Next.js",
-    "content": "Next.js to potężny framework do budowania aplikacji React z renderowaniem po stronie serwera, statycznym generowaniem stron oraz nowoczesnymi narzędziami dla programistów. W tym przewodniku omówimy App Router, dynamikę routingu i optymalizacje wydajnościowe.",
-    "date": "2023-06-05",
+    "content": "Next.js to framework do budowania aplikacji React, który łączy w sobie to, co najlepsze ze świata frontendu i backendu. Pozwala renderować strony po stronie serwera (SSR), generować je statycznie (SSG) albo strumieniować fragmenty UI niezależnie — a wybór strategii możesz podejmować osobno dla każdej trasy, a nawet każdego komponentu. Dla programisty oznacza to, że nie musisz kompromisować między szybkością a dynamicznym contentem. Jeden framework robi wszystko.\n\nPodstawą nowoczesnego Next.js jest App Router, oparty na React Server Components. Zamiast trzymać strony w katalogu pages/, organizujesz je w app/. Każdy folder to segment URL, a specjalnie nazwane pliki — page.tsx, layout.tsx, loading.tsx czy error.tsx — przejmują konkretne zadania w cyklu życia trasy. Struktura katalogów staje się dosłownym odzwierciedleniem architektury aplikacji. Od Next.js 15 wszystkie dynamiczne API — params, searchParams, cookies(), headers() — są asynchroniczne i wymagają await, co eliminuje nieoczywiste race conditions.\n\nNajwiększą różnicą w codziennej pracy jest podział na Server i Client Components. Domyślnie każdy komponent w App Router jest serwerowy — nie trafia do bundle'a JavaScript po stronie klienta, może bezpośrednio czytać z bazy danych, a użytkownik pobiera gotowy HTML. Dopiero kiedy potrzebujesz interaktywności — useState, useEffect, event handlerów — dodajesz dyrektywę 'use client' na początku pliku. React 19 rozszerzył ten model o stabilne Server Actions (wywołujesz funkcję serwerową bezpośrednio z formularza lub przycisku) oraz hook use(), który pozwala rozwijać Promise i Context wewnątrz komponentów klienckich.\n\nData fetching w Next.js 15 przeszedł istotną zmianę: fetch() nie jest już domyślnie cache'owane. To breaking change względem wcześniejszych wersji — jeśli chcesz cache'ować odpowiedź, musisz to teraz zaznaczyć explicite. Nowym zalecanym podejściem jest dyrektywa 'use cache' na poziomie funkcji lub całego modułu, która daje precyzyjną kontrolę nad tym, co i jak długo jest przechowywane. Dla danych pobieranych przez ORM lub bezpośrednie zapytania do bazy warto sięgnąć po unstable_cache lub po prostu polegać na memoizacji React na poziomie jednego żądania.\n\nRouting dynamiczny działa przez foldery z nazwami w nawiasach kwadratowych — np. app/posts/[id]/page.tsx obsługuje ścieżki takie jak /posts/1, /posts/2 itd. Parametr id jest dostępny z props komponentu jako Promise, którą rozwijasz przez await. Do tego dochodzą Route Groups (folder w nawiasach okrągłych, bez wpływu na URL), równoległe trasy i interceptory — narzędzia do budowania zaawansowanych layoutów, jak modalne na pełnym ekranie bez utraty kontekstu poprzedniej strony. Nowością w Next.js 15 jest też next/after: API do planowania pracy po wysłaniu odpowiedzi do użytkownika, np. logowania lub aktualizacji statystyk.\n\nNa koniec optymalizacje, które dostajesz z pudełka. Komponent next/image automatycznie dobiera rozmiar, format (WebP lub AVIF) i ładuje obrazy leniwie. next/font eliminuje zewnętrzne żądania do Google Fonts i zapobiega FOUT. next/link prefetchuje trasy w tle. W Next.js 15 domyślnym bundlerem w trybie dev jest Turbopack — starty projektu trwają ułamek sekundy nawet przy dużych codebases, a hot reload jest niemal natychmiastowy. To jest właśnie powód, dla którego Next.js pozostaje pierwszym wyborem przy nowych projektach React.",
+    "contentImages": [
+      {
+        "url": "/images/posts/nextjs-komponent-react-edytor-kodu.svg",
+        "alt": "Edytor kodu z przykładem komponentu React w Next.js",
+        "caption": "Komponent w Next.js to zwykły plik TypeScript — zero boilerplate'u.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/nextjs-app-router-server-client-components.svg",
+        "alt": "Schemat struktury App Router — foldery, Server i Client Components, gotowa aplikacja",
+        "caption": "App Router: struktura katalogów jest bezpośrednim odzwierciedleniem architektury aplikacji.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-06-05",
     "category": "Technologia",
     "readTime": "6 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
-    "tags": ["Next.js", "React", "Frontend"],
-    "author": { 
-      "name": "Sarah Connor", 
+    "imageUrl": "/images/posts/nextjs-react-framework-tutorial-cover.jpg",
+    "tags": [
+      "Next.js",
+      "React",
+      "Frontend"
+    ],
+    "author": {
+      "name": "Sarah Connor",
       "role": "Lider Frontendu"
-    }
+    },
+    "coverAlt": "Edytor kodu z projektem Next.js — React framework do budowania nowoczesnych aplikacji webowych"
   },
   {
     "id": 3,
     "title": "Współczesny rozwój stron internetowych",
     "content": "Landscape rozwoju webu stale się dynamizuje — pojawiają się nowe narzędzia, bundlery i frameworki. Aby nadążyć za trendami, trzeba rozumieć podstawy wzorców renderowania, cache'owania na brzegu (edge) oraz architektury komponentów.",
-    "date": "2023-06-10",
+    "date": "2026-06-10",
     "category": "Technologia",
     "readTime": "5 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-    "tags": ["WebDev", "Architecture", "API"],
-    "author": { 
-      "name": "John Doe", 
+    "imageUrl": "/images/posts/wspolczesny-web-development-architektura-cover.jpg",
+    "tags": [
+      "WebDev",
+      "Architecture",
+      "API"
+    ],
+    "author": {
+      "name": "John Doe",
       "role": "Software Engineer"
-    }
+    },
+    "coverAlt": "Wizualizacja architektury nowoczesnej aplikacji webowej — bundlery, frameworki i edge computing"
   },
   {
     "id": 4,
     "title": "Opanowanie Tailwind CSS",
     "content": "Tailwind CSS zmienił sposób stylizowania naszych aplikacji webowych. Wykorzystując klasy utility, możemy szybko budować personalizowane projekty nie opuszczając HTML-a. Przyjrzymy się konfiguracji niestandardowej, pluginom oraz wzorcjom projektowania trybu ciemnego.",
-    "date": "2023-06-15",
+    "date": "2026-06-15",
     "category": "Design",
     "readTime": "4 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&w=600&q=80",
-    "tags": ["CSS", "Tailwind", "Styling"],
-    "author": { 
-      "name": "Alex Zullo", 
+    "imageUrl": "/images/posts/tailwind-css-utility-classes-cover.jpg",
+    "tags": [
+      "CSS",
+      "Tailwind",
+      "Styling"
+    ],
+    "author": {
+      "name": "Alex Zullo",
       "role": "UI/UX Designer"
-    }
+    },
+    "coverAlt": "Kod HTML ze stylami Tailwind CSS — utility-first framework do szybkiego projektowania interfejsów"
   },
   {
     "id": 5,
     "title": "Przyszłość AI asystentów kodowania",
     "content": "Narzędzia AI na nowo definiują przepływ pracy programistów. Od uzupełniania kodu po całkowicie autonomicznych partnerów do programowania — sposób, w jaki piszemy, testujemy i wdrażamy kod, przechodzi ogromną transformację. Dowiedz się, jak integrować te przepływy pracy w cyklu rozwoju oprogramowania.",
-    "date": "2023-06-20",
+    "date": "2026-06-20",
     "category": "Biznes",
     "readTime": "8 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
-    "tags": ["AI", "Coding", "Automation"],
-    "author": { 
-      "name": "Emma Watson", 
+    "imageUrl": "/images/posts/ai-asystent-kodowania-przyszlosc-cover.jpg",
+    "tags": [
+      "AI",
+      "Coding",
+      "Automation"
+    ],
+    "author": {
+      "name": "Emma Watson",
       "role": "Product Manager"
-    }
+    },
+    "coverAlt": "Deweloper pracujący z narzędziami AI — asystent kodowania wspomagający pisanie i testowanie kodu"
   },
   {
     "id": 6,
     "title": "Zrozumienie funkcji Server Actions",
     "content": "Funkcja Next.js Server Actions pozwala uruchamiać kod po stronie serwera bezpośrednio z komponentów bez tworzenia ręcznych endpointów API. Omawiamy praktyki bezpieczeństwa, walidację formularzy z użyciem Zod oraz optymistyczne aktualizacje.",
-    "date": "2023-06-25",
+    "date": "2026-06-25",
     "category": "Technologia",
     "readTime": "7 min czytania",
-    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-    "tags": ["Next.js", "ServerActions", "React"],
-    "author": { 
-      "name": "Sarah Connor", 
+    "imageUrl": "/images/posts/nextjs-server-actions-formularze-cover.jpg",
+    "tags": [
+      "Next.js",
+      "ServerActions",
+      "React"
+    ],
+    "author": {
+      "name": "Sarah Connor",
       "role": "Frontend Lead"
-    }
+    },
+    "coverAlt": "Schemat działania Next.js Server Actions — formularz wysyłający dane bezpośrednio do funkcji serwerowej"
+  },
+  {
+    "id": 7,
+    "title": "Design system jako inwestycja, nie koszt",
+    "content": "W większości firm rozmowa o design systemie zaczyna się od pytania: ile to kosztuje? To złe pytanie — a przynajmniej niekompletne. Lepsze brzmi: ile kosztuje nas brak design systemu? Każdy niespójny przycisk, każda różnica w paddinach między widokiem mobilnym a desktopowym, każda godzina spędzona przez dewelopera na odgadywaniu, jakiego odcienia szarego użył designer — to realne pieniądze. Tylko że te koszty są ukryte, rozłożone na setki małych decyzji dziennie i nigdy nie pojawiają się w jednej linii budżetu.\n\nCo właściwie zyskuje firma, która wdraża design system? Pierwsze i najbardziej wymierne jest skrócenie czasu implementacji nowych funkcji. Zespoły, które mają bibliotekę gotowych komponentów, nie projektują przycisku za każdym razem od nowa — sięgają po Button/Primary i idą dalej. Badania Nielsen Norman Group wskazują, że dojrzałe design systemy skracają czas wdrożeń UI o 30–60%. Drugi zysk to onboarding: nowy developer lub designer, który dostaje udokumentowany system z tokenami, komponentami i wytycznymi użycia, staje się produktywny w dni, nie tygodnie. Trzeci — i często niedoceniany — to redukcja błędów wynikających z niespójności: mniejszy nakład pracy supportu, mniej regresji wizualnych, wyższy Net Promoter Score produktu.\n\nJak przeliczyć to na liczby, które przekonają zarząd? Zacznij od prostego ćwiczenia: policz, ile razy w ostatnim kwartale zespół implementował „od zera” komponenty, które już gdzieś istniały w nieco innej formie. Pomnóż przez średnią stawkę godzinową. Dodaj koszty bugów wynikających z niespójności — raporty z QA, czas naprawy, komunikacja. Teraz porównaj to z szacowanym nakładem na zbudowanie i utrzymanie systemu. W większości firm próg rentowności wypada w ciągu 6–12 miesięcy od uruchomienia pierwszej stabilnej wersji.\n\nKiedy jest właściwy moment na inwestycję? Wbrew intuicji — nie wtedy, gdy firma jest duża i ma duży problem. Najlepszy moment to tuż przed skalowaniem: gdy produkt ma już stabilny rdzeń, pojawia się drugi zespół produktowy albo zaczyna się praca nad nową platformą (np. aplikacja mobilna obok webowej). Wdrażanie design systemu w fazie chaosu to walka z wiatrem — najpierw trzeba zatrzymać krwawienie, potem budować systemy. Ale czekanie, aż dług wizualny urośnie do niebotycznych rozmiarów, tylko zwiększa koszty migracji.\n\nJak sprzedać ten pomysł wewnętrznie? Unikaj języka estetyki — „będzie spójniej i ładniej” nie trafia do osoby, która patrzy na P&L. Mów o czasie i pieniądzach: ile sprintów zaoszczędzi kwartał z design systemem, ile błędów mniej trafi do produkcji, jak szybko nowy developer dotrze do pierwszego PR. Pomocne jest też pokazanie kosztów alternatywnych: każda godzina spędzona na „skąd pochodzi ten kolor” to godzina niespisana na wartości dla użytkownika. Design system to infrastruktura — tak jak nie pytamy, czy warto inwestować w CI/CD, tak samo nie powinniśmy pytać, czy warto inwestować w spójny system projektowania.\n\nDesign system nie jest projektem z datą końcową — jest produktem wewnętrznym, który wymaga utrzymania, ownership i ewolucji razem z produktem głównym. To jego największa pułapka: firmy inwestują w budowę, a potem zaniedbują utrzymanie, przez co system starzeje się i przestaje być używany. Kluczem jest wyznaczenie właściciela (design system lead lub zespół platformy), regularne cykle przeglądów i traktowanie systemu jak żywej dokumentacji, nie jak projektu archiwalnego. Wtedy ROI nie jest jednorazowy — kumuluje się z każdym nowym komponentem, każdym nowym produktem i każdym nowym członkiem zespołu, który nie musi zaczynać od zera.",
+    "contentImages": [
+      {
+        "url": "/images/posts/ukryte-koszty-braku-design-systemu-iceberg.svg",
+        "alt": "Iceberg ukrytych kosztów — widoczna część to budżet projektu, ukryta to dług wizualny i czas zespołu",
+        "caption": "Widoczna część góry lodowej to tylko ~20% kosztów braku design systemu. Reszta tonie pod powierzchnią.",
+        "insertAfterParagraph": 0
+      },
+      {
+        "url": "/images/posts/design-system-roi-wykres-punkt-zwrotu.svg",
+        "alt": "Wykres punktu zwrotu z inwestycji w design system — krzywa kosztów bez systemu vs. z systemem",
+        "caption": "Punkt zwrotu wypada zazwyczaj między 9 a 12 miesiącem — potem skumulowane oszczędności rosną z każdym sprintem.",
+        "insertAfterParagraph": 2
+      }
+    ],
+    "date": "2026-06-28",
+    "category": "Biznes",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/design-system-inwestycja-roi-cover.svg",
+    "tags": [
+      "Design System",
+      "ROI",
+      "Biznes",
+      "UX"
+    ],
+    "author": {
+      "name": "Alex Zullo",
+      "role": "UI/UX Designer"
+    },
+    "coverAlt": "Wizualizacja ROI design systemu — komponenty, tokeny projektowe i metryki zwrotu z inwestycji"
   }
 ]

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff"/>
+      <stop offset="100%" style="stop-color:#bae6fd"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0369a1;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="ice-top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="ice-bot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#bae6fd;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="900" height="500" fill="url(#sky)"/>
+  <!-- Sea -->
+  <rect x="0" y="210" width="900" height="290" fill="url(#sea)"/>
+  <!-- Sea surface line -->
+  <path d="M0 210 Q225 200 450 210 Q675 220 900 210 L900 230 Q675 240 450 230 Q225 220 0 230 Z" fill="#0ea5e9" opacity="0.5"/>
+
+  <!-- Iceberg top (visible) -->
+  <polygon points="360,60 540,60 580,210 320,210" fill="url(#ice-top)" stroke="#bae6fd" stroke-width="1.5"/>
+  <!-- Iceberg bottom (hidden, underwater) -->
+  <polygon points="320,210 580,210 650,380 460,470 280,420 240,310" fill="url(#ice-bot)" stroke="#7dd3fc" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- Water overlay for transparency effect -->
+  <rect x="0" y="215" width="900" height="285" fill="#0369a1" opacity="0.25"/>
+
+  <!-- Waterline label -->
+  <line x1="80" y1="213" x2="820" y2="213" stroke="#38bdf8" stroke-width="1" stroke-dasharray="8,6" opacity="0.6"/>
+  <text x="50" y="209" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0369a1" opacity="0.8">POZIOM WODY</text>
+
+  <!-- TOP: visible cost label -->
+  <text x="450" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#0c4a6e">WIDOCZNE KOSZTY</text>
+  <text x="450" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#0369a1">~20% problemu</text>
+
+  <!-- Top bullet -->
+  <circle cx="410" cy="155" r="4" fill="#ef4444"/>
+  <text x="420" y="159" font-family="system-ui, sans-serif" font-size="12" fill="#1e293b">Budżet projektu</text>
+  <circle cx="410" cy="178" r="4" fill="#ef4444"/>
+  <text x="420" y="182" font-family="system-ui, sans-serif" font-size="12" fill="#1e293b">Czas designerów</text>
+
+  <!-- BOTTOM: hidden costs -->
+  <text x="450" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#e0f2fe">UKRYTE KOSZTY</text>
+  <text x="450" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bae6fd">~80% problemu</text>
+
+  <!-- Hidden cost items -->
+  <circle cx="360" cy="322" r="4" fill="#fbbf24"/>
+  <text x="372" y="326" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Czas devów na odgadywanie stylów</text>
+  <circle cx="360" cy="348" r="4" fill="#fbbf24"/>
+  <text x="372" y="352" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Błędy spójności w QA</text>
+  <circle cx="360" cy="374" r="4" fill="#fbbf24"/>
+  <text x="372" y="378" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Dług wizualny narastający latami</text>
+  <circle cx="360" cy="400" r="4" fill="#fbbf24"/>
+  <text x="372" y="404" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Onboarding nowych członków zespołu</text>
+  <circle cx="360" cy="426" r="4" fill="#fbbf24"/>
+  <text x="372" y="430" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Niespójny UX obniżający NPS produktu</text>
+
+  <!-- Right side annotation -->
+  <rect x="680" y="80" width="185" height="110" rx="10" fill="white" opacity="0.9"/>
+  <text x="772" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0c4a6e">Pytanie nie brzmi:</text>
+  <text x="772" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#334155">ile kosztuje</text>
+  <text x="772" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#6366f1">design system?</text>
+  <text x="772" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0c4a6e">Lecz: ile kosztuje</text>
+  <text x="772" y="178" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#ef4444">jego brak?</text>
+</svg>
