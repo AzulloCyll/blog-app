@@ -6,7 +6,6 @@ import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
 });
 

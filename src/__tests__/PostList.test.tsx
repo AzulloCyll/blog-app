@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import PostList from '../components/PostList';
 
 describe('PostList Component', () => {
@@ -57,23 +57,28 @@ describe('PostList Component', () => {
     expect(screen.getByText('Nie znaleziono wpisów')).toBeInTheDocument();
   });
 
-  it('simulates loading more posts when button is clicked', async () => {
+  it('loads more posts when button is clicked', () => {
     render(<PostList />);
 
     const loadMoreButton = screen.getByRole('button', { name: 'Załaduj więcej wpisów' });
     expect(loadMoreButton).toBeInTheDocument();
+    expect(screen.queryByText('Przyszłość AI asystentów kodowania')).not.toBeInTheDocument();
 
     fireEvent.click(loadMoreButton);
 
-    // Button should change state to loading
-    expect(screen.getByText('Ładowanie...')).toBeInTheDocument();
-
-    // Wait for the async mock load to finish (simulated with 600ms setTimeout)
-    await waitFor(() => {
-      expect(screen.getByText('Opanowanie Tailwind CSS')).toBeInTheDocument();
-    }, { timeout: 1200 });
+    // Data is local, so the next page of posts appears immediately
+    expect(screen.getByText('Przyszłość AI asystentów kodowania')).toBeInTheDocument();
 
     // Load more button should disappear after all posts are loaded
     expect(screen.queryByRole('button', { name: 'Załaduj więcej wpisów' })).not.toBeInTheDocument();
+  });
+
+  it('shows a results count while filtering', () => {
+    render(<PostList />);
+
+    const designButton = screen.getByRole('button', { name: 'Design' });
+    fireEvent.click(designButton);
+
+    expect(screen.getByText(/Znaleziono \d+ wyni/)).toBeInTheDocument();
   });
 });

@@ -3,36 +3,19 @@
 import React, { useState, useMemo } from 'react';
 import BlogPost from './BlogPost';
 import allPostsData from '@/data/posts.json';
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  date: string;
-  category: string;
-  readTime: string;
-  imageUrl?: string;
-  coverAlt?: string;
-  tags?: string[];
-  author: {
-    name: string;
-    avatarUrl?: string;
-    role: string;
-  };
-}
+import type { Post } from '@/types/post';
 
 // Cast imported JSON data to Post type
 const ALL_POSTS = allPostsData as Post[];
 const PAGE_SIZE = 4;
 
+// Categories list derived from actual post data
+const CATEGORIES = ["Wszystkie", ...Array.from(new Set(ALL_POSTS.map((post) => post.category)))];
+
 export default function PostList() {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Categories list derived dynamically
-  const categories = ["Wszystkie", "Technologia", "Design", "Biznes"];
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
@@ -62,12 +45,8 @@ export default function PostList() {
   const hasMore = visibleCount < allFiltered.length;
 
   const handleLoadMore = () => {
-    if (isLoading || !hasMore) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, allFiltered.length));
-      setIsLoading(false);
-    }, 600);
+    if (!hasMore) return;
+    setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, allFiltered.length));
   };
 
   return (
@@ -104,7 +83,7 @@ export default function PostList() {
 
         {/* Categories Badges */}
         <div className="flex flex-wrap gap-2 pt-2">
-          {categories.map((category) => (
+          {CATEGORIES.map((category) => (
             <button
               key={category}
               onClick={() => handleCategorySelect(category)}
@@ -119,6 +98,13 @@ export default function PostList() {
           ))}
         </div>
       </div>
+
+      {/* Results count while filtering */}
+      {isFiltering && allFiltered.length > 0 && (
+        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+          {`Znaleziono ${allFiltered.length} ${allFiltered.length === 1 ? "wynik" : allFiltered.length < 5 ? "wyniki" : "wyników"}`}
+        </p>
+      )}
 
       {/* Grid of posts */}
       {filteredPosts.length > 0 ? (
@@ -155,20 +141,9 @@ export default function PostList() {
           <button
             id="load-more-posts-btn"
             onClick={handleLoadMore}
-            disabled={isLoading}
-            className={`inline-flex items-center px-6 py-3 border border-transparent text-sm font-semibold rounded-xl text-white bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none`}
+            className="inline-flex items-center px-6 py-3 border border-transparent text-sm font-semibold rounded-xl text-white bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-95 transition-all duration-200"
           >
-            {isLoading ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                Ładowanie...
-              </>
-            ) : (
-              "Załaduj więcej wpisów"
-            )}
+            Załaduj więcej wpisów
           </button>
         </div>
       )}

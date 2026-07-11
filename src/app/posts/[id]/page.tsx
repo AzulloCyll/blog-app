@@ -3,31 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import allPostsData from '@/data/posts.json';
 import { isSvgUrl } from '@/lib/image';
-
-interface ContentImage {
-  url: string;
-  alt: string;
-  caption?: string;
-  insertAfterParagraph: number;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  contentImages?: ContentImage[];
-  date: string;
-  category: string;
-  readTime: string;
-  imageUrl?: string;
-  coverAlt?: string;
-  tags?: string[];
-  author: {
-    name: string;
-    avatarUrl?: string;
-    role: string;
-  };
-}
+import type { Post } from '@/types/post';
 
 const ALL_POSTS = allPostsData as Post[];
 

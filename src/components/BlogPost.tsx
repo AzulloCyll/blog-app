@@ -2,22 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { isSvgUrl } from '@/lib/image';
+import type { Post } from '@/types/post';
 
-interface BlogPostProps {
-  id: number;
-  title: string;
-  content: string;
-  date: string;
-  category?: string;
-  readTime?: string;
-  imageUrl?: string;
-  coverAlt?: string;
-  tags?: string[];
-  author?: {
-    name: string;
-    avatarUrl?: string;
-    role?: string;
-  };
+interface BlogPostProps extends Pick<Post, 'id' | 'title' | 'content' | 'date' | 'imageUrl' | 'coverAlt' | 'tags'> {
+  category?: Post['category'];
+  readTime?: Post['readTime'];
+  author?: Partial<Post['author']> & Pick<Post['author'], 'name'>;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({

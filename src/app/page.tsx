@@ -17,9 +17,9 @@ export default function Home() {
       
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Main content area */}
-        <main className="flex-grow lg:max-w-[calc(100%-18rem)]">
+        <div className="flex-grow lg:max-w-[calc(100%-18rem)]">
           <PostList />
-        </main>
+        </div>
 
         {/* Sidebar */}
         <aside className="w-full lg:w-64 flex-shrink-0">

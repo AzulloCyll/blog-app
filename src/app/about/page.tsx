@@ -17,7 +17,7 @@ export default function AboutPage() {
         {/* Content Section */}
         <div className="prose prose-blue dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 space-y-6 leading-relaxed">
           <p>
-            Witaj w <strong>Dzienniku Dewelopera</strong> — miejscu w sieci poświęconym eksploracji granic nowoczesnej inżynierii oprogramowania. Założony w 2023 roku, ten dziennik jest odzwierciedleniem doświadczeń, lekcji projektowych i wzorców odkrytych podczas budowania skalowalnych systemów webowych.
+            Witaj w <strong>Dzienniku Dewelopera</strong> — miejscu w sieci poświęconym eksploracji granic nowoczesnej inżynierii oprogramowania. Założony w 2026 roku, ten dziennik jest odzwierciedleniem doświadczeń, lekcji projektowych i wzorców odkrytych podczas budowania skalowalnych systemów webowych.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10 not-prose">
