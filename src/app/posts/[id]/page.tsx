@@ -66,6 +66,7 @@ export default async function PostDetailPage({ params }: PageProps) {
                 src={post.author.avatarUrl}
                 alt={post.author.name}
                 fill
+                sizes="40px"
                 className="object-cover"
                 unoptimized={isSvgUrl(post.author.avatarUrl)}
               />
@@ -92,7 +93,7 @@ export default async function PostDetailPage({ params }: PageProps) {
               src={post.imageUrl}
               alt={post.coverAlt ?? post.title}
               fill
-              sizes="100vw"
+              sizes="(min-width: 768px) 768px, 100vw"
               className="object-cover"
               unoptimized={isSvgUrl(post.imageUrl)}
             />
@@ -113,7 +114,7 @@ export default async function PostDetailPage({ params }: PageProps) {
                         src={img.url}
                         alt={img.alt}
                         fill
-                        sizes="100vw"
+                        sizes="(min-width: 768px) 768px, 100vw"
                         className="object-cover"
                         unoptimized={isSvgUrl(img.url)}
                       />
