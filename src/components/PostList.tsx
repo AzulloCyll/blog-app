@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import BlogPost from './BlogPost';
 import allPostsData from '@/data/posts.json';
 
@@ -34,10 +34,15 @@ export default function PostList() {
   // Categories list derived dynamically
   const categories = ["Wszystkie", "Technologia", "Design", "Biznes"];
 
-  // Reset paginacji przy zmianie filtra
-  useEffect(() => {
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
     setVisibleCount(PAGE_SIZE);
-  }, [searchQuery, selectedCategory]);
+  };
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+    setVisibleCount(PAGE_SIZE);
+  };
 
   // Wszystkie pasujące posty (bez limitu)
   const allFiltered = useMemo(() => {
@@ -76,7 +81,7 @@ export default function PostList() {
             type="text"
             placeholder="Szukaj wpisów..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => handleSearchChange(e.target.value)}
             className="w-full bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700/50 pl-10 pr-4 py-2.5 rounded-xl text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white dark:focus:bg-gray-900 transition-all duration-200"
           />
           <div className="absolute left-3.5 top-3.5 text-gray-400 dark:text-gray-500">
@@ -102,7 +107,7 @@ export default function PostList() {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => handleCategorySelect(category)}
               className={`px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 ${
                 selectedCategory === category
                   ? "bg-blue-600 dark:bg-blue-500 text-white shadow-sm shadow-blue-500/20"

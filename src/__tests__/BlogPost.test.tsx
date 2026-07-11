@@ -8,8 +8,8 @@ describe('BlogPost Component', () => {
     title: 'Test Post Title',
     content: 'This is the body content of the test post.',
     date: '2023-06-01',
-    category: 'Technology',
-    readTime: '5 min read',
+    category: 'Technologia',
+    readTime: '5 min czytania',
     imageUrl: 'https://example.com/test-image.jpg',
     tags: ['Nextjs', 'Testing'],
     author: {
@@ -26,15 +26,15 @@ describe('BlogPost Component', () => {
     expect(screen.getByText('This is the body content of the test post.')).toBeInTheDocument();
 
     // Check category and read time
-    expect(screen.getByText('Technology')).toBeInTheDocument();
-    expect(screen.getByText('5 min read')).toBeInTheDocument();
+    expect(screen.getByText('Technologia')).toBeInTheDocument();
+    expect(screen.getByText('5 min czytania')).toBeInTheDocument();
 
     // Check author details
     expect(screen.getByText('John Test')).toBeInTheDocument();
     expect(screen.getByText('QA Engineer')).toBeInTheDocument();
 
-    // Check date formatting (formatted as Jun 1, 2023)
-    expect(screen.getByText('Jun 1, 2023')).toBeInTheDocument();
+    // Check date formatting (formatted as 1 cze 2023)
+    expect(screen.getByText('1 cze 2023')).toBeInTheDocument();
 
     // Check tags
     expect(screen.getByText('#Nextjs')).toBeInTheDocument();

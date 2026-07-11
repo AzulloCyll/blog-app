@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface BlogPostProps {
@@ -47,10 +48,13 @@ const BlogPost: React.FC<BlogPostProps> = ({
         {imageUrl && (
           <Link href={`/posts/${id}`}>
             <div className="relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-700 cursor-pointer">
-              <img 
-                src={imageUrl} 
+              <Image
+                src={imageUrl}
                 alt={coverAlt ?? title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                unoptimized
               />
             </div>
           </Link>
@@ -100,11 +104,16 @@ const BlogPost: React.FC<BlogPostProps> = ({
         <div className="pt-4 border-t border-gray-50 dark:border-gray-700/50 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             {author.avatarUrl ? (
-              <img 
-                src={author.avatarUrl} 
-                alt={author.name} 
-                className="h-8 w-8 rounded-full object-cover border border-gray-100 dark:border-gray-700"
-              />
+              <div className="relative h-8 w-8 rounded-full overflow-hidden border border-gray-100 dark:border-gray-700">
+                <Image
+                  src={author.avatarUrl}
+                  alt={author.name}
+                  width={32}
+                  height={32}
+                  className="h-full w-full object-cover"
+                  unoptimized
+                />
+              </div>
             ) : (
               <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-wider">
                 {initials}

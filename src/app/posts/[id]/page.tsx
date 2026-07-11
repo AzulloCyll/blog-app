@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import allPostsData from '@/data/posts.json';
 
@@ -83,11 +84,15 @@ export default async function PostDetailPage({ params }: PageProps) {
         {/* Author / Date */}
         <div className="flex items-center space-x-4 pt-2 pb-6 border-b border-gray-100 dark:border-gray-800">
           {post.author.avatarUrl ? (
-            <img 
-              src={post.author.avatarUrl} 
-              alt={post.author.name} 
-              className="h-10 w-10 rounded-full object-cover border border-gray-100 dark:border-gray-750"
-            />
+            <div className="relative h-10 w-10 rounded-full overflow-hidden border border-gray-100 dark:border-gray-750">
+              <Image
+                src={post.author.avatarUrl}
+                alt={post.author.name}
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            </div>
           ) : (
             <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-xs font-bold text-white uppercase tracking-wider">
               {initials}
@@ -105,11 +110,14 @@ export default async function PostDetailPage({ params }: PageProps) {
 
         {/* Cover Image */}
         {post.imageUrl && (
-          <div className="aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-800">
-            <img 
-              src={post.imageUrl} 
+          <div className="aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 relative">
+            <Image
+              src={post.imageUrl}
               alt={post.coverAlt ?? post.title}
-              className="w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              unoptimized
             />
           </div>
         )}
@@ -123,11 +131,16 @@ export default async function PostDetailPage({ params }: PageProps) {
                 ?.filter((img) => img.insertAfterParagraph === index)
                 .map((img, imgIndex) => (
                   <figure key={imgIndex} className="my-8">
-                    <img
-                      src={img.url}
-                      alt={img.alt}
-                      className="w-full rounded-2xl object-cover border border-gray-100 dark:border-gray-800"
-                    />
+                    <div className="relative w-full h-64 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
+                      <Image
+                        src={img.url}
+                        alt={img.alt}
+                        fill
+                        sizes="100vw"
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
                     {img.caption && (
                       <figcaption className="mt-3 text-center text-sm italic text-gray-400 dark:text-gray-500">
                         {img.caption}

@@ -7,13 +7,13 @@ describe('PostList Component', () => {
     render(<PostList />);
 
     // Check search input
-    expect(screen.getByPlaceholderText('Search blog posts...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Szukaj wpisów...')).toBeInTheDocument();
 
     // Check category filter buttons
-    expect(screen.getByRole('button', { name: 'All' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Technology' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Wszystkie' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Technologia' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Design' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Business' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Biznes' })).toBeInTheDocument();
 
     // Check that first few posts from posts.json (Witaj na moim blogu, Rozpoczęcie pracy z Next.js, Współczesny rozwój stron internetowych) are rendered
     expect(screen.getByText('Witaj na moim blogu')).toBeInTheDocument();
@@ -23,10 +23,10 @@ describe('PostList Component', () => {
   it('filters posts based on search input query', () => {
     render(<PostList />);
 
-    const searchInput = screen.getByPlaceholderText('Search blog posts...');
+    const searchInput = screen.getByPlaceholderText('Szukaj wpisów...');
 
-    // Type "Next.js"
-    fireEvent.change(searchInput, { target: { value: 'Next.js' } });
+    // Type "Rozpoczęcie"
+    fireEvent.change(searchInput, { target: { value: 'Rozpoczęcie' } });
 
     // "Rozpoczęcie pracy z Next.js" should be in document, but "Witaj na moim blogu" should not
     expect(screen.getByText('Rozpoczęcie pracy z Next.js')).toBeInTheDocument();
@@ -49,31 +49,31 @@ describe('PostList Component', () => {
   it('shows no posts screen when search query matches nothing', () => {
     render(<PostList />);
 
-    const searchInput = screen.getByPlaceholderText('Search blog posts...');
+    const searchInput = screen.getByPlaceholderText('Szukaj wpisów...');
 
     // Type a gibberish query
     fireEvent.change(searchInput, { target: { value: 'xyzqwert123' } });
 
-    expect(screen.getByText('No posts found')).toBeInTheDocument();
+    expect(screen.getByText('Nie znaleziono wpisów')).toBeInTheDocument();
   });
 
   it('simulates loading more posts when button is clicked', async () => {
     render(<PostList />);
 
-    const loadMoreButton = screen.getByRole('button', { name: /Load More Posts/i });
+    const loadMoreButton = screen.getByRole('button', { name: 'Załaduj więcej wpisów' });
     expect(loadMoreButton).toBeInTheDocument();
 
     fireEvent.click(loadMoreButton);
 
     // Button should change state to loading
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByText('Ładowanie...')).toBeInTheDocument();
 
-    // Wait for the async mock load to finish (simulated with 800ms setTimeout)
+    // Wait for the async mock load to finish (simulated with 600ms setTimeout)
     await waitFor(() => {
       expect(screen.getByText('Opanowanie Tailwind CSS')).toBeInTheDocument();
     }, { timeout: 1200 });
 
     // Load more button should disappear after all posts are loaded
-    expect(screen.queryByRole('button', { name: /Load More Posts/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Załaduj więcej wpisów' })).not.toBeInTheDocument();
   });
 });

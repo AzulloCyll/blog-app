@@ -28,23 +28,23 @@ describe('ThemeToggle Component', () => {
 
   it('renders correctly as a button', () => {
     render(<ThemeToggle />);
-    const button = screen.getByRole('button', { name: /Toggle dark mode/i });
+    const button = screen.getByRole('button', { name: 'Przełącz tryb ciemny' });
     expect(button).toBeInTheDocument();
   });
 
-  it('toggles document class and localStorage theme value on click', () => {
+  it('toggles document class and cookie theme value on click', () => {
     // Initial theme is light by default if not set
     render(<ThemeToggle />);
-    const button = screen.getByRole('button', { name: /Toggle dark mode/i });
+    const button = screen.getByRole('button', { name: 'Przełącz tryb ciemny' });
 
     // Click to toggle to dark mode
     fireEvent.click(button);
     expect(document.documentElement.classList.contains('dark')).toBe(true);
-    expect(localStorageMock.getItem('theme')).toBe('dark');
+    expect(document.cookie).toContain('theme=dark');
 
     // Click again to toggle to light mode
     fireEvent.click(button);
     expect(document.documentElement.classList.contains('dark')).toBe(false);
-    expect(localStorageMock.getItem('theme')).toBe('light');
+    expect(document.cookie).toContain('theme=light');
   });
 });
