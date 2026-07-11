@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import allPostsData from '@/data/posts.json';
+import { isSvgUrl } from '@/lib/image';
 
 interface ContentImage {
   url: string;
@@ -90,7 +91,7 @@ export default async function PostDetailPage({ params }: PageProps) {
                 alt={post.author.name}
                 fill
                 className="object-cover"
-                unoptimized
+                unoptimized={isSvgUrl(post.author.avatarUrl)}
               />
             </div>
           ) : (
@@ -117,7 +118,7 @@ export default async function PostDetailPage({ params }: PageProps) {
               fill
               sizes="100vw"
               className="object-cover"
-              unoptimized
+              unoptimized={isSvgUrl(post.imageUrl)}
             />
           </div>
         )}
@@ -138,7 +139,7 @@ export default async function PostDetailPage({ params }: PageProps) {
                         fill
                         sizes="100vw"
                         className="object-cover"
-                        unoptimized
+                        unoptimized={isSvgUrl(img.url)}
                       />
                     </div>
                     {img.caption && (

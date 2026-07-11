@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { isSvgUrl } from '@/lib/image';
 
 interface BlogPostProps {
   id: number;
@@ -54,7 +55,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 fill
                 sizes="100vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                unoptimized
+                unoptimized={isSvgUrl(imageUrl)}
               />
             </div>
           </Link>
@@ -111,7 +112,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
                   width={32}
                   height={32}
                   className="h-full w-full object-cover"
-                  unoptimized
+                  unoptimized={isSvgUrl(author.avatarUrl)}
                 />
               </div>
             ) : (

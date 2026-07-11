@@ -10,7 +10,7 @@ describe('BlogPost Component', () => {
     date: '2023-06-01',
     category: 'Technologia',
     readTime: '5 min czytania',
-    imageUrl: 'https://example.com/test-image.jpg',
+    imageUrl: '/images/test-image.jpg',
     tags: ['Nextjs', 'Testing'],
     author: {
       name: 'John Test',
@@ -40,10 +40,11 @@ describe('BlogPost Component', () => {
     expect(screen.getByText('#Nextjs')).toBeInTheDocument();
     expect(screen.getByText('#Testing')).toBeInTheDocument();
 
-    // Check image
+    // Check image — JPG covers go through the next/image optimizer, so the
+    // rendered src is the rewritten optimizer URL, not the raw path.
     const image = screen.getByRole('img', { name: 'Test Post Title' });
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('src', 'https://example.com/test-image.jpg');
+    expect(image.getAttribute('src')).toContain(encodeURIComponent(mockProps.imageUrl));
   });
 
   it('renders standard initials if avatarUrl is not provided', () => {
