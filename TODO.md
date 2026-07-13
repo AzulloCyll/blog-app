@@ -7,15 +7,15 @@ Zaktualizowano 11 lipca 2026 po commicie `5fa6a96`.
 
 ## UI/UX
 
-- [ ] Brak mobile menu — nawigacja `hidden md:block` znika na telefonie, brak hamburgera (`layout.tsx:41`)
-- [ ] Sidebar duplikuje nawigację — te same 3 linki 3× na stronie głównej (`page.tsx:28–74`)
-- [ ] "Ustawienia" w dropdownie nic nie robi — brak `href` i `onClick` (`NavigationMenu.tsx:69–77`)
+- [x] Brak mobile menu — nawigacja `hidden md:block` znika na telefonie, brak hamburgera (`layout.tsx:41`) — dodano `MobileNav.tsx` z hamburgerem i dropdown-nawigacją, podpięty w `layout.tsx:50`
+- [x] Sidebar duplikuje nawigację — te same 3 linki 3× na stronie głównej (`page.tsx:28–74`) — usunięto cały sidebar (karta "Nawigacja" i "Szybkie menu"/`NavigationMenu`), zostaje jedna nawigacja w headerze (desktop) + `MobileNav` (mobile)
+- [x] "Ustawienia" w dropdownie nic nie robi — brak `href` i `onClick` (`NavigationMenu.tsx:69–77`) — nieaktualne, `NavigationMenu.tsx` usunięty razem z sidebarem
 - [ ] Przycisk "Załaduj więcej" ukryty przy filtrze z >4 wynikami — `!isFiltering` blokuje paginację gdy jest potrzebna (`PostList.tsx`)
 - [ ] ThemeToggle migocze przy ładowaniu — `animate-pulse` placeholder bo `theme` inicjalizuje się jako `null` (`ThemeToggle.tsx:27–31`) — częściowo złagodzone: motyw jest teraz czytany z cookie w `layout.tsx` po stronie serwera, więc znika miganie całej strony; sam przycisk nadal renderuje placeholder do czasu efektu klienckiego
 
 ## Design
 
-- [ ] Ikony w sidebar i NavigationMenu to inline SVG — po dodaniu `@heroicons/react` tylko ThemeToggle go używa (`page.tsx:38–60`, `NavigationMenu.tsx:33–61`)
+- [ ] Ikony w `MobileNav` to inline SVG — po dodaniu `@heroicons/react` tylko ThemeToggle go używa (`MobileNav.tsx:18–24`)
 - [ ] Avatar autora identyczny dla wszystkich — gradient `from-blue-500 to-indigo-600` niezależnie od autora
 - [x] Brak licznika wyników przy filtrowaniu — użytkownik nie wie ile łącznie pasuje — dodano tekst "Znaleziono X wyników" nad siatką postów, widoczny gdy aktywny jest search/filtr kategorii
 

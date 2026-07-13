@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import ThemeToggle from "@/components/ThemeToggle";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,6 +45,10 @@ export default async function RootLayout({
                       <Link href="/contact" id="header-nav-contact" className="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-all">Kontakt</Link>
                     </div>
                   </nav>
+
+                  {/* Mobile hamburger */}
+                  <MobileNav />
+
                   <div className="pl-2 border-l border-gray-200 dark:border-gray-800">
                     <ThemeToggle />
                   </div>
