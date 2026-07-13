@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState<string | null>(null);
+interface ThemeToggleProps {
+  initialTheme: 'light' | 'dark';
+}
 
-  useEffect(() => {
-    // Determine initial theme
-    const isDark = document.documentElement.classList.contains('dark');
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTheme(isDark ? 'dark' : 'light');
-  }, []);
+export default function ThemeToggle({ initialTheme }: ThemeToggleProps) {
+  // Theme is already known server-side from the cookie (see layout.tsx), so
+  // we render the correct icon immediately instead of a loading placeholder.
+  const [theme, setTheme] = useState<'light' | 'dark'>(initialTheme);
 
   const toggleTheme = () => {
     const next = theme === 'light' ? 'dark' : 'light';
@@ -19,13 +18,6 @@ export default function ThemeToggle() {
     document.cookie = `theme=${next}; path=/; max-age=${60 * 60 * 24 * 365}`;
     setTheme(next);
   };
-
-  // Prevent rendering before client-side theme is verified to avoid hydration mismatch
-  if (!theme) {
-    return (
-      <div className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-800 animate-pulse" />
-    );
-  }
 
   return (
     <button

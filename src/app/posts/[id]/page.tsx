@@ -1,14 +1,50 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import allPostsData from '@/data/posts.json';
 import { isSvgUrl } from '@/lib/image';
+import { avatarGradientFor } from '@/lib/avatar';
+import { toExcerpt } from '@/lib/text';
 import type { Post } from '@/types/post';
 
 const ALL_POSTS = allPostsData as Post[];
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateStaticParams() {
+  return ALL_POSTS.map((post) => ({ id: String(post.id) }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const post = ALL_POSTS.find((p) => p.id === parseInt(id));
+
+  if (!post) {
+    return { title: 'Nie znaleziono wpisu' };
+  }
+
+  const description = toExcerpt(post.content);
+
+  return {
+    title: post.title,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      type: 'article',
+      publishedTime: post.date,
+      images: post.imageUrl ? [{ url: post.imageUrl }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: post.imageUrl ? [post.imageUrl] : undefined,
+    },
+  };
 }
 
 export default async function PostDetailPage({ params }: PageProps) {
@@ -34,6 +70,7 @@ export default async function PostDetailPage({ params }: PageProps) {
   });
 
   const initials = post.author.name.split(' ').map((n) => n[0]).join('');
+  const avatarGradient = avatarGradientFor(post.author.name);
 
   return (
     <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -72,7 +109,7 @@ export default async function PostDetailPage({ params }: PageProps) {
               />
             </div>
           ) : (
-            <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-xs font-bold text-white uppercase tracking-wider">
+            <div className={`h-10 w-10 rounded-full bg-gradient-to-tr ${avatarGradient} flex items-center justify-center text-xs font-bold text-white uppercase tracking-wider`}>
               {initials}
             </div>
           )}
@@ -96,6 +133,7 @@ export default async function PostDetailPage({ params }: PageProps) {
               sizes="(min-width: 768px) 768px, 100vw"
               className="object-cover"
               unoptimized={isSvgUrl(post.imageUrl)}
+              priority
             />
           </div>
         )}

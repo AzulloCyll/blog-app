@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -15,13 +16,9 @@ export default function MobileNav() {
         className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
       >
         {open ? (
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <XMarkIcon className="h-5 w-5" />
         ) : (
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <Bars3Icon className="h-5 w-5" />
         )}
       </button>
 

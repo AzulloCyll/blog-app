@@ -10,9 +10,29 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_TITLE = "Dziennik Dewelopera";
+const SITE_DESCRIPTION = "Nowoczesny, responsywny blog dzielący się tutorialami, inspiracjami projektowymi i praktykami inżynieryjnymi.";
+
 export const metadata: Metadata = {
-  title: "Dziennik Dewelopera",
-  description: "Nowoczesny, responsywny blog dzielący się tutorialami, inspiracjami projektowymi i praktykami inżynieryjnymi.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s · ${SITE_TITLE}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: SITE_TITLE,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default async function RootLayout({
@@ -50,7 +70,7 @@ export default async function RootLayout({
                   <MobileNav />
 
                   <div className="pl-2 border-l border-gray-200 dark:border-gray-800">
-                    <ThemeToggle />
+                    <ThemeToggle initialTheme={isDark ? 'dark' : 'light'} />
                   </div>
                 </div>
               </div>

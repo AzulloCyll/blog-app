@@ -6,7 +6,7 @@ describe('BlogPost Component', () => {
   const mockProps = {
     id: 1,
     title: 'Test Post Title',
-    content: 'This is the body content of the test post.',
+    excerpt: 'This is the body content of the test post.',
     date: '2023-06-01',
     category: 'Technologia',
     readTime: '5 min czytania',

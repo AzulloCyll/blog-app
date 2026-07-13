@@ -22,3 +22,9 @@ export interface Post {
     role: string;
   };
 }
+
+// Lightweight card-level summary — omits full article content/images so the
+// client list bundle doesn't ship every post's full text.
+export type PostSummary = Omit<Post, 'content' | 'contentImages'> & {
+  excerpt: string;
+};

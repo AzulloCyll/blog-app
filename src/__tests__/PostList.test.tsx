@@ -1,10 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import PostList from '../components/PostList';
+import allPostsData from '../data/posts.json';
+import { toPostSummary } from '../lib/posts';
+import type { Post } from '../types/post';
+
+const posts = (allPostsData as Post[]).map(toPostSummary);
 
 describe('PostList Component', () => {
   it('renders initial list of posts, search bar, and category filters', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     // Check search input
     expect(screen.getByPlaceholderText('Szukaj wpisów...')).toBeInTheDocument();
@@ -21,7 +26,7 @@ describe('PostList Component', () => {
   });
 
   it('filters posts based on search input query', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     const searchInput = screen.getByPlaceholderText('Szukaj wpisów...');
 
@@ -34,7 +39,7 @@ describe('PostList Component', () => {
   });
 
   it('filters posts based on selected category badge', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     const designButton = screen.getByRole('button', { name: 'Design' });
 
@@ -47,7 +52,7 @@ describe('PostList Component', () => {
   });
 
   it('shows no posts screen when search query matches nothing', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     const searchInput = screen.getByPlaceholderText('Szukaj wpisów...');
 
@@ -58,7 +63,7 @@ describe('PostList Component', () => {
   });
 
   it('loads more posts when button is clicked', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     const loadMoreButton = screen.getByRole('button', { name: 'Załaduj więcej wpisów' });
     expect(loadMoreButton).toBeInTheDocument();
@@ -74,7 +79,7 @@ describe('PostList Component', () => {
   });
 
   it('shows a results count while filtering', () => {
-    render(<PostList />);
+    render(<PostList posts={posts} />);
 
     const designButton = screen.getByRole('button', { name: 'Design' });
     fireEvent.click(designButton);

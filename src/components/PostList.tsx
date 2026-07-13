@@ -2,20 +2,24 @@
 
 import React, { useState, useMemo } from 'react';
 import BlogPost from './BlogPost';
-import allPostsData from '@/data/posts.json';
-import type { Post } from '@/types/post';
+import type { PostSummary } from '@/types/post';
 
-// Cast imported JSON data to Post type
-const ALL_POSTS = allPostsData as Post[];
 const PAGE_SIZE = 4;
 
-// Categories list derived from actual post data
-const CATEGORIES = ["Wszystkie", ...Array.from(new Set(ALL_POSTS.map((post) => post.category)))];
+interface PostListProps {
+  posts: PostSummary[];
+}
 
-export default function PostList() {
+export default function PostList({ posts }: PostListProps) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
+
+  // Categories list derived from actual post data
+  const categories = useMemo(
+    () => ["Wszystkie", ...Array.from(new Set(posts.map((post) => post.category)))],
+    [posts]
+  );
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
@@ -29,16 +33,16 @@ export default function PostList() {
 
   // Wszystkie pasujące posty (bez limitu)
   const allFiltered = useMemo(() => {
-    return ALL_POSTS.filter((post) => {
+    return posts.filter((post) => {
       const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
       const matchesCategory =
         selectedCategory === "Wszystkie" || post.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [posts, searchQuery, selectedCategory]);
 
   const isFiltering = !!(searchQuery || selectedCategory !== "Wszystkie");
   const filteredPosts = allFiltered.slice(0, visibleCount);
@@ -83,7 +87,7 @@ export default function PostList() {
 
         {/* Categories Badges */}
         <div className="flex flex-wrap gap-2 pt-2">
-          {CATEGORIES.map((category) => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => handleCategorySelect(category)}
@@ -114,7 +118,7 @@ export default function PostList() {
               key={post.id}
               id={post.id}
               title={post.title}
-              content={post.content}
+              excerpt={post.excerpt}
               date={post.date}
               category={post.category}
               readTime={post.readTime}
@@ -136,7 +140,7 @@ export default function PostList() {
       )}
 
       {/* Load More Button */}
-      {hasMore && !isFiltering && (
+      {hasMore && (
         <div className="mt-12 text-center">
           <button
             id="load-more-posts-btn"

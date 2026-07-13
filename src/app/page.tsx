@@ -1,6 +1,13 @@
 import PostList from "@/components/PostList";
+import allPostsData from "@/data/posts.json";
+import { toPostSummary } from "@/lib/posts";
+import type { Post } from "@/types/post";
+
+const ALL_POSTS = allPostsData as Post[];
 
 export default function Home() {
+  const postSummaries = ALL_POSTS.map(toPostSummary);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero section */}
@@ -13,7 +20,7 @@ export default function Home() {
         </p>
       </div>
       
-      <PostList />
+      <PostList posts={postSummaries} />
     </div>
   );
 }

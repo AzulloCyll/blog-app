@@ -27,14 +27,14 @@ describe('ThemeToggle Component', () => {
   });
 
   it('renders correctly as a button', () => {
-    render(<ThemeToggle />);
+    render(<ThemeToggle initialTheme="light" />);
     const button = screen.getByRole('button', { name: 'Przełącz tryb ciemny' });
     expect(button).toBeInTheDocument();
   });
 
   it('toggles document class and cookie theme value on click', () => {
     // Initial theme is light by default if not set
-    render(<ThemeToggle />);
+    render(<ThemeToggle initialTheme="light" />);
     const button = screen.getByRole('button', { name: 'Przełącz tryb ciemny' });
 
     // Click to toggle to dark mode

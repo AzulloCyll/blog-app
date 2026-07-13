@@ -2,9 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { isSvgUrl } from '@/lib/image';
+import { avatarGradientFor } from '@/lib/avatar';
 import type { Post } from '@/types/post';
 
-interface BlogPostProps extends Pick<Post, 'id' | 'title' | 'content' | 'date' | 'imageUrl' | 'coverAlt' | 'tags'> {
+interface BlogPostProps extends Pick<Post, 'id' | 'title' | 'date' | 'imageUrl' | 'coverAlt' | 'tags'> {
+  excerpt: string;
   category?: Post['category'];
   readTime?: Post['readTime'];
   author?: Partial<Post['author']> & Pick<Post['author'], 'name'>;
@@ -13,7 +15,7 @@ interface BlogPostProps extends Pick<Post, 'id' | 'title' | 'content' | 'date' |
 const BlogPost: React.FC<BlogPostProps> = ({
   id,
   title,
-  content,
+  excerpt,
   date,
   category = "Technology",
   readTime = "5 min czytania",
@@ -29,8 +31,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
     day: 'numeric'
   });
 
-  // Simple gradient avatar based on author name initials
+  // Gradient avatar based on author name initials, colored per-author
   const initials = author.name.split(' ').map(n => n[0]).join('');
+  const avatarGradient = avatarGradientFor(author.name);
 
   return (
     <article className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-black/20 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
@@ -71,7 +74,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
           {/* Excerpt */}
           <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
-            {content}
+            {excerpt}
           </p>
 
           {/* Tags */}
@@ -106,7 +109,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 />
               </div>
             ) : (
-              <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-wider">
+              <div className={`h-8 w-8 rounded-full bg-gradient-to-tr ${avatarGradient} flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-wider`}>
                 {initials}
               </div>
             )}
