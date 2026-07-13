@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="schema" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="client" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="server" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Jeden schemat Zod, dwa miejsca użycia</text>
+
+  <rect x="350" y="90" width="200" height="110" rx="14" fill="url(#schema)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="450" y="120" font-size="13" font-weight="700" fill="white">z.object</text>
+    <text x="450" y="145" font-family="monospace" font-size="10" fill="white" opacity="0.9">name: z.string()</text>
+    <text x="450" y="162" font-family="monospace" font-size="10" fill="white" opacity="0.9">email: z.string().email()</text>
+    <text x="450" y="179" font-family="monospace" font-size="10" fill="white" opacity="0.9">message: z.string().min(10)</text>
+  </g>
+
+  <rect x="90" y="290" width="260" height="140" rx="14" fill="url(#client)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="220" y="320" font-size="13" font-weight="700" fill="white">Klient</text>
+    <text x="220" y="345" font-size="11" fill="white" opacity="0.9">Natychmiastowa walidacja</text>
+    <text x="220" y="365" font-size="11" fill="white" opacity="0.9">pola przy wpisywaniu —</text>
+    <text x="220" y="385" font-size="11" fill="white" opacity="0.9">komunikat pod polem</text>
+    <text x="220" y="410" font-size="10" fill="white" opacity="0.8">zanim formularz wyśle dane</text>
+  </g>
+
+  <rect x="550" y="290" width="260" height="140" rx="14" fill="url(#server)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="680" y="320" font-size="13" font-weight="700" fill="white">Serwer</text>
+    <text x="680" y="345" font-size="11" fill="white" opacity="0.9">Twarda walidacja w Server</text>
+    <text x="680" y="365" font-size="11" fill="white" opacity="0.9">Action, zanim dane trafią</text>
+    <text x="680" y="385" font-size="11" fill="white" opacity="0.9">do bazy danych</text>
+    <text x="680" y="410" font-size="10" fill="white" opacity="0.8">nigdy nie ufaj samemu klientowi</text>
+  </g>
+
+  <line x1="400" y1="200" x2="250" y2="285" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="500" y1="200" x2="650" y2="285" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <text x="450" y="470" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Reguły walidacji żyją w jednym miejscu, zamiast być duplikowane między frontendem a backendem</text>
+</svg>

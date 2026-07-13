@@ -68,10 +68,24 @@
   {
     "id": 3,
     "title": "Współczesny rozwój stron internetowych",
-    "content": "Landscape rozwoju webu stale się dynamizuje — pojawiają się nowe narzędzia, bundlery i frameworki. Aby nadążyć za trendami, trzeba rozumieć podstawy wzorców renderowania, cache'owania na brzegu (edge) oraz architektury komponentów.",
+    "content": "Landscape rozwoju webu stale się dynamizuje — pojawiają się nowe narzędzia, bundlery i frameworki niemal co miesiąc. Łatwo pogubić się w szumie i gonić za każdą nową biblioteką, ale prawda jest taka, że fundamenty zmieniają się znacznie wolniej niż nazwy pakietów w package.json. Jeśli rozumiesz wzorce renderowania, cache'owanie na brzegu sieci i architekturę komponentów, potrafisz ocenić każde nowe narzędzie w kilka minut — bo w gruncie rzeczy to zawsze te same kompromisy w nowym opakowaniu.\n\nZacznijmy od renderowania. CSR (Client-Side Rendering) wysyła do przeglądarki pusty HTML i cały JavaScript, który dopiero buduje interfejs — szybkie pierwsze wdrożenie, ale słaby czas do pierwszego contentu i problemy z SEO. SSR (Server-Side Rendering) renderuje HTML na serwerze przy każdym żądaniu — użytkownik widzi treść od razu, kosztem obciążenia serwera. SSG (Static Site Generation) generuje strony raz, w czasie builda — błyskawiczne i tanie w hostingu, ale nieaktualne bez rebuildu. ISR (Incremental Static Regeneration) łączy oba światy: strona jest statyczna, ale odświeża się w tle po upływie zadanego czasu. Streaming SSR idzie o krok dalej — wysyła HTML fragmentami, więc użytkownik widzi część strony, zanim reszta danych w ogóle się załaduje.\n\nEdge computing przenosi logikę bliżej użytkownika, zamiast trzymać ją w jednym centralnym data center. Funkcje edge uruchamiane są na serwerach CDN rozsianych globalnie, więc odpowiedź na żądanie z Warszawy czy Tokio ma podobne opóźnienie. To świetne miejsce na personalizację na podstawie geolokalizacji, A/B testy bez przeładowania strony czy autoryzację przed dotarciem żądania do właściwego backendu. Cache'owanie na brzegu — na poziomie CDN, a nie tylko przeglądarki — potrafi zredukować obciążenie origin servera o rzędy wielkości, jeśli tylko poprawnie ustawisz nagłówki Cache-Control i strategie rewalidacji.\n\nWarstwa API też przeszła ewolucję. REST wciąż dominuje dzięki prostocie i wsparciu narzędziowemu, ale cierpi na over-fetching — klient często dostaje więcej danych, niż potrzebuje. GraphQL rozwiązuje ten problem, pozwalając klientowi zapytać dokładnie o te pola, które są potrzebne, kosztem większej złożoności po stronie serwera i cache'owania. Najnowszy gracz, tRPC, rezygnuje z osobnej warstwy zapytań na rzecz współdzielonych typów TypeScript między frontendem a backendem — zero kodu do generowania, pełna autouzupełnianie i błędy wyłapywane w czasie kompilacji, o ile pracujesz w jednym monorepo.\n\nArchitektura komponentów też się rozgałęzia wraz ze skalą organizacji. Mały zespół najlepiej czuje się w monolicie frontendowym — jedna baza kodu, jeden deploy, minimalna komunikacja międzyzespołowa. Gdy produkt rośnie i kilka zespołów pracuje na tej samej aplikacji, pojawia się pokusa micro-frontendów — niezależnie wdrażanych fragmentów UI, łączonych w czasie działania przez Module Federation lub podobne mechanizmy. To realne rozwiązanie problemu organizacyjnego, ale wprowadza własne koszty: duplikację zależności, spójność wizualną między zespołami i trudniejsze debugowanie end-to-end.\n\nNiezależnie od tego, które narzędzie wybierzesz w tym roku, decyzje architektoniczne sprowadzają się do tych samych pytań: gdzie renderować, gdzie cache'ować i jak dzielić odpowiedzialność między zespołami. Frameworki przychodzą i odchodzą, ale kto rozumie te kompromisy, nie musi uczyć się wszystkiego od nowa przy każdej nowej fali narzędzi.",
+    "contentImages": [
+      {
+        "url": "/images/posts/wspolczesny-web-development-rendering-strategie.svg",
+        "alt": "Porównanie strategii renderowania — CSR, SSR, SSG, ISR i streaming SSR",
+        "caption": "Każda strategia renderowania to inny kompromis między szybkością pierwszego wyświetlenia a aktualnością danych.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/wspolczesny-web-development-edge-api-warstwy.svg",
+        "alt": "Schemat warstw architektury — edge computing, CDN i API między klientem a backendem",
+        "caption": "Edge computing przenosi część logiki bliżej użytkownika, redukując opóźnienia niezależnie od jego lokalizacji.",
+        "insertAfterParagraph": 3
+      }
+    ],
     "date": "2026-06-10",
     "category": "Technologia",
-    "readTime": "5 min czytania",
+    "readTime": "6 min czytania",
     "imageUrl": "/images/posts/wspolczesny-web-development-architektura-cover.jpg",
     "tags": [
       "WebDev",
@@ -87,10 +101,24 @@
   {
     "id": 4,
     "title": "Opanowanie Tailwind CSS",
-    "content": "Tailwind CSS zmienił sposób stylizowania naszych aplikacji webowych. Wykorzystując klasy utility, możemy szybko budować personalizowane projekty nie opuszczając HTML-a. Przyjrzymy się konfiguracji niestandardowej, pluginom oraz wzorcjom projektowania trybu ciemnego.",
+    "content": "Tailwind CSS zmienił sposób, w jaki stylizujemy aplikacje webowe. Zamiast pisać osobne pliki CSS z nazwanymi klasami komponentów, budujesz wygląd bezpośrednio w znaczniku HTML, składając małe, jednofunkcyjne klasy utility — flex, gap-4, rounded-2xl, text-gray-700. Na pierwszy rzut oka wygląda to jak krok wstecz w stronę inline styles sprzed lat, ale różnica jest fundamentalna: klasy utility są ograniczone do wartości ze wspólnej skali projektowej, więc niemożliwe staje się przypadkowe wpisanie marginesu 13px, gdy reszta interfejsu trzyma się skali 4, 8, 12, 16.\n\nPrawdziwa siła Tailwinda ujawnia się dopiero w konfiguracji. Plik tailwind.config zawiera theme, w którym definiujesz własną paletę kolorów, skalę odstępów, breakpointy i typografię — te wartości stają się jedynym źródłem prawdy dla całego projektu. Zamiast trzymać kolory w dokumentacji Figmy i mieć nadzieję, że deweloper poprawnie odwzoruje je w kodzie, definiujesz je raz jako tokeny (np. brand-500, surface-muted) i używasz w całej aplikacji przez klasy takie jak bg-brand-500. Zmiana jednej wartości w konfiguracji propaguje się automatycznie wszędzie, gdzie token jest używany — to samo zadanie, które w klasycznym CSS wymagałoby żmudnego find-and-replace.\n\nPluginy rozszerzają Tailwinda o funkcjonalności, których nie chcesz odtwarzać ręcznie. @tailwindcss/typography dodaje klasę prose, która automatycznie stylizuje długie bloki tekstu — nagłówki, listy, cytaty — bez ręcznego nadpisywania każdego elementu, co jest nieocenione przy renderowaniu contentu z CMS-a lub Markdowna. @tailwindcss/forms resetuje domyślne, brzydkie stylowanie inputów i selectów przeglądarki do neutralnego punktu wyjścia, żeby nie walczyć z przeglądarkowymi ustawieniami przy każdym formularzu. Możesz też pisać własne pluginy, które dodają nowe warianty lub grupy klas specyficzne dla Twojego produktu.\n\nTryb ciemny w Tailwindzie sprowadza się do jednego prefiksu: dark:. Ustawiasz strategię przełączania — class (ręczne dodanie klasy dark do elementu html) albo media (automatyczne dopasowanie do preferencji systemowej) — i potem po prostu dopisujesz warianty obok klas jasnego motywu: bg-white dark:bg-gray-900, text-gray-900 dark:text-white. Nie potrzebujesz osobnego arkusza stylów ani zmiennych CSS zarządzanych ręcznie — Tailwind generuje obie wersje w czasie budowania, a przełącznik motywu w JavaScript jedynie dodaje lub usuwa jedną klasę na elemencie html.\n\nNajczęstszy zarzut wobec Tailwinda — że znaczniki HTML robią się nieczytelne od nadmiaru klas — rozwiązuje się przez ekstrakcję powtarzających się wzorców do komponentów frameworka (React, Vue), a nie przez wracanie do customowego CSS. Jeśli ten sam zestaw klas pojawia się w trzech miejscach, to sygnał, żeby zamknąć go w komponencie Button czy Card, a nie żeby uciekać od utility-first z powrotem do BEM. W praktyce oznacza to mniej plików CSS, mniej martwego kodu, który nikt nie usuwa z obawy przed zepsuciem czegoś gdzie indziej, i szybsze code review — reviewer widzi dokładnie, jak komponent wygląda, patrząc tylko na jego znacznik.",
+    "contentImages": [
+      {
+        "url": "/images/posts/tailwind-css-konfiguracja-tokeny.svg",
+        "alt": "Schemat konfiguracji Tailwind CSS — tokeny kolorów, odstępów i typografii jako źródło prawdy",
+        "caption": "Tokeny zdefiniowane w tailwind.config są jedynym źródłem prawdy dla kolorów i odstępów w całym projekcie.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/tailwind-css-dark-mode-warianty.svg",
+        "alt": "Porównanie tej samej karty w trybie jasnym i ciemnym z klasami dark: w Tailwind CSS",
+        "caption": "Prefiks dark: generuje obie wersje motywu w czasie budowania — bez osobnego arkusza stylów.",
+        "insertAfterParagraph": 3
+      }
+    ],
     "date": "2026-06-15",
     "category": "Design",
-    "readTime": "4 min czytania",
+    "readTime": "6 min czytania",
     "imageUrl": "/images/posts/tailwind-css-utility-classes-cover.jpg",
     "tags": [
       "CSS",
@@ -106,7 +134,21 @@
   {
     "id": 5,
     "title": "Przyszłość AI asystentów kodowania",
-    "content": "Narzędzia AI na nowo definiują przepływ pracy programistów. Od uzupełniania kodu po całkowicie autonomicznych partnerów do programowania — sposób, w jaki piszemy, testujemy i wdrażamy kod, przechodzi ogromną transformację. Dowiedz się, jak integrować te przepływy pracy w cyklu rozwoju oprogramowania.",
+    "content": "Narzędzia AI na nowo definiują przepływ pracy programistów, a tempo tej zmiany jest szybsze niż w przypadku jakiejkolwiek wcześniejszej fali narzędzi deweloperskich. Zaczęło się niewinnie — od uzupełniania linijki kodu na podstawie kontekstu. Dziś rozmawiamy o asystentach, które samodzielnie planują wieloetapowe zadania, piszą testy, uruchamiają je, analizują błędy i poprawiają własny kod bez ingerencji człowieka na każdym kroku. Dla działu produktu to nie jest ciekawostka technologiczna — to zmiana, która wpływa na roadmapy, budżety zespołów inżynieryjnych i tempo, w jakim firma może dostarczać wartość klientom.\n\nWarto rozróżnić trzy generacje tych narzędzi, bo mylenie ich prowadzi do złych decyzji inwestycyjnych. Pierwsza generacja to autouzupełnianie — sugestie pojedynczych linijek lub bloków kodu na podstawie kontekstu pliku, bez szerszego rozumienia projektu. Druga to asystenci konwersacyjni osadzeni w edytorze — potrafią wyjaśnić fragment kodu, zaproponować refaktoryzację czy napisać funkcję na podstawie opisu w języku naturalnym, ale nadal wymagają, żeby człowiek inicjował każdą interakcję i weryfikował wynik. Trzecia, najnowsza generacja to autonomiczni agenci — dostają zadanie na poziomie ticketu (\"dodaj endpoint do eksportu raportów w CSV\"), samodzielnie przeszukują bazę kodu, planują zmiany w wielu plikach, uruchamiają testy i zgłaszają gotowy pull request do przeglądu.\n\nZ perspektywy biznesowej największa wartość nie leży w oszczędności czasu na pisaniu kodu — to najbardziej widoczny, ale niekoniecznie największy efekt. Prawdziwy zwrot z inwestycji pojawia się w miejscach, które rzadko trafiają do prezentacji dla zarządu: szybszy onboarding nowych programistów, którzy mogą zadawać pytania asystentowi zamiast czekać na wolny moment seniora; niższy próg wejścia w nieznaną część codebase'u przy naprawie incydentu produkcyjnego; więcej czasu zespołu na projektowanie architektury i decyzje produktowe zamiast na mechaniczne przepisywanie boilerplate'u.\n\nIntegracja tych narzędzi w cyklu rozwoju oprogramowania wymaga jednak świadomych decyzji, a nie tylko włączenia subskrypcji. Zespoły, które odnoszą z tego realną korzyść, traktują sugestie AI jak propozycje juniora — zawsze weryfikowane przez code review, nigdy niewłączane do głównej gałęzi bez ludzkiego podpisu. Potrzebne są też jasne zasady dotyczące danych: czy kod firmowy może trafiać do zewnętrznego modelu, jakie dane wrażliwe muszą być maskowane, i czy dostawca gwarantuje, że Twój kod nie posłuży do trenowania modelu dla innych klientów.\n\nRyzyka są realne i warto je nazwać wprost, zamiast udawać, że nie istnieją. Wygenerowany kod bywa przekonująco poprawny, a jednocześnie subtelnie błędny — halucynowane wywołania nieistniejących funkcji API albo logika, która działa dla typowych przypadków, ale zawodzi na brzegowych. Nadmierne poleganie na sugestiach może też spłycać rozumienie własnego systemu przez zespół — jeśli nikt nie rozumie, dlaczego kod działa, dług techniczny rośnie w nowej, trudniejszej do wykrycia formie. Odpowiedzią nie jest rezygnacja z narzędzi, ale utrzymanie standardów inżynieryjnych — testów, przeglądów kodu, dokumentacji decyzji architektonicznych — na tym samym poziomie, co przed erą AI.\n\nPatrząc w przyszłość, granica między \"pisaniem kodu\" a \"zarządzaniem zespołem agentów piszących kod\" będzie się zacierać. Firmy, które już teraz budują procesy do bezpiecznej integracji tych narzędzi — jasne zasady, metryki jakości, kulturę weryfikacji — będą miały przewagę, gdy kolejna generacja asystentów stanie się jeszcze bardziej autonomiczna. Ci, którzy potraktują to wyłącznie jako sposób na cięcie kosztów zespołu inżynieryjnego, ryzykują odwrotny efekt: więcej niewykrytych błędów i wolniejsze dostarczanie wartości w dłuższej perspektywie.",
+    "contentImages": [
+      {
+        "url": "/images/posts/ai-asystent-kodowania-workflow-etapy.svg",
+        "alt": "Trzy generacje narzędzi AI dla programistów — autouzupełnianie, asystent konwersacyjny, autonomiczny agent",
+        "caption": "Każda kolejna generacja narzędzi AI przejmuje więcej odpowiedzialności — od sugestii linijki kodu po samodzielne zadania.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/ai-asystent-kodowania-adopcja-wykres.svg",
+        "alt": "Wykres źródeł zwrotu z inwestycji w narzędzia AI dla zespołów programistycznych",
+        "caption": "Największy zwrot z inwestycji rzadko pochodzi z samej szybkości pisania kodu — częściej z onboardingu i czasu reakcji na incydenty.",
+        "insertAfterParagraph": 3
+      }
+    ],
     "date": "2026-06-20",
     "category": "Biznes",
     "readTime": "8 min czytania",
@@ -125,7 +167,21 @@
   {
     "id": 6,
     "title": "Zrozumienie funkcji Server Actions",
-    "content": "Funkcja Next.js Server Actions pozwala uruchamiać kod po stronie serwera bezpośrednio z komponentów bez tworzenia ręcznych endpointów API. Omawiamy praktyki bezpieczeństwa, walidację formularzy z użyciem Zod oraz optymistyczne aktualizacje.",
+    "content": "Server Actions pozwalają uruchamiać kod po stronie serwera bezpośrednio z komponentów React — bez ręcznego tworzenia endpointu API, bez pisania fetch() po stronie klienta i bez osobnego routera dla requestów. Oznaczasz funkcję dyrektywą 'use server', wywołujesz ją z atrybutu action formularza albo bezpośrednio z handlera onClick, a Next.js sam zajmuje się resztą: serializacją argumentów, żądaniem sieciowym i deserializacją wyniku. Formularz działa nawet bez JavaScriptu w przeglądarce, bo w gruncie rzeczy to zwykłe żądanie POST — progressive enhancement dostajesz za darmo, bez dodatkowego kodu.\n\nBezpieczeństwo Server Actions wymaga innego myślenia niż w klasycznym API. Ponieważ funkcja jest wywoływana jak zwykła funkcja JavaScript, łatwo zapomnieć, że w rzeczywistości przekracza granicę sieci i może zostać wywołana przez każdego, kto pozna jej identyfikator w bundle'u klienckim — nie tylko przez Twój formularz. Dlatego każda Server Action musi samodzielnie weryfikować sesję użytkownika i jego uprawnienia na samym początku funkcji, dokładnie tak, jakbyś pisał osobny endpoint REST. Nigdy nie ufaj temu, że dane przyszły z Twojego formularza — ktoś mógł wywołać tę samą akcję z zupełnie innym payloadem.\n\nWalidacja danych wejściowych to miejsce, gdzie Zod sprawdza się wyjątkowo dobrze w parze z Server Actions. Definiujesz schemat raz — pola formularza, ich typy, ograniczenia długości, formaty e-mail — i uruchamiasz parsowanie na samym wejściu do funkcji serwerowej, zanim jakiekolwiek dane trafią do bazy. Ten sam schemat Zod można wykorzystać po stronie klienta do natychmiastowej walidacji w formularzu, więc logika reguł żyje w jednym miejscu, a nie jest duplikowana między frontendem a backendem. Gdy walidacja się nie powiedzie, Server Action zwraca strukturę błędów, którą komponent kliencki odczytuje przez hook useActionState i wyświetla przy odpowiednich polach.\n\nOptymistyczne aktualizacje sprawiają, że interfejs reaguje natychmiast, zamiast czekać na potwierdzenie z serwera. Hook useOptimistic pozwala tymczasowo zaktualizować stan UI — na przykład dodać nowy komentarz na liście — zanim Server Action w ogóle się zakończy. Jeśli operacja się powiedzie, stan optymistyczny zostaje po prostu zastąpiony prawdziwymi danymi z serwera po rewalidacji. Jeśli się nie powiedzie, cofasz zmianę i pokazujesz komunikat błędu. Ten wzorzec jest szczególnie zauważalny na wolniejszych połączeniach — różnica między aplikacją, która czuje się natychmiastowa, a taką, która wydaje się ociężała.\n\nPo zakończeniu Server Action zwykle trzeba odświeżyć dane, które użytkownik widzi na ekranie — na przykład listę postów po dodaniu nowego wpisu. Służy do tego revalidatePath lub revalidateTag, które oznaczają odpowiedni fragment cache'u jako nieaktualny i wymuszają ponowne pobranie danych przy następnym renderze. To znacznie prostszy model niż ręczne zarządzanie unieważnianiem cache'u w tradycyjnym REST API, gdzie klient sam musi wiedzieć, które zapytania odświeżyć po każdej mutacji.\n\nNajczęstszym błędem początkujących jest traktowanie Server Actions jak zwykłych funkcji pomocniczych i pomijanie obsługi błędów sieciowych czy współbieżności. W praktyce warto owijać logikę w blok try/catch, zwracać ustrukturyzowany wynik zamiast rzucać wyjątkiem aż do komponentu klienckiego, i pamiętać, że dwa równoczesne wywołania tej samej akcji — na przykład podwójne kliknięcie przycisku zapisu — mogą prowadzić do wyścigu danych, jeśli logika biznesowa nie jest idempotentna. Server Actions eliminują sporo boilerplate'u związanego z API, ale nie zwalniają z odpowiedzialności za bezpieczeństwo i spójność danych, które zawsze towarzyszą kodowi wykonywanemu po stronie serwera.",
+    "contentImages": [
+      {
+        "url": "/images/posts/nextjs-server-actions-cykl-zycia.svg",
+        "alt": "Cykl życia Server Action — od formularza przez walidację Zod do zapisu i rewalidacji cache'u",
+        "caption": "Server Action przechodzi przez walidację, autoryzację i zapis, zanim zwróci wynik i wymusi odświeżenie danych.",
+        "insertAfterParagraph": 2
+      },
+      {
+        "url": "/images/posts/nextjs-server-actions-walidacja-zod.svg",
+        "alt": "Ten sam schemat Zod używany do walidacji formularza po stronie klienta i serwera",
+        "caption": "Jeden schemat Zod, dwa miejsca użycia — natychmiastowa walidacja w formularzu i twarda walidacja na serwerze.",
+        "insertAfterParagraph": 4
+      }
+    ],
     "date": "2026-06-25",
     "category": "Technologia",
     "readTime": "7 min czytania",

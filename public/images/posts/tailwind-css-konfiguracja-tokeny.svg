@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="config" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">tailwind.config — tokeny jako jedyne źródło prawdy</text>
+
+  <rect x="60" y="100" width="220" height="300" rx="14" fill="url(#config)" filter="url(#shadow)"/>
+  <text x="170" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="white">theme</text>
+  <text x="170" y="180" text-anchor="middle" font-family="monospace" font-size="12" fill="white" opacity="0.9">colors.brand-500</text>
+  <text x="170" y="210" text-anchor="middle" font-family="monospace" font-size="12" fill="white" opacity="0.9">spacing.4 / .8 / .12</text>
+  <text x="170" y="240" text-anchor="middle" font-family="monospace" font-size="12" fill="white" opacity="0.9">fontFamily.sans</text>
+  <text x="170" y="270" text-anchor="middle" font-family="monospace" font-size="12" fill="white" opacity="0.9">screens.md / lg</text>
+  <text x="170" y="300" text-anchor="middle" font-family="monospace" font-size="12" fill="white" opacity="0.9">borderRadius.2xl</text>
+
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="450" y="90" width="180" height="70" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="540" y="120" font-size="12" font-weight="700" fill="#334155">Button</text>
+    <text x="540" y="140" font-family="monospace" font-size="10" fill="#0284c7">bg-brand-500</text>
+
+    <rect x="450" y="180" width="180" height="70" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="540" y="210" font-size="12" font-weight="700" fill="#334155">Card</text>
+    <text x="540" y="230" font-family="monospace" font-size="10" fill="#0284c7">rounded-2xl p-4</text>
+
+    <rect x="450" y="270" width="180" height="70" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="540" y="300" font-size="12" font-weight="700" fill="#334155">Navbar</text>
+    <text x="540" y="320" font-family="monospace" font-size="10" fill="#0284c7">gap-8 text-brand-500</text>
+
+    <rect x="700" y="180" width="150" height="70" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="775" y="210" font-size="12" font-weight="700" fill="#334155">Badge</text>
+    <text x="775" y="230" font-family="monospace" font-size="10" fill="#0284c7">bg-brand-500/10</text>
+
+    <line x1="282" y1="150" x2="445" y2="123" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="282" y1="220" x2="445" y2="213" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="282" y1="280" x2="445" y2="303" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="632" y1="205" x2="695" y2="212" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Zmiana jednego tokenu w konfiguracji propaguje się do każdego komponentu, który go używa</text>
+</svg>
