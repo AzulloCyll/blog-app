@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ok" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Gdzie znika ochrona przed XSS</text>
+
+  <rect x="60" y="150" width="180" height="80" rx="10" fill="#e2e8f0"/>
+  <text x="150" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">Dane od</text>
+  <text x="150" y="212" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">użytkownika</text>
+
+  <rect x="330" y="150" width="220" height="80" rx="10" fill="url(#ok)" filter="url(#shadow)"/>
+  <text x="440" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="white">{"{"}dane{"}"} w JSX</text>
+  <text x="440" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="white" opacity="0.9">✓ escapowane domyślnie</text>
+
+  <rect x="620" y="150" width="220" height="80" rx="10" fill="url(#bad)" filter="url(#shadow)"/>
+  <text x="730" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="white">dangerouslySetInnerHTML</text>
+  <text x="730" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="white" opacity="0.9">✗ ochrona wyłączona</text>
+
+  <line x1="240" y1="190" x2="325" y2="190" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="240" y1="190" x2="615" y2="190" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Ochrona znika dokładnie w momencie, gdy programista świadomie ją omija</text>
+</svg>

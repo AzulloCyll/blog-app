@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#94a3b8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Etapy pipeline'u CI</text>
+
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="60" y="200" width="170" height="90" rx="12" fill="url(#c1)" filter="url(#shadow)"/>
+    <text x="145" y="250" font-size="13" font-weight="700" fill="white">Install</text>
+
+    <rect x="255" y="200" width="170" height="90" rx="12" fill="url(#c2)" filter="url(#shadow)"/>
+    <text x="340" y="240" font-size="13" font-weight="700" fill="white">Lint +</text>
+    <text x="340" y="258" font-size="13" font-weight="700" fill="white">Typecheck</text>
+
+    <rect x="450" y="200" width="170" height="90" rx="12" fill="url(#c3)" filter="url(#shadow)"/>
+    <text x="535" y="250" font-size="13" font-weight="700" fill="white">Test</text>
+
+    <rect x="645" y="200" width="170" height="90" rx="12" fill="url(#c4)" filter="url(#shadow)"/>
+    <text x="730" y="250" font-size="13" font-weight="700" fill="white">Build</text>
+
+    <line x1="230" y1="245" x2="250" y2="245" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="425" y1="245" x2="445" y2="245" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="620" y1="245" x2="640" y2="245" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="450" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Uruchamiane automatycznie na push i pull request — bez wyjątków</text>
+</svg>

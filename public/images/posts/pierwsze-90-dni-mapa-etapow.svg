@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="e1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="e2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="e3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Trzy etapy pierwszych tygodni</text>
+
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="80" y="120" width="220" height="240" rx="16" fill="url(#e1)" filter="url(#shadow)"/>
+    <text x="190" y="165" font-size="14" font-weight="700" fill="white">Tydzień 1–2</text>
+    <text x="190" y="210" font-size="12" fill="white" opacity="0.9">Słuchanie</text>
+    <text x="190" y="230" font-size="12" fill="white" opacity="0.9">i mapowanie</text>
+    <text x="190" y="270" font-size="11" fill="white" opacity="0.8">kto decyduje, gdzie boli</text>
+    <text x="190" y="288" font-size="11" fill="white" opacity="0.8">naprawdę, nie w wiki</text>
+
+    <rect x="340" y="120" width="220" height="240" rx="16" fill="url(#e2)" filter="url(#shadow)"/>
+    <text x="450" y="165" font-size="14" font-weight="700" fill="white">Tydzień 3–4</text>
+    <text x="450" y="210" font-size="12" fill="white" opacity="0.9">Pierwszy mały,</text>
+    <text x="450" y="230" font-size="12" fill="white" opacity="0.9">dobrze wybrany PR</text>
+    <text x="450" y="270" font-size="11" fill="white" opacity="0.8">niski ryzyk, jasny zakres,</text>
+    <text x="450" y="288" font-size="11" fill="white" opacity="0.8">buduje zaufanie zespołu</text>
+
+    <rect x="600" y="120" width="220" height="240" rx="16" fill="url(#e3)" filter="url(#shadow)"/>
+    <text x="710" y="165" font-size="14" font-weight="700" fill="white">Miesiąc 2–3</text>
+    <text x="710" y="210" font-size="12" fill="white" opacity="0.9">Samodzielność</text>
+    <text x="710" y="230" font-size="12" fill="white" opacity="0.9">i relacje</text>
+    <text x="710" y="270" font-size="11" fill="white" opacity="0.8">rozumienie „dlaczego”,</text>
+    <text x="710" y="288" font-size="11" fill="white" opacity="0.8">nie tylko „jak”</text>
+
+    <line x1="300" y1="240" x2="335" y2="240" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="560" y1="240" x2="595" y2="240" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <text x="450" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Nieformalny kontekst zespołu jest często cenniejszy niż formalna dokumentacja onboardingowa</text>
+</svg>

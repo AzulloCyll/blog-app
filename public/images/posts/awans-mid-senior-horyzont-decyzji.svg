@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Horyzont czasowy decyzji — mid kontra senior</text>
+
+  <line x1="100" y1="380" x2="820" y2="380" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="100" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">dziś</text>
+  <text x="450" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">za pół roku</text>
+  <text x="820" y="400" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">za rok</text>
+
+  <rect x="120" y="330" width="220" height="45" rx="10" fill="url(#mid)" filter="url(#shadow)"/>
+  <text x="230" y="358" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="white">Mid: „zrobić dobrze to zadanie”</text>
+
+  <rect x="120" y="150" width="700" height="45" rx="10" fill="url(#sen)" filter="url(#shadow)"/>
+  <text x="470" y="178" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="white">Senior: „czy ta decyzja ograniczy nas, gdy zespół urośnie dwukrotnie?”</text>
+
+  <line x1="230" y1="330" x2="230" y2="200" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="230" y1="200" x2="470" y2="200" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <text x="450" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Ta sama decyzja techniczna, oceniana w zupełnie innej perspektywie czasowej</text>
+</svg>

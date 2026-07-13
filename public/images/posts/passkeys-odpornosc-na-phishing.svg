@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="real" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="fake" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Passkey odmawia podpisu na złej domenie</text>
+
+  <rect x="90" y="110" width="330" height="270" rx="16" fill="url(#real)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="255" y="150" font-size="13" font-weight="700">bank.com</text>
+    <text x="255" y="230" font-size="40">✓</text>
+    <text x="255" y="330" font-size="11" opacity="0.9">domena zgodna —</text>
+    <text x="255" y="347" font-size="11" opacity="0.9">podpis wykonany</text>
+  </g>
+
+  <rect x="480" y="110" width="330" height="270" rx="16" fill="url(#fake)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="645" y="150" font-size="13" font-weight="700">bahk-com.phishing.io</text>
+    <text x="645" y="230" font-size="40">✗</text>
+    <text x="645" y="330" font-size="11" opacity="0.9">domena niezgodna —</text>
+    <text x="645" y="347" font-size="11" opacity="0.9">podpis odrzucony</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Użytkownik nie musi rozpoznać phishingu wzrokowo — robi to za niego mechanizm techniczny</text>
+</svg>

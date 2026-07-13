@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="server" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="client" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Granica NEXT_PUBLIC_</text>
+
+  <line x1="450" y1="90" x2="450" y2="400" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="90" y="120" width="320" height="260" rx="16" fill="url(#server)" filter="url(#shadow)"/>
+    <text x="250" y="160" font-size="14" font-weight="700" fill="white">Serwer</text>
+    <text x="250" y="220" font-family="monospace" font-size="12" fill="white" opacity="0.9">DATABASE_URL</text>
+    <text x="250" y="245" font-family="monospace" font-size="12" fill="white" opacity="0.9">STRIPE_SECRET_KEY</text>
+    <text x="250" y="270" font-family="monospace" font-size="12" fill="white" opacity="0.9">SESSION_SECRET</text>
+    <text x="250" y="340" font-size="11" fill="white" opacity="0.8">nigdy nie trafiają do</text>
+    <text x="250" y="357" font-size="11" fill="white" opacity="0.8">przeglądarki</text>
+
+    <rect x="490" y="120" width="320" height="260" rx="16" fill="url(#client)" filter="url(#shadow)"/>
+    <text x="650" y="160" font-size="14" font-weight="700" fill="white">Klient (przeglądarka)</text>
+    <text x="650" y="220" font-family="monospace" font-size="12" fill="white" opacity="0.9">NEXT_PUBLIC_API_URL</text>
+    <text x="650" y="245" font-family="monospace" font-size="12" fill="white" opacity="0.9">NEXT_PUBLIC_GA_ID</text>
+    <text x="650" y="340" font-size="11" fill="white" opacity="0.8">widoczne dla każdego</text>
+    <text x="650" y="357" font-size="11" fill="white" opacity="0.8">w narzędziach deweloperskich</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Ten sam prefiks kopiowany przez pomyłkę to najczęstsza przyczyna wycieku</text>
+</svg>

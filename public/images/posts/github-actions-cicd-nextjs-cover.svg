@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ok" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">CI/CD od zera z GitHub Actions</text>
+
+  <rect x="120" y="120" width="660" height="240" rx="16" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="120" y="120" width="660" height="44" rx="16" fill="url(#c1)"/>
+  <rect x="120" y="144" width="660" height="20" fill="url(#c1)"/>
+  <text x="450" y="148" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="white">.github/workflows/ci.yml</text>
+
+  <g font-family="system-ui, sans-serif" font-size="12" fill="#334155">
+    <circle cx="165" cy="205" r="8" fill="url(#ok)"/>
+    <text x="185" y="210">install → lint → typecheck</text>
+    <circle cx="165" cy="245" r="8" fill="url(#ok)"/>
+    <text x="185" y="250">test → build</text>
+    <circle cx="165" cy="285" r="8" fill="url(#ok)"/>
+    <text x="185" y="290">✓ na każdy push i pull request</text>
+  </g>
+
+  <rect x="120" y="420" width="0" height="0"/>
+  <text x="450" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Ta sama higiena egzekwowana automatycznie na każdej zmianie</text>
+</svg>

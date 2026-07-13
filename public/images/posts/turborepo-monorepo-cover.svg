@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="root" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pkg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Monorepo z Turborepo</text>
+
+  <rect x="380" y="100" width="140" height="60" rx="12" fill="url(#root)" filter="url(#shadow)"/>
+  <text x="450" y="136" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="white">turbo.json</text>
+
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="90" y="240" width="160" height="80" rx="10" fill="url(#pkg)" filter="url(#shadow)"/>
+    <text x="170" y="285" font-size="12" font-weight="700" fill="white">apps/web</text>
+
+    <rect x="290" y="240" width="160" height="80" rx="10" fill="url(#pkg)" filter="url(#shadow)"/>
+    <text x="370" y="285" font-size="12" font-weight="700" fill="white">packages/ui</text>
+
+    <rect x="490" y="240" width="160" height="80" rx="10" fill="url(#pkg)" filter="url(#shadow)"/>
+    <text x="570" y="285" font-size="12" font-weight="700" fill="white">packages/config</text>
+
+    <rect x="690" y="240" width="140" height="80" rx="10" fill="url(#pkg)" filter="url(#shadow)"/>
+    <text x="760" y="285" font-size="12" font-weight="700" fill="white">apps/api</text>
+  </g>
+
+  <line x1="450" y1="160" x2="170" y2="235" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="450" y1="160" x2="370" y2="235" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="450" y1="160" x2="570" y2="235" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="450" y1="160" x2="760" y2="235" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Zmiana we współdzielonym pakiecie jest natychmiast widoczna wszędzie, bez publikowania wersji</text>
+</svg>

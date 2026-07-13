@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">VS Code — skróty, które oszczędzają godziny</text>
+
+  <rect x="130" y="100" width="640" height="320" rx="14" fill="#1e293b" filter="url(#shadow)"/>
+  <rect x="130" y="100" width="640" height="34" rx="14" fill="#334155"/>
+  <circle cx="155" cy="117" r="6" fill="#f87171"/>
+  <circle cx="177" cy="117" r="6" fill="#fbbf24"/>
+  <circle cx="199" cy="117" r="6" fill="#34d399"/>
+
+  <g font-family="monospace" font-size="14" fill="#e2e8f0">
+    <text x="160" y="175">⌘⇧P  Command Palette</text>
+    <text x="160" y="210">⌘D   Select Next Occurrence</text>
+    <text x="160" y="245">⌥+Click   Multi-cursor</text>
+    <text x="160" y="280">⌘⇧F   Format Document</text>
+    <text x="160" y="315">⌘`    Toggle Terminal</text>
+  </g>
+
+  <rect x="130" y="360" width="640" height="40" rx="8" fill="url(#accent)"/>
+  <text x="450" y="386" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="white">Ręce rzadko opuszczają klawiaturę</text>
+
+  <text x="450" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Setki godzin oszczędzone rocznie na powtarzalnych, ręcznych czynnościach</text>
+</svg>

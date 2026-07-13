@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Kluczowe pytanie: co czujesz i dlaczego</text>
+
+  <text x="450" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#334155">„Nie wiem wystarczająco dużo”</text>
+
+  <rect x="90" y="140" width="330" height="260" rx="16" fill="url(#left)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="255" y="180" font-size="14" font-weight="700">Syndrom oszusta</text>
+    <text x="255" y="225" font-size="12" opacity="0.9">Uczucie utrzymuje się</text>
+    <text x="255" y="245" font-size="12" opacity="0.9">niezależnie od dowodów</text>
+    <text x="255" y="265" font-size="12" opacity="0.9">realnej kompetencji</text>
+    <text x="255" y="350" font-size="11" opacity="0.8">→ praca nad mindsetem,</text>
+    <text x="255" y="368" font-size="11" opacity="0.8">nie kolejny kurs</text>
+  </g>
+
+  <rect x="480" y="140" width="330" height="260" rx="16" fill="url(#right)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="645" y="180" font-size="14" font-weight="700">Realna luka</text>
+    <text x="645" y="225" font-size="12" opacity="0.9">Uczucie znika po</text>
+    <text x="645" y="245" font-size="12" opacity="0.9">konkretnym szkoleniu</text>
+    <text x="645" y="265" font-size="12" opacity="0.9">lub praktyce</text>
+    <text x="645" y="350" font-size="11" opacity="0.8">→ realny rozwój,</text>
+    <text x="645" y="368" font-size="11" opacity="0.8">nie tylko mindset</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Pomylenie tych dwóch prowadzi albo do zbędnego kursu, albo do ignorowania realnej potrzeby</text>
+</svg>

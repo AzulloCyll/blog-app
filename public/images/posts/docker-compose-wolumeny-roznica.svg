@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="c2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Wolumen nazwany kontra bind mount</text>
+
+  <rect x="90" y="110" width="330" height="270" rx="16" fill="url(#c1)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="255" y="150" font-size="14" font-weight="700">Wolumen nazwany</text>
+    <text x="255" y="210" font-size="12" opacity="0.9">Dane bazy danych</text>
+    <text x="255" y="230" font-size="12" opacity="0.9">przetrwają restart</text>
+    <text x="255" y="250" font-size="12" opacity="0.9">kontenera</text>
+    <text x="255" y="340" font-size="11" opacity="0.8">bez niego: docker compose down</text>
+    <text x="255" y="356" font-size="11" opacity="0.8">= utrata całej bazy</text>
+  </g>
+
+  <rect x="480" y="110" width="330" height="270" rx="16" fill="url(#c2)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="645" y="150" font-size="14" font-weight="700">Bind mount</text>
+    <text x="645" y="210" font-size="12" opacity="0.9">Katalog z kodem</text>
+    <text x="645" y="230" font-size="12" opacity="0.9">podpięty na żywo</text>
+    <text x="645" y="250" font-size="12" opacity="0.9">do kontenera</text>
+    <text x="645" y="340" font-size="11" opacity="0.8">zmiana pliku na hoście =</text>
+    <text x="645" y="356" font-size="11" opacity="0.8">natychmiastowy hot reload</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Pomylenie tych dwóch mechanizmów to najczęstsze źródło „zniknionych” danych</text>
+</svg>

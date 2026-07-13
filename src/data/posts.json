@@ -35,7 +35,7 @@
   {
     "id": 2,
     "title": "Rozpoczęcie pracy z Next.js",
-    "content": "Next.js to framework do budowania aplikacji React, który łączy w sobie to, co najlepsze ze świata frontendu i backendu. Pozwala renderować strony po stronie serwera (SSR), generować je statycznie (SSG) albo strumieniować fragmenty UI niezależnie — a wybór strategii możesz podejmować osobno dla każdej trasy, a nawet każdego komponentu. Dla programisty oznacza to, że nie musisz kompromisować między szybkością a dynamicznym contentem. Jeden framework robi wszystko.\n\nPodstawą nowoczesnego Next.js jest App Router, oparty na React Server Components. Zamiast trzymać strony w katalogu pages/, organizujesz je w app/. Każdy folder to segment URL, a specjalnie nazwane pliki — page.tsx, layout.tsx, loading.tsx czy error.tsx — przejmują konkretne zadania w cyklu życia trasy. Struktura katalogów staje się dosłownym odzwierciedleniem architektury aplikacji. Od Next.js 15 wszystkie dynamiczne API — params, searchParams, cookies(), headers() — są asynchroniczne i wymagają await, co eliminuje nieoczywiste race conditions.\n\nNajwiększą różnicą w codziennej pracy jest podział na Server i Client Components. Domyślnie każdy komponent w App Router jest serwerowy — nie trafia do bundle'a JavaScript po stronie klienta, może bezpośrednio czytać z bazy danych, a użytkownik pobiera gotowy HTML. Dopiero kiedy potrzebujesz interaktywności — useState, useEffect, event handlerów — dodajesz dyrektywę 'use client' na początku pliku. React 19 rozszerzył ten model o stabilne Server Actions (wywołujesz funkcję serwerową bezpośrednio z formularza lub przycisku) oraz hook use(), który pozwala rozwijać Promise i Context wewnątrz komponentów klienckich.\n\nData fetching w Next.js 15 przeszedł istotną zmianę: fetch() nie jest już domyślnie cache'owane. To breaking change względem wcześniejszych wersji — jeśli chcesz cache'ować odpowiedź, musisz to teraz zaznaczyć explicite. Nowym zalecanym podejściem jest dyrektywa 'use cache' na poziomie funkcji lub całego modułu, która daje precyzyjną kontrolę nad tym, co i jak długo jest przechowywane. Dla danych pobieranych przez ORM lub bezpośrednie zapytania do bazy warto sięgnąć po unstable_cache lub po prostu polegać na memoizacji React na poziomie jednego żądania.\n\nRouting dynamiczny działa przez foldery z nazwami w nawiasach kwadratowych — np. app/posts/[id]/page.tsx obsługuje ścieżki takie jak /posts/1, /posts/2 itd. Parametr id jest dostępny z props komponentu jako Promise, którą rozwijasz przez await. Do tego dochodzą Route Groups (folder w nawiasach okrągłych, bez wpływu na URL), równoległe trasy i interceptory — narzędzia do budowania zaawansowanych layoutów, jak modalne na pełnym ekranie bez utraty kontekstu poprzedniej strony. Nowością w Next.js 15 jest też next/after: API do planowania pracy po wysłaniu odpowiedzi do użytkownika, np. logowania lub aktualizacji statystyk.\n\nNa koniec optymalizacje, które dostajesz z pudełka. Komponent next/image automatycznie dobiera rozmiar, format (WebP lub AVIF) i ładuje obrazy leniwie. next/font eliminuje zewnętrzne żądania do Google Fonts i zapobiega FOUT. next/link prefetchuje trasy w tle. W Next.js 15 domyślnym bundlerem w trybie dev jest Turbopack — starty projektu trwają ułamek sekundy nawet przy dużych codebases, a hot reload jest niemal natychmiastowy. To jest właśnie powód, dla którego Next.js pozostaje pierwszym wyborem przy nowych projektach React.",
+    "content": "Next.js to framework do budowania aplikacji React, który łączy w sobie to, co najlepsze ze świata frontendu i backendu. Pozwala renderować strony po stronie serwera (SSR), generować je statycznie (SSG) albo strumieniować fragmenty UI niezależnie — a wybór strategii możesz podejmować osobno dla każdej trasy, a nawet każdego komponentu. Dla programisty oznacza to, że nie musisz kompromisować między szybkością a dynamicznym contentem. Jeden framework robi wszystko.\n\nPodstawą nowoczesnego Next.js jest App Router, oparty na React Server Components. Zamiast trzymać strony w katalogu pages/, organizujesz je w app/. Każdy folder to segment URL, a specjalnie nazwane pliki — page.tsx, layout.tsx, loading.tsx czy error.tsx — przejmują konkretne zadania w cyklu życia trasy. Struktura katalogów staje się dosłownym odzwierciedleniem architektury aplikacji. Od Next.js 15 wszystkie dynamiczne API — params, searchParams, cookies(), headers() — są asynchroniczne i wymagają await, co eliminuje nieoczywiste race conditions.\n\nNajwiększą różnicą w codziennej pracy jest podział na Server i Client Components. Domyślnie każdy komponent w App Router jest serwerowy — nie trafia do bundle'a JavaScript po stronie klienta, może bezpośrednio czytać z bazy danych, a użytkownik pobiera gotowy HTML. Dopiero kiedy potrzebujesz interaktywności — useState, useEffect, event handlerów — dodajesz dyrektywę 'use client' na początku pliku. React 19 rozszerzył ten model o stabilne Server Actions (wywołujesz funkcję serwerową bezpośrednio z formularza lub przycisku) oraz hook use(), który pozwala rozwijać Promise i Context wewnątrz komponentów klienckich.\n\nData fetching w Next.js 15 przeszedł istotną zmianę: fetch() nie jest już domyślnie cache'owane. To breaking change względem wcześniejszych wersji — jeśli chcesz cache'ować odpowiedź, musisz to teraz zaznaczyć explicite. Nowym zalecanym podejściem jest dyrektywa 'use cache' na poziomie funkcji lub całego modułu, która daje precyzyjną kontrolę nad tym, co i jak długo jest przechowywane. Dla danych pobieranych przez ORM lub bezpośrednie zapytania do bazy warto sięgnąć po unstable_cache lub po prostu polegać na memoizacji React na poziomie jednego żądania.\n\nRouting dynamiczny działa przez foldery z nazwami w nawiasach kwadratowych — np. app/posts/[id]/page.tsx obsługuje ścieżki takie jak /posts/1, /posts/2 itd. Parametr id jest dostępny z props komponentu jako Promise, którą rozwijasz przez await. Do tego dochodzą Route Groups (folder w nawiasach okrągłych, bez wpływu na URL), równoległe trasy i interceptory — narzędzia do budowania zaawansowanych layoutów, jak modalne na pełnym ekranie bez utraty kontekstu poprzedniej strony. Nowością w Next.js 15 jest też next/after: API do planowania pracy po wysłaniu odpowiedzi do użytkownika, np. logowania lub aktualizacji statystyk.\n\nNa koniec optymalizacje, które dostajesz z pudełka. Komponent next/image automatycznie dobiera rozmiar, format (WebP lub AVIF) i ładuje obrazy leniwie. next/font eliminuje zewnętrzne żądania do Google Fonts i zapobiega FOUT. next/link prefetchuje trasy w tle. Od Next.js 15 Turbopack jest stabilnym trybem dev (uruchamianym flagą --turbopack), a od Next.js 16 stał się domyślnym bundlerem — starty projektu trwają ułamek sekundy nawet przy dużych codebases, a hot reload jest niemal natychmiastowy. To jest właśnie powód, dla którego Next.js pozostaje pierwszym wyborem przy nowych projektach React.",
     "contentImages": [
       {
         "url": "/images/posts/nextjs-komponent-react-edytor-kodu.svg",
@@ -200,7 +200,7 @@
   {
     "id": 7,
     "title": "Design system jako inwestycja, nie koszt",
-    "content": "W większości firm rozmowa o design systemie zaczyna się od pytania: ile to kosztuje? To złe pytanie — a przynajmniej niekompletne. Lepsze brzmi: ile kosztuje nas brak design systemu? Każdy niespójny przycisk, każda różnica w paddinach między widokiem mobilnym a desktopowym, każda godzina spędzona przez dewelopera na odgadywaniu, jakiego odcienia szarego użył designer — to realne pieniądze. Tylko że te koszty są ukryte, rozłożone na setki małych decyzji dziennie i nigdy nie pojawiają się w jednej linii budżetu.\n\nCo właściwie zyskuje firma, która wdraża design system? Pierwsze i najbardziej wymierne jest skrócenie czasu implementacji nowych funkcji. Zespoły, które mają bibliotekę gotowych komponentów, nie projektują przycisku za każdym razem od nowa — sięgają po Button/Primary i idą dalej. Badania Nielsen Norman Group wskazują, że dojrzałe design systemy skracają czas wdrożeń UI o 30–60%. Drugi zysk to onboarding: nowy developer lub designer, który dostaje udokumentowany system z tokenami, komponentami i wytycznymi użycia, staje się produktywny w dni, nie tygodnie. Trzeci — i często niedoceniany — to redukcja błędów wynikających z niespójności: mniejszy nakład pracy supportu, mniej regresji wizualnych, wyższy Net Promoter Score produktu.\n\nJak przeliczyć to na liczby, które przekonają zarząd? Zacznij od prostego ćwiczenia: policz, ile razy w ostatnim kwartale zespół implementował „od zera” komponenty, które już gdzieś istniały w nieco innej formie. Pomnóż przez średnią stawkę godzinową. Dodaj koszty bugów wynikających z niespójności — raporty z QA, czas naprawy, komunikacja. Teraz porównaj to z szacowanym nakładem na zbudowanie i utrzymanie systemu. W większości firm próg rentowności wypada w ciągu 6–12 miesięcy od uruchomienia pierwszej stabilnej wersji.\n\nKiedy jest właściwy moment na inwestycję? Wbrew intuicji — nie wtedy, gdy firma jest duża i ma duży problem. Najlepszy moment to tuż przed skalowaniem: gdy produkt ma już stabilny rdzeń, pojawia się drugi zespół produktowy albo zaczyna się praca nad nową platformą (np. aplikacja mobilna obok webowej). Wdrażanie design systemu w fazie chaosu to walka z wiatrem — najpierw trzeba zatrzymać krwawienie, potem budować systemy. Ale czekanie, aż dług wizualny urośnie do niebotycznych rozmiarów, tylko zwiększa koszty migracji.\n\nJak sprzedać ten pomysł wewnętrznie? Unikaj języka estetyki — „będzie spójniej i ładniej” nie trafia do osoby, która patrzy na P&L. Mów o czasie i pieniądzach: ile sprintów zaoszczędzi kwartał z design systemem, ile błędów mniej trafi do produkcji, jak szybko nowy developer dotrze do pierwszego PR. Pomocne jest też pokazanie kosztów alternatywnych: każda godzina spędzona na „skąd pochodzi ten kolor” to godzina niespisana na wartości dla użytkownika. Design system to infrastruktura — tak jak nie pytamy, czy warto inwestować w CI/CD, tak samo nie powinniśmy pytać, czy warto inwestować w spójny system projektowania.\n\nDesign system nie jest projektem z datą końcową — jest produktem wewnętrznym, który wymaga utrzymania, ownership i ewolucji razem z produktem głównym. To jego największa pułapka: firmy inwestują w budowę, a potem zaniedbują utrzymanie, przez co system starzeje się i przestaje być używany. Kluczem jest wyznaczenie właściciela (design system lead lub zespół platformy), regularne cykle przeglądów i traktowanie systemu jak żywej dokumentacji, nie jak projektu archiwalnego. Wtedy ROI nie jest jednorazowy — kumuluje się z każdym nowym komponentem, każdym nowym produktem i każdym nowym członkiem zespołu, który nie musi zaczynać od zera.",
+    "content": "W większości firm rozmowa o design systemie zaczyna się od pytania: ile to kosztuje? To złe pytanie — a przynajmniej niekompletne. Lepsze brzmi: ile kosztuje nas brak design systemu? Każdy niespójny przycisk, każda różnica w paddinach między widokiem mobilnym a desktopowym, każda godzina spędzona przez dewelopera na odgadywaniu, jakiego odcienia szarego użył designer — to realne pieniądze. Tylko że te koszty są ukryte, rozłożone na setki małych decyzji dziennie i nigdy nie pojawiają się w jednej linii budżetu.\n\nCo właściwie zyskuje firma, która wdraża design system? Pierwsze i najbardziej wymierne jest skrócenie czasu implementacji nowych funkcji. Zespoły, które mają bibliotekę gotowych komponentów, nie projektują przycisku za każdym razem od nowa — sięgają po Button/Primary i idą dalej. Zespoły, które to wdrożyły, w rozmowach wewnętrznych i studiach przypadków regularnie zgłaszają skrócenie czasu wdrożeń UI liczone w dziesiątkach procent. Drugi zysk to onboarding: nowy developer lub designer, który dostaje udokumentowany system z tokenami, komponentami i wytycznymi użycia, staje się produktywny w dni, nie tygodnie. Trzeci — i często niedoceniany — to redukcja błędów wynikających z niespójności: mniejszy nakład pracy supportu, mniej regresji wizualnych, wyższy Net Promoter Score produktu.\n\nJak przeliczyć to na liczby, które przekonają zarząd? Zacznij od prostego ćwiczenia: policz, ile razy w ostatnim kwartale zespół implementował „od zera” komponenty, które już gdzieś istniały w nieco innej formie. Pomnóż przez średnią stawkę godzinową. Dodaj koszty bugów wynikających z niespójności — raporty z QA, czas naprawy, komunikacja. Teraz porównaj to z szacowanym nakładem na zbudowanie i utrzymanie systemu. W większości firm próg rentowności wypada w ciągu 6–12 miesięcy od uruchomienia pierwszej stabilnej wersji.\n\nKiedy jest właściwy moment na inwestycję? Wbrew intuicji — nie wtedy, gdy firma jest duża i ma duży problem. Najlepszy moment to tuż przed skalowaniem: gdy produkt ma już stabilny rdzeń, pojawia się drugi zespół produktowy albo zaczyna się praca nad nową platformą (np. aplikacja mobilna obok webowej). Wdrażanie design systemu w fazie chaosu to walka z wiatrem — najpierw trzeba zatrzymać krwawienie, potem budować systemy. Ale czekanie, aż dług wizualny urośnie do niebotycznych rozmiarów, tylko zwiększa koszty migracji.\n\nJak sprzedać ten pomysł wewnętrznie? Unikaj języka estetyki — „będzie spójniej i ładniej” nie trafia do osoby, która patrzy na P&L. Mów o czasie i pieniądzach: ile sprintów zaoszczędzi kwartał z design systemem, ile błędów mniej trafi do produkcji, jak szybko nowy developer dotrze do pierwszego PR. Pomocne jest też pokazanie kosztów alternatywnych: każda godzina spędzona na „skąd pochodzi ten kolor” to godzina niespisana na wartości dla użytkownika. Design system to infrastruktura — tak jak nie pytamy, czy warto inwestować w CI/CD, tak samo nie powinniśmy pytać, czy warto inwestować w spójny system projektowania.\n\nDesign system nie jest projektem z datą końcową — jest produktem wewnętrznym, który wymaga utrzymania, ownership i ewolucji razem z produktem głównym. To jego największa pułapka: firmy inwestują w budowę, a potem zaniedbują utrzymanie, przez co system starzeje się i przestaje być używany. Kluczem jest wyznaczenie właściciela (design system lead lub zespół platformy), regularne cykle przeglądów i traktowanie systemu jak żywej dokumentacji, nie jak projektu archiwalnego. Wtedy ROI nie jest jednorazowy — kumuluje się z każdym nowym komponentem, każdym nowym produktem i każdym nowym członkiem zespołu, który nie musi zaczynać od zera.",
     "contentImages": [
       {
         "url": "/images/posts/ukryte-koszty-braku-design-systemu-iceberg.svg",
@@ -229,5 +229,401 @@
       "role": "UI/UX Designer"
     },
     "coverAlt": "Wizualizacja ROI design systemu — komponenty, tokeny projektowe i metryki zwrotu z inwestycji"
+  },
+  {
+    "id": 8,
+    "title": "Code review, które buduje zespół, a nie go demotywuje",
+    "content": "Code review potrafi być jednym z najbardziej wartościowych rytuałów w zespole albo jednym z najbardziej toksycznych — zależnie od tego, jak jest prowadzone. Ten sam mechanizm, który ma chronić jakość kodu i dzielić się wiedzą, w złej kulturze zamienia się w pole do popisu ego, gdzie reviewer pokazuje, ile wie, zamiast pomóc autorowi dowieźć zmianę. Różnica między tymi dwoma światami rzadko leży w narzędziach — leży w normach, które zespół świadomie albo nieświadomie przyjął.\n\nPierwsza norma dotyczy tonu komentarzy. \"To jest złe\" i \"zastanawiam się, czy nie warto by tu rozważyć X, bo widziałem podobny problem w Y\" niosą dokładnie tę samą informację merytoryczną, ale zupełnie inny ładunek emocjonalny. Dobre zespoły wypracowują konwencję formułowania uwag jako pytań albo sugestii, nie wyroków — nie dlatego, że unikają szczerości, ale dlatego, że pytanie zostawia autorowi przestrzeń na wyjaśnienie kontekstu, którego reviewer mógł nie znać. Czasem okazuje się, że \"błąd\" był świadomą decyzją z dobrego powodu, a wtedy ton wyroku tylko niepotrzebnie buduje napięcie.\n\nRównie ważny jest zakres tego, co w ogóle podlega dyskusji. Nitpicking stylistyczny — spacje, kolejność importów, nazewnictwo zmiennych o marginalnym znaczeniu — powinien być zadaniem dla lintera i formattera, nie człowieka. Jeśli reviewer spędza dziesięć komentarzy na formatowaniu, a jeden na faktycznej logice biznesowej, priorytet jest odwrócony. Zespoły, które to rozumieją, automatyzują wszystko, co da się zautomatyzować, i rezerwują ludzką uwagę na rzeczy, których maszyna nie oceni: czy ta abstrakcja ma sens, czy ten przypadek brzegowy jest obsłużony, czy nazwa funkcji faktycznie opisuje, co robi.\n\nCzas odpowiedzi na review to często niedoceniany czynnik frustracji. Pull request, który czeka dwa dni na pierwszy komentarz, blokuje nie tylko autora, ale też następne zadania, które od niego zależą. Zespoły z dobrą kulturą traktują review jako priorytet poranka — zanim ktokolwiek zacznie pisać nowy kod, sprawdza, czy są PR-y czekające na jego uwagę. To drobna zmiana nawyku, która drastycznie skraca czas cyklu i zmniejsza pokusę, żeby robić duże, rzadkie merge'e zamiast małych, częstych.\n\nWarto też świadomie rotować, kto recenzuje czyj kod. Jeśli tylko senior recenzuje juniora, review staje się jednokierunkową kontrolą jakości. Kiedy junior recenzuje kod seniora — nawet jeśli nie wyłapie subtelnego problemu architektonicznego — uczy się czytać cudzy kod krytycznie i często zadaje pytania, które ujawniają niejasności warte wyjaśnienia w dokumentacji. Ta rotacja buduje też wzajemne zaufanie: nikt nie jest permanentnie w roli ocenianego.\n\nOstatecznie code review nie powinno być bramką, przez którą trzeba przejść, żeby scalić kod — powinno być inwestycją w zespół jako całość: w jakość, w dzielenie się wiedzą i we wzajemne zaufanie. Zespoły, które to rozumieją, traktują liczbę komentarzy w review nie jako miarę tego, jak dobrze reviewer wykonał pracę, ale jako sygnał, że coś w procesie wcześniej — code style, testy, dokumentacja wzorców — wymaga poprawy, żeby review mogło skupić się na tym, co naprawdę ważne.",
+    "contentImages": [
+      {
+        "url": "/images/posts/code-review-kultura-zespolu-tony-komentarzy.svg",
+        "alt": "Porównanie tonu komentarzy w code review — wyrok kontra pytanie otwierające dyskusję",
+        "caption": "Ta sama uwaga merytoryczna sformułowana jako pytanie zostawia autorowi przestrzeń na wyjaśnienie kontekstu.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/code-review-podzial-odpowiedzialnosci-review.svg",
+        "alt": "Podział odpowiedzialności między automatyzację (linter, formatter) a ludzką uwagę w code review",
+        "caption": "Automatyzacja przejmuje styl i formatowanie, żeby ludzka uwaga skupiła się na logice i architekturze.",
+        "insertAfterParagraph": 2
+      }
+    ],
+    "date": "2026-07-01",
+    "category": "Kariera",
+    "readTime": "6 min czytania",
+    "imageUrl": "/images/posts/code-review-kultura-zespolu-cover.svg",
+    "tags": [
+      "Code Review",
+      "Zespół",
+      "Kultura Inżynierska"
+    ],
+    "author": {
+      "name": "Emma Watson",
+      "role": "Product Manager"
+    },
+    "coverAlt": "Dwóch programistów przy code review — komentarze budujące zaufanie zamiast krytyki"
+  },
+  {
+    "id": 9,
+    "title": "Jak awansować z mid na senior developera",
+    "content": "Awans z poziomu mid na senior to jedna z najbardziej niejasnych zmian w karierze programisty — w przeciwieństwie do przejścia z juniora na mid, gdzie kryterium jest w miarę czytelne (samodzielność w realizacji zadań), próg do seniority rzadko jest opisany konkretnie. Firmy piszą w macierzach kompetencji frazy w stylu \"wpływa na architekturę\" albo \"mentoruje innych\", ale rzadko tłumaczą, co to znaczy zrobić w praktyce, w poniedziałek rano.\n\nPierwsza różnica leży w horyzoncie czasowym decyzji. Mid-level developer optymalizuje zadanie, które ma przed sobą — zrobić dobrze to, co zostało zlecone. Senior patrzy dalej: czy ta decyzja architektoniczna będzie nas ograniczać za rok, kiedy zespół urośnie dwukrotnie? Czy ten skrót, który oszczędza dzień teraz, kosztuje tydzień przy następnej migracji? Ta zmiana perspektywy nie przychodzi automatycznie z latami doświadczenia — trzeba świadomie zacząć zadawać sobie te pytania, zanim ktoś każe je zadać.\n\nDruga różnica to zdolność do podejmowania decyzji w niejednoznaczności. Mid-level developer czeka na jasną specyfikację. Senior potrafi zapytać właściwe pytania, żeby doprecyzować niejasne wymaganie, i podjąć decyzję, gdy odpowiedzi nie ma — a potem jasno komunikować, jakie założenia przyjął i dlaczego. To umiejętność, którą trenuje się przez świadome szukanie niejednoznacznych zadań, zamiast unikanie ich z obawy przed błędem.\n\nMentoring to trzeci filar, o którym mówi się często, ale rzadko konkretnie. Nie chodzi o formalne sesje raz w tygodniu — chodzi o codzienne nawyki: zostawianie komentarzy w code review, które uczą, a nie tylko poprawiają; dzielenie się kontekstem historycznym (\"próbowaliśmy tego podejścia dwa lata temu i oto dlaczego nie zadziałało\"); pytanie młodszych kolegów o ich opinię przed podjęciem decyzji, zamiast tylko im ją komunikować. Widoczność tego wpływu na innych jest tym, czego menedżerowie faktycznie szukają przy awansie, bardziej niż samej technicznej sprawności.\n\nWarto też świadomie budować widoczność swojej pracy poza własnym zespołem. Senior developer, którego nikt poza jego bezpośrednim teamem nie zna, ma trudniejszą drogę do awansu niż ten, kto dzieli się wiedzą szerzej — prezentacja na wewnętrznym meetupie, dokumentacja decyzji architektonicznej dostępna dla innych zespołów, odpowiadanie na pytania na współdzielonym kanale. To nie jest gra w politykę korporacyjną — to naturalna konsekwencja tego, że wpływ na organizację, a nie tylko na własny zespół, jest właśnie tym, co odróżnia seniora.\n\nNajważniejsza rada jest jednocześnie najtrudniejsza do zastosowania: zacznij działać jak senior, zanim dostaniesz ten tytuł, zamiast czekać na awans, żeby zacząć brać większą odpowiedzialność. Menedżerowie rzadko awansują kogoś \"na kredyt\" — zwykle formalizują tytuł, który ktoś już faktycznie sprawuje w codziennej pracy. Jeśli czekasz na pozwolenie, żeby zacząć myśleć długoterminowo, mentorować i podejmować decyzje w niejasnych sytuacjach, prawdopodobnie czekasz dłużej, niż musisz.",
+    "contentImages": [
+      {
+        "url": "/images/posts/awans-mid-senior-horyzont-decyzji.svg",
+        "alt": "Różnica horyzontu czasowego decyzji między programistą mid-level a senior",
+        "caption": "Senior ocenia decyzję nie tylko pod kątem dzisiejszego zadania, ale też jej kosztu za rok.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/awans-mid-senior-filary-kompetencji.svg",
+        "alt": "Trzy filary przejścia na poziom senior — horyzont decyzji, działanie w niejednoznaczności, mentoring",
+        "caption": "Żaden z trzech filarów nie przychodzi automatycznie z latami stażu — każdy wymaga świadomej praktyki.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-07-03",
+    "category": "Kariera",
+    "readTime": "6 min czytania",
+    "imageUrl": "/images/posts/awans-mid-senior-developer-cover.svg",
+    "tags": [
+      "Kariera",
+      "Senior",
+      "Rozwój Zawodowy"
+    ],
+    "author": {
+      "name": "John Doe",
+      "role": "Software Engineer"
+    },
+    "coverAlt": "Schemat drogi rozwoju programisty od poziomu mid do senior"
+  },
+  {
+    "id": 10,
+    "title": "Syndrom oszusta w branży IT — jak sobie z nim radzić",
+    "content": "Syndrom oszusta — uporczywe przekonanie, że Twoje sukcesy są wynikiem szczęścia albo błędu w ocenie innych, a nie realnej kompetencji — dotyka programistów częściej niż przedstawicieli wielu innych zawodów, i to niezależnie od faktycznego poziomu doświadczenia. Paradoksalnie, im więcej się wie o danej dziedzinie, tym łatwiej dostrzec, jak wiele się jeszcze nie wie — a branża, w której narzędzia i frameworki zmieniają się co kilka miesięcy, bezustannie dostarcza nowych powodów, żeby poczuć się w tyle.\n\nJednym z najczęstszych wyzwalaczy jest porównywanie się z publicznym wizerunkiem innych — z twitterowym threadem programisty, który właśnie wypuścił imponujący projekt open source, albo z kolegą z zespołu, który zdaje się rozumieć każdą nową technologię bez wysiłku. To porównanie jest z definicji nieuczciwe: widzisz czyjś finalny efekt, nie setki godzin prób, błędów i pytań zadanych po cichu. Świadomość tej asymetrii — że każdy inny developer też czegoś nie wie i też się czegoś boi zapytać na forum — nie usuwa syndromu oszusta, ale pomaga go zracjonalizować w konkretnym momencie.\n\nKonkretną techniką, która pomaga wielu osobom, jest prowadzenie \"dziennika osiągnięć\" — krótkiej notatki po każdym tygodniu z tym, co faktycznie zostało zrobione: rozwiązany bug, który blokował innych, code review, które zapobiegło regresji, pytanie zadane na spotkaniu, które zmieniło kierunek decyzji. W chwilach zwątpienia ten dziennik jest twardym dowodem przeciwko subiektywnemu poczuciu bezwartościowości — łatwiej zignorować głos w głowie, gdy masz spisane fakty, które mu przeczą.\n\nWarto też rozróżnić dwa różne zjawiska, które łatwo pomylić: syndrom oszusta i rzeczywistą lukę kompetencyjną. Czasem poczucie \"nie wiem wystarczająco dużo\" jest sygnałem prawdziwym i wartym zaadresowania przez naukę, a nie tylko przez pracę nad mindsetem. Kluczowe pytanie brzmi: czy to poczucie utrzymuje się niezależnie od dowodów kompetencji (typowe dla syndromu oszusta), czy zniknie po konkretnym szkoleniu lub praktyce (typowe dla realnej luki). Pomylenie tych dwóch prowadzi albo do niepotrzebnego kursu, który niczego nie zmieni w samopoczuciu, albo do ignorowania realnej potrzeby rozwoju pod płaszczykiem \"to tylko syndrom oszusta\".\n\nRola menedżera i zespołu jest tu nie do przecenienia. Kultura, w której pytania są traktowane jako oznaka ciekawości, a nie niekompetencji, i w której feedback jest konkretny (\"ten fragment kodu działa dobrze, bo X\") zamiast ogólnikowy (\"dobra robota\"), znacząco redukuje częstotliwość i intensywność epizodów syndromu oszusta w zespole. Menedżerowie, którzy sami otwarcie mówią o własnych momentach niepewności, normalizują to doświadczenie zamiast utrzymywać iluzję, że kompetencja oznacza brak wątpliwości.\n\nSyndrom oszusta prawdopodobnie nigdy nie zniknie całkowicie — nawet najbardziej doświadczeni programiści, których znam, przyznają, że czasem wciąż go czują, wchodząc w nieznany obszar technologii. Cel nie polega na jego wyeliminowaniu, ale na tym, żeby przestał dyktować decyzje: żeby nie powstrzymywał od zgłoszenia się do trudnego projektu, zadania pytania na spotkaniu czy aplikowania na stanowisko, które wydaje się o krok za wysokie.",
+    "contentImages": [
+      {
+        "url": "/images/posts/syndrom-oszusta-porownanie-publiczny-wizerunek.svg",
+        "alt": "Asymetria porównania — widoczny finalny efekt innych kontra niewidoczny proces prób i błędów",
+        "caption": "Porównujemy swój proces z czyimś efektem końcowym — porównanie z definicji nieuczciwe wobec samego siebie.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/syndrom-oszusta-vs-luka-kompetencyjna.svg",
+        "alt": "Rozróżnienie między syndromem oszusta a rzeczywistą luką kompetencyjną",
+        "caption": "Kluczowe pytanie: czy poczucie niekompetencji znika po konkretnej nauce, czy utrzymuje się mimo dowodów?",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-07-04",
+    "category": "Kariera",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/syndrom-oszusta-it-cover.svg",
+    "tags": [
+      "Kariera",
+      "Dobrostan",
+      "Zespół"
+    ],
+    "author": {
+      "name": "Sarah Connor",
+      "role": "Lider Frontendu"
+    },
+    "coverAlt": "Programistka zastanawiająca się przy komputerze — ilustracja syndromu oszusta w branży IT"
+  },
+  {
+    "id": 11,
+    "title": "Pierwsze 90 dni w nowym zespole inżynieryjnym",
+    "content": "Pierwsze 90 dni w nowym zespole inżynieryjnym decydują o czymś więcej niż tylko o pierwszym wrażeniu — ustawiają tempo i oczekiwania na kolejne miesiące, a czasem lata współpracy. Zbyt wielu nowych programistów podchodzi do tego okresu jak do egzaminu, który trzeba zdać jak najszybciej, imponując od pierwszego tygodnia dużym pull requestem. To rzadko działa dobrze — i prawie nigdy nie działa tak dobrze, jak solidne, metodyczne poznanie kontekstu.\n\nPierwsze dwa tygodnie warto poświęcić głównie na słuchanie i mapowanie, zanim zacznie się produkować kod na dużą skalę. Kto podejmuje jakie decyzje? Jakie narzędzia i procesy są nieoczywiste na pierwszy rzut oka, ale mają swoje historyczne uzasadnienie? Gdzie leżą największe źródła bólu zespołu — nie te, o których mówi dokumentacja onboardingowa, ale te, o których ludzie narzekają przy kawie? Te nieformalne informacje są często cenniejsze niż formalny wiki, bo pokazują rzeczywisty stan rzeczy, a nie stan zadeklarowany.\n\nPierwszy realny wkład w kod powinien być celowo mały i dobrze wybrany — nie dlatego, że nowa osoba nie potrafi więcej, ale dlatego, że mały, dobrze przetestowany pull request buduje zaufanie zespołu szybciej niż duża zmiana, która wymaga długiego review i być może zawiera błędy wynikające z niepełnego zrozumienia kontekstu. Dobry pierwszy task to coś, co dotyka realnego kodu produkcyjnego, ale ma jasno określony zakres i niskie ryzyko — poprawka buga zgłoszonego przez użytkownika, drobne usprawnienie UX, uzupełnienie brakującego testu.\n\nZadawanie pytań w pierwszych tygodniach jest nie tylko dopuszczalne, ale wprost pożądane — problem pojawia się dopiero wtedy, gdy te same pytania wracają wielokrotnie bez zanotowania odpowiedzi. Dobra praktyka to prowadzenie własnej, prywatnej notatki z odpowiedziami na pytania, do której można wrócić, zanim zapyta się ponownie. To pokazuje zespołowi, że nowa osoba się uczy i szanuje czas innych, jednocześnie budując własną bazę wiedzy o systemie szybciej niż przez samo czytanie kodu.\n\nRelacje 1:1 z menedżerem i kluczowymi członkami zespołu w tym okresie są równie ważne co techniczny onboarding. Warto jasno zapytać menedżera, jak wygląda sukces w tej roli po 30, 60 i 90 dniach — nie każda organizacja to jasno komunikuje z góry, a brak tej rozmowy prowadzi do niepotrzebnego zgadywania, czy idzie się w dobrym kierunku. Regularny, krótki feedback w tym okresie jest znacznie bardziej wartościowy niż jedna duża ocena po zakończeniu okresu próbnego.\n\nPo 90 dniach dobrym sygnałem nie jest liczba scalonych pull requestów, ale to, czy nowa osoba rozumie już, dlaczego system wygląda tak, jak wygląda — łącznie z jego niedoskonałościami — i czy potrafi samodzielnie ocenić, gdzie bezpiecznie wprowadzić zmianę, a gdzie najpierw trzeba dopytać. To właśnie ten rodzaj kontekstowego zrozumienia, a nie sama szybkość dostarczania kodu, odróżnia udany onboarding od takiego, który tylko sprawiał takie wrażenie.",
+    "contentImages": [
+      {
+        "url": "/images/posts/pierwsze-90-dni-mapa-etapow.svg",
+        "alt": "Mapa pierwszych 90 dni w nowym zespole — słuchanie, pierwszy wkład, budowanie relacji",
+        "caption": "Pierwsze dwa tygodnie warto poświęcić głównie na słuchanie i mapowanie nieformalnego kontekstu zespołu.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/pierwsze-90-dni-checklist-sukcesu.svg",
+        "alt": "Pytania do menedżera o definicję sukcesu po 30, 60 i 90 dniach w nowej roli",
+        "caption": "Jasna rozmowa o definicji sukcesu na starcie oszczędza tygodni niepotrzebnego zgadywania.",
+        "insertAfterParagraph": 4
+      }
+    ],
+    "date": "2026-07-06",
+    "category": "Kariera",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/pierwsze-90-dni-zespol-cover.svg",
+    "tags": [
+      "Onboarding",
+      "Kariera",
+      "Zespół"
+    ],
+    "author": {
+      "name": "Emma Watson",
+      "role": "Product Manager"
+    },
+    "coverAlt": "Nowy członek zespołu inżynieryjnego poznający kontekst projektu w pierwszych dniach pracy"
+  },
+  {
+    "id": 12,
+    "title": "VS Code na maksa — rozszerzenia i skróty, które oszczędzają godziny",
+    "content": "Większość programistów używa VS Code na ustawieniach domyślnych przez lata, nie zdając sobie sprawy, ile czasu każdego dnia tracą na powtarzalne, ręczne czynności, które edytor potrafi zautomatyzować. Różnica między kimś, kto zna swój edytor powierzchownie, a kimś, kto naprawdę go opanował, to zwykle dziesiątki minut dziennie — a w skali roku setki godzin oszczędzonych na rzeczach, których mózg nie powinien musieć robić ręcznie.\n\nPierwszy krok to opanowanie palety poleceń (Cmd/Ctrl+Shift+P) na tyle dobrze, żeby sięgać po nią zamiast szukać opcji w menu myszką. Niemal każda funkcja edytora jest tam dostępna pod nazwą, którą łatwo zapamiętać — \"Format Document\", \"Toggle Terminal\", \"Git: Stage All Changes\". Kiedy paleta poleceń staje się nawykiem zamiast ostatecznością, ręce rzadko opuszczają klawiaturę, co samo w sobie eliminuje sporo tarcia w codziennej pracy.\n\nWielokrotny kursor to funkcja, którą wielu programistów zna, ale rzadko wykorzystuje w pełni. Alt+klik dodaje kolejny kursor w dowolnym miejscu, a Cmd/Ctrl+D zaznacza kolejne wystąpienie zaznaczonego słowa — dzięki temu zmiana nazwy zmiennej używanej w dziesięciu miejscach pliku zajmuje sekundy zamiast żmudnego przewijania. W połączeniu z zaznaczaniem kolumnowym (Shift+Alt+przeciągnięcie) można edytować dane tabelaryczne czy listy importów jednym ruchem zamiast linijka po linijce.\n\nWśród rozszerzeń kilka pozycji zwraca się szczególnie szybko. ESLint i Prettier zintegrowane z formatowaniem przy zapisie eliminują całą kategorię komentarzy w code review dotyczących stylu. GitLens dodaje kontekst historyczny bezpośrednio w edytorze — widzisz, kto i kiedy zmienił daną linię, bez przełączania się do terminala. Error Lens wyświetla błędy TypeScript i ESLint bezpośrednio przy linii kodu, zamiast chować je w osobnym panelu Problems, co skraca pętlę zwrotną między napisaniem błędu a jego zauważeniem.\n\nWarto też skonfigurować własne fragmenty kodu (snippets) dla powtarzalnych wzorców specyficznych dla Twojego projektu — komponent React z typowym szablonem propsów, blok testu z odpowiednim setupem, strukturę Server Action z walidacją Zod. Każdy taki snippet to małe zwycięstwo nad boilerplate'em, a ich suma w skali miesiąca daje wymierną oszczędność czasu i redukuje literówki w powtarzalnych fragmentach.\n\nOstatnia, często pomijana rzecz to synchronizacja ustawień między maszynami przez wbudowaną funkcję Settings Sync — konfiguracja, skróty, rozszerzenia i motywy przenoszą się automatycznie na nowy komputer czy do kontenera deweloperskiego. W połączeniu z plikiem .vscode/extensions.json w repozytorium, który sugeruje zespołowi rekomendowane rozszerzenia, cały zespół pracuje na spójnie skonfigurowanym środowisku bez ręcznego powtarzania tej samej konfiguracji przez każdą nową osobę.",
+    "contentImages": [
+      {
+        "url": "/images/posts/vscode-produktywnosc-wielokrotny-kursor.svg",
+        "alt": "Wielokrotny kursor i zaznaczanie kolejnych wystąpień w VS Code",
+        "caption": "Wielokrotny kursor zamienia żmudną edycję powtarzalnych fragmentów w jeden ruch.",
+        "insertAfterParagraph": 2
+      },
+      {
+        "url": "/images/posts/vscode-produktywnosc-rozszerzenia-warstwy.svg",
+        "alt": "Warstwy rozszerzeń VS Code — formatowanie, kontekst historyczny, błędy w linii",
+        "caption": "Kilka rozszerzeń zwraca się szczególnie szybko, eliminując całe kategorie ręcznej pracy.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-07-08",
+    "category": "Narzędzia",
+    "readTime": "6 min czytania",
+    "imageUrl": "/images/posts/vscode-produktywnosc-cover.svg",
+    "tags": [
+      "VS Code",
+      "Produktywność",
+      "DX"
+    ],
+    "author": {
+      "name": "Marek Wiśniewski",
+      "role": "DevOps Engineer"
+    },
+    "coverAlt": "Edytor VS Code z widocznymi skrótami klawiszowymi i rozszerzeniami zwiększającymi produktywność"
+  },
+  {
+    "id": 13,
+    "title": "Docker Compose dla lokalnego środowiska deweloperskiego",
+    "content": "\"U mnie działa\" to zdanie, które Docker Compose praktycznie eliminuje z życia zespołu — a przynajmniej z tej jego części, która dotyczy różnic w środowisku lokalnym. Zamiast instrukcji README z dziesięcioma krokami instalacji bazy danych, konkretnej wersji Node.js i cache'a Redis, cały zespół uruchamia jedną komendę i dostaje identyczne środowisko, niezależnie od tego, czy pracuje na macOS, Linuxie czy Windowsie z WSL.\n\nPlik docker-compose.yml opisuje deklaratywnie, jakie usługi składają się na środowisko developerskie — aplikację, bazę danych, cache, kolejkę wiadomości — i jak się ze sobą komunikują. Każda usługa to osobny kontener, ale Compose automatycznie tworzy między nimi sieć, dzięki której baza danych jest widoczna dla aplikacji pod nazwą usługi (np. postgres:5432), zamiast konieczności ręcznego konfigurowania adresów IP. To sprawia, że lokalna topologia sieciowa bardzo przypomina to, co dzieje się później w środowisku produkcyjnym opartym o kontenery.\n\nWolumeny to miejsce, gdzie wielu początkujących traci najwięcej czasu na debugowanie. Wolumen nazwany (named volume) trzyma dane bazy danych między restartami kontenera — bez niego każdy docker compose down usuwa całą zawartość bazy. Bind mount, czyli podpięcie lokalnego katalogu z kodem do kontenera, pozwala na hot reload — zmiana pliku na hoście natychmiast odzwierciedla się w kontenerze, bez przebudowywania obrazu przy każdej literce zmienionej w kodzie. Zrozumienie różnicy między tymi dwoma mechanizmami oszczędza godzin szukania \"zniknętych\" danych.\n\nZmienne środowiskowe warto trzymać w pliku .env, dołączonym do .gitignore, z osobnym .env.example jako szablonem commitowanym do repozytorium — dokładnie ten sam wzorzec, co przy kluczach API w aplikacji webowej. Docker Compose automatycznie odczytuje .env i podstawia wartości do docker-compose.yml, więc każdy programista konfiguruje swoje lokalne sekrety raz, bez ryzyka przypadkowego commitowania prawdziwych poświadczeń.\n\nHealthchecki to funkcja rzadko wykorzystywana przez początkujących, a bardzo przydatna przy usługach zależnych od siebie. Aplikacja, która startuje szybciej niż baza danych, może próbować się z nią połączyć, zanim baza w ogóle przyjmie połączenia — bez healthchecka i depends_on z warunkiem service_healthy, Compose uruchamia kontenery równolegle i taki wyścig kończy się błędem połączenia przy każdym czystym starcie środowiska.\n\nWarto też pamiętać, że Docker Compose w środowisku lokalnym i orkiestracja produkcyjna (Kubernetes, ECS) to dwa różne narzędzia do dwóch różnych problemów — Compose nie jest przeznaczony do uruchamiania produkcyjnego ruchu na dużą skalę, ale jako spójne, powtarzalne środowisko deweloperskie i do prostych wdrożeń na pojedynczym serwerze pozostaje jednym z najlepszych narzędzi, jakie zespół może dodać do swojego workflow.",
+    "contentImages": [
+      {
+        "url": "/images/posts/docker-compose-siec-uslug.svg",
+        "alt": "Sieć usług w Docker Compose — aplikacja, baza danych i cache połączone automatyczną siecią kontenerów",
+        "caption": "Compose tworzy sieć między usługami, więc baza danych jest widoczna po nazwie usługi, nie po adresie IP.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/docker-compose-wolumeny-roznica.svg",
+        "alt": "Różnica między wolumenem nazwanym a bind mountem w Docker Compose",
+        "caption": "Wolumen nazwany przechowuje dane bazy między restartami, bind mount odzwierciedla zmiany kodu na żywo.",
+        "insertAfterParagraph": 2
+      }
+    ],
+    "date": "2026-07-09",
+    "category": "Narzędzia",
+    "readTime": "6 min czytania",
+    "imageUrl": "/images/posts/docker-compose-lokalne-srodowisko-cover.svg",
+    "tags": [
+      "Docker",
+      "DevOps",
+      "Środowisko Dev"
+    ],
+    "author": {
+      "name": "Marek Wiśniewski",
+      "role": "DevOps Engineer"
+    },
+    "coverAlt": "Diagram kontenerów Docker Compose tworzących lokalne środowisko deweloperskie"
+  },
+  {
+    "id": 14,
+    "title": "CI/CD od zera: GitHub Actions dla projektu Next.js",
+    "content": "Pierwszy pipeline CI/CD w projekcie zwykle powstaje w reakcji na konkretny ból — ktoś zmergował kod, który nie przechodził testów, albo wdrożenie na produkcję poszło źle, bo nikt nie sprawdził buildu przed deployem. GitHub Actions, wbudowane bezpośrednio w platformę, na której już trzyma się kod, to często najniższy próg wejścia do zautomatyzowania tego procesu — bez konieczności konfigurowania osobnego serwera CI.\n\nNajprostszy pipeline w pliku .github/workflows/ci.yml uruchamia się na każdy push i pull request, instaluje zależności, uruchamia linter, typecheck, testy i build — dokładnie te same komendy, które programista wykonuje lokalnie przed commitem, tylko automatycznie i niezależnie od tego, czy ktoś o tym pamiętał. Kluczowa wartość takiego pipeline'u nie leży w wyłapywaniu skomplikowanych błędów, ale w konsekwentnym egzekwowaniu podstawowej higieny na każdej zmianie, bez wyjątków i bez polegania na ludzkiej pamięci.\n\nCache zależności to pierwsza optymalizacja, którą warto wprowadzić, gdy pipeline zaczyna trwać dłużej niż kilka minut. Instalacja node_modules od zera przy każdym uruchomieniu marnuje czas i zasoby — GitHub Actions pozwala cache'ować katalog na podstawie hasha pliku package-lock.json, więc kolejne uruchomienia z tymi samymi zależnościami pobierają je z cache'u zamiast z rejestru npm. Podobnie warto cache'ować katalog .next/cache, żeby kolejne buildy korzystały z niezmienionych fragmentów kompilacji.\n\nMacierz zadań (matrix) pozwala uruchomić ten sam zestaw kroków na wielu wersjach Node.js albo wielu systemach operacyjnych równolegle, zamiast sekwencyjnie — przydatne, gdy biblioteka musi wspierać kilka wersji środowiska uruchomieniowego. Dla typowej aplikacji Next.js z jedną docelową wersją Node.js macierz rzadko jest potrzebna, ale warto o niej wiedzieć, zanim projekt urośnie do publicznego pakietu wspieranego przez wielu użytkowników.\n\nDeployment warto rozdzielić na osobny workflow, uruchamiany dopiero po pomyślnym zakończeniu joba CI na gałęzi głównej — nigdy odwrotnie. Typowy wzorzec to: push do main uruchamia CI, a po jego sukcesie osobny job wdraża aplikację (na Vercel, własny serwer przez SSH, albo do rejestru kontenerów). Rozdzielenie tych dwóch etapów sprawia, że błąd w testach automatycznie blokuje wdrożenie, zamiast wymagać ręcznej dyscypliny \"nie deployuj, jeśli testy nie przeszły\".\n\nSekrety — klucze API, tokeny dostępu do rejestru kontenerów, dane logowania do serwera produkcyjnego — nigdy nie powinny trafiać do plików workflow jako zwykły tekst. GitHub Actions Secrets przechowuje je zaszyfrowane na poziomie repozytorium lub organizacji i udostępnia jako zmienne środowiskowe tylko w trakcie wykonania joba, nigdy w logach czy w kodzie źródłowym workflow. To ten sam fundamentalny wymóg bezpieczeństwa, co w każdym innym miejscu aplikacji — sekrety żyją poza kodem, nie w nim.",
+    "contentImages": [
+      {
+        "url": "/images/posts/github-actions-pipeline-etapy.svg",
+        "alt": "Etapy pipeline'u CI/CD w GitHub Actions — instalacja, lint, testy, build, deployment",
+        "caption": "Ten sam zestaw komend, który programista uruchamia lokalnie, wykonywany automatycznie na każdej zmianie.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/github-actions-ci-cd-rozdzielenie.svg",
+        "alt": "Rozdzielenie joba CI od joba deployment — deployment uruchamia się dopiero po sukcesie testów",
+        "caption": "Deployment powinien być osobnym workflow, uruchamianym dopiero po zielonym CI na gałęzi głównej.",
+        "insertAfterParagraph": 4
+      }
+    ],
+    "date": "2026-07-11",
+    "category": "Narzędzia",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/github-actions-cicd-nextjs-cover.svg",
+    "tags": [
+      "CI/CD",
+      "GitHub Actions",
+      "DevOps"
+    ],
+    "author": {
+      "name": "Marek Wiśniewski",
+      "role": "DevOps Engineer"
+    },
+    "coverAlt": "Schemat pipeline'u CI/CD w GitHub Actions dla projektu Next.js"
+  },
+  {
+    "id": 15,
+    "title": "Monorepo z Turborepo — kiedy się opłaca",
+    "content": "Monorepo — jedno repozytorium trzymające wiele powiązanych projektów (aplikację webową, bibliotekę współdzielonych komponentów, pakiet konfiguracji ESLint, backend API) — brzmi jak rozwiązanie, które każdy zespół powinien wdrożyć od pierwszego dnia. W praktyce to decyzja z realnymi kosztami, którą warto podejmować świadomie, a nie z mody, bo \"duże firmy tak robią\".\n\nNajwyraźniejsza korzyść monorepo ujawnia się, gdy kilka projektów faktycznie współdzieli kod — typy TypeScript między frontendem a backendem, komponenty UI używane w kilku aplikacjach, konfigurację lintera i formattera. W wielu repozytoriach współdzielenie takiego kodu wymaga publikowania osobnego pakietu npm przy każdej zmianie, co wprowadza opóźnienie i tarcie — w monorepo zmiana w bibliotece jest natychmiast widoczna we wszystkich projektach, które z niej korzystają, bez czekania na publikację wersji.\n\nTurborepo rozwiązuje największy praktyczny problem monorepo — czas budowania. Bez inteligentnego cache'owania, im więcej projektów w repozytorium, tym dłużej trwa build i test całości, nawet jeśli zmieniła się tylko jedna linijka w jednym pakiecie. Turborepo buduje graf zależności między pakietami i cache'uje wynik każdego zadania (build, lint, test) na podstawie hasha plików wejściowych — jeśli nic się nie zmieniło w danym pakiecie i jego zależnościach, zadanie odczytuje wynik z cache'u zamiast wykonywać je od nowa, nawet jeśli cache pochodzi z buildu innego programisty czy z CI.\n\nRemote caching to funkcja, która robi największą różnicę w większych zespołach. Cache lokalny pomaga tylko jednej osobie na jej własnej maszynie — remote cache współdzielony przez cały zespół i CI sprawia, że jeśli ktokolwiek gdziekolwiek zbudował już dany pakiet z tymi samymi plikami wejściowymi, każdy inny programista i każdy pipeline CI dostaje ten wynik natychmiast, zamiast budować od zera. W dużych monorepo różnica w czasie CI potrafi sięgać rzędu wielkości.\n\nKoszty monorepo są realne i warto je nazwać wprost. Uprawnienia dostępu stają się trudniejsze do granularnego kontrolowania — trudniej dać zespołowi dostęp tylko do jednego projektu, gdy wszystko żyje w jednym repozytorium. Historia Gita rośnie i zawiera commity niezwiązane z konkretnym projektem, co utrudnia jej przeglądanie. Narzędzia CI muszą być świadome struktury monorepo, żeby nie uruchamiać całego zestawu testów przy zmianie w jednym małym pakiecie — bez odpowiedniej konfiguracji filtrowania zadań (Turborepo wspiera to natywnie) łatwo wrócić do tego samego problemu długiego CI, który monorepo miało rozwiązać.\n\nDecyzja o monorepo ma sens przede wszystkim wtedy, gdy zespół faktycznie współdzieli kod między wieloma projektami i chce, żeby zmiany propagowały się natychmiast — nie jako uniwersalne rozwiązanie \"lepszej organizacji kodu\". Jeśli projekty w Twojej organizacji są od siebie w większości niezależne, osobne repozytoria z jasno zdefiniowanymi kontraktami API między nimi wciąż bywają prostszym i tańszym rozwiązaniem.",
+    "contentImages": [
+      {
+        "url": "/images/posts/turborepo-graf-zaleznosci-cache.svg",
+        "alt": "Graf zależności między pakietami w monorepo i cache'owanie zadań w Turborepo",
+        "caption": "Turborepo cache'uje wynik zadania na podstawie hasha plików wejściowych, pomijając niezmienione pakiety.",
+        "insertAfterParagraph": 2
+      },
+      {
+        "url": "/images/posts/turborepo-remote-cache-zespol.svg",
+        "alt": "Remote cache współdzielony między programistami i CI w Turborepo",
+        "caption": "Remote cache sprawia, że wynik zbudowany raz przez kogokolwiek jest natychmiast dostępny dla całego zespołu.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-07-13",
+    "category": "Narzędzia",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/turborepo-monorepo-cover.svg",
+    "tags": [
+      "Monorepo",
+      "Turborepo",
+      "DevOps"
+    ],
+    "author": {
+      "name": "Marek Wiśniewski",
+      "role": "DevOps Engineer"
+    },
+    "coverAlt": "Struktura monorepo z wieloma pakietami zarządzanymi przez Turborepo"
+  },
+  {
+    "id": 16,
+    "title": "OWASP Top 10 dla frontend developerów",
+    "content": "OWASP Top 10 kojarzy się większości frontend developerów z listą problemów backendu — SQL injection, niewłaściwa konfiguracja serwera, słabe uwierzytelnianie. W rzeczywistości znaczna część tej listy dotyczy bezpośrednio kodu, który piszemy po stronie klienta, a świadomość tych zagrożeń jest dziś częścią podstawowego zawodowego zestawu umiejętności, nie specjalizacją dla wybranych.\n\nCross-Site Scripting (XSS) pozostaje najbardziej frontendowym z problemów na liście. Dzieje się, gdy niezaufane dane trafiają do DOM bez odpowiedniego escapowania — klasyczny przykład to renderowanie treści od użytkownika przez dangerouslySetInnerHTML w React bez sanityzacji. Framework komponentowy sam w sobie chroni przed większością przypadków, bo domyślnie escapuje tekst wstawiany do JSX, ale ta ochrona znika w momencie, gdy programista świadomie ją omija — dokładnie po to, żeby wyświetlić HTML z zewnętrznego źródła, co jest też najczęstszym powodem, dla którego to robi.\n\nBroken Access Control na froncie objawia się inaczej niż na backendzie, ale efekt bywa równie poważny. Ukrycie przycisku \"Usuń użytkownika\" przez warunek renderowania w React nie jest kontrolą dostępu — to tylko kosmetyka interfejsu. Jeśli endpoint API, który faktycznie usuwa użytkownika, nie weryfikuje uprawnień niezależnie od tego, co pokazuje frontend, każdy, kto zna adres endpointu, może go wywołać bezpośrednio, z pominięciem interfejsu. Prawdziwa kontrola dostępu zawsze musi żyć po stronie serwera — frontend odpowiada jedynie za wygodę użytkownika, nigdy za bezpieczeństwo.\n\nInsecure Design to kategoria, która na pierwszy rzut oka brzmi abstrakcyjnie, ale w praktyce oznacza konkretne decyzje architektoniczne podejmowane zbyt wcześnie w procesie projektowania, żeby później dało się je łatwo naprawić. Formularz resetowania hasła, który nie ogranicza liczby prób, czy proces rejestracji, który nie waliduje formatu adresu e-mail przed wysłaniem kosztownego e-maila weryfikacyjnego, to przykłady projektowania bez uwzględnienia nadużyć od samego początku. Bezpieczeństwo jako refleksja po fakcie zawsze kosztuje więcej niż uwzględnienie go w pierwszej iteracji.\n\nVulnerable and Outdated Components dotyczy bezpośrednio ekosystemu npm, z którego korzysta każdy projekt frontendowy. Pojedyncza aplikacja React łatwo zbiera setki zależności pośrednich, których programista nigdy świadomie nie zainstalował — trafiły z transitive dependencies. Narzędzia takie jak npm audit czy Dependabot automatycznie skanują te zależności pod kątem znanych podatności, ale wymagają regularnego przeglądu i aktualizacji, nie tylko jednorazowego uruchomienia przy starcie projektu.\n\nWspólnym mianownikiem większości tych problemów jest błędne założenie, że frontend to środowisko zaufane, bo to \"tylko interfejs\". W rzeczywistości cały kod JavaScript wysyłany do przeglądarki jest publicznie widoczny i modyfikowalny przez każdego, kto otworzy narzędzia deweloperskie — żadna logika bezpieczeństwa nie powinna polegać wyłącznie na tym, co dzieje się po stronie klienta. Frontend odpowiada za doświadczenie użytkownika i pierwszą warstwę walidacji, ale ostateczna linia obrony zawsze musi być po stronie serwera.",
+    "contentImages": [
+      {
+        "url": "/images/posts/owasp-frontend-xss-przeplyw.svg",
+        "alt": "Przepływ danych od użytkownika do DOM z punktem, gdzie brak escapowania prowadzi do XSS",
+        "caption": "Framework komponentowy escapuje tekst domyślnie — ochrona znika, gdy programista świadomie ją omija.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/owasp-frontend-kontrola-dostepu-warstwy.svg",
+        "alt": "Ukryty przycisk w interfejsie kontra prawdziwa kontrola dostępu po stronie serwera",
+        "caption": "Ukrycie przycisku w UI to kosmetyka — prawdziwa kontrola dostępu zawsze musi żyć po stronie serwera.",
+        "insertAfterParagraph": 2
+      }
+    ],
+    "date": "2026-07-14",
+    "category": "Bezpieczeństwo",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/owasp-top10-frontend-cover.svg",
+    "tags": [
+      "OWASP",
+      "Bezpieczeństwo",
+      "Frontend"
+    ],
+    "author": {
+      "name": "Nina Kaczmarek",
+      "role": "Security Engineer"
+    },
+    "coverAlt": "Lista OWASP Top 10 z zaznaczonymi zagrożeniami dotyczącymi bezpośrednio kodu frontendowego"
+  },
+  {
+    "id": 17,
+    "title": "Bezpieczne przechowywanie sekretów w Next.js",
+    "content": "Next.js zaciera granicę między kodem serwerowym a klienckim bardziej niż jakikolwiek wcześniejszy framework frontendowy, co czyni zarządzanie sekretami jednocześnie łatwiejszym i bardziej podatnym na błędy niż kiedykolwiek wcześniej. Jeden nieopatrznie postawiony prefiks w nazwie zmiennej środowiskowej potrafi wysłać klucz API prosto do przeglądarki każdego odwiedzającego, bez żadnego ostrzeżenia w czasie budowania.\n\nPodstawowa zasada Next.js jest zwodniczo prosta: zmienne środowiskowe z prefiksem NEXT_PUBLIC_ trafiają do bundle'a klienckiego i są widoczne dla każdego, kto otworzy narzędzia deweloperskie przeglądarki — reszta pozostaje dostępna wyłącznie w kodzie wykonywanym po stronie serwera. Problem w tym, że ten prefiks jest łatwo dodać przez pomyłkę, kopiując istniejącą zmienną, albo dlatego że deweloper nie do końca rozumiał, gdzie dana wartość będzie faktycznie używana. Klucz API płatności czy sekret do podpisywania sesji z prefiksem NEXT_PUBLIC_ to nie teoretyczne ryzyko — to realny incydent bezpieczeństwa czekający na ujawnienie.\n\nDrugi częsty błąd to importowanie modułu, który wewnętrznie odczytuje sekret, wewnątrz komponentu, który może zostać oznaczony jako kliencki. Nawet bez jawnego prefiksu NEXT_PUBLIC_, jeśli kod odczytujący process.env.SECRET_KEY trafi do pliku z dyrektywą 'use client' albo zostanie zaimportowany przez taki plik, bundler może włączyć tę logikę do JavaScriptu wysyłanego do przeglądarki. Bezpieczną praktyką jest trzymanie całej logiki dotyczącej sekretów w osobnych plikach serwerowych — Server Actions, Route Handlers, komponentach serwerowych — i nigdy nie importowanie ich bezpośrednio w komponentach klienckich, nawet pośrednio.\n\nRotacja sekretów to praktyka, o której pamięta się dopiero po incydencie, a powinna być rutyną od początku projektu. Klucz API, który nigdy się nie zmienia przez lata istnienia projektu, to pojedynczy punkt awarii — jeśli wycieknie w dowolny sposób (commit do publicznego repozytorium, log serwera, zrzut ekranu w zgłoszeniu supportu), pozostaje ważny, dopóki ktoś świadomie go nie unieważni. Ustawienie regularnej rotacji, choćby raz na kwartał, ogranicza okno podatności nawet jeśli wyciek nastąpi.\n\nMenedżery sekretów — Vercel Environment Variables z szyfrowaniem, AWS Secrets Manager, HashiCorp Vault — oferują coś więcej niż zwykły plik .env: audyt dostępu (kto i kiedy odczytał dany sekret), automatyczną rotację, i integrację z pipeline'ami CI/CD bez konieczności przechowywania wartości w konfiguracji workflow. Dla mniejszych projektów plik .env z .gitignore i .env.example jako szablonem wystarcza, ale warto świadomie zaplanować migrację do dedykowanego rozwiązania, gdy liczba sekretów i osób z dostępem zaczyna rosnąć.\n\nOstatnia, często pomijana zasada dotyczy logowania. Nawet poprawnie skonfigurowany sekret, który nigdy nie trafia do klienta, może wyciec przez nieostrożny console.log podczas debugowania albo przez logi błędów, które przypadkowo zawierają pełny obiekt konfiguracji. Sekrety powinny być traktowane jako dane wrażliwe na każdym etapie — łącznie z logami, komunikatami błędów i narzędziami do monitoringu — nie tylko w momencie ich przechowywania.",
+    "contentImages": [
+      {
+        "url": "/images/posts/nextjs-sekrety-next-public-granica.svg",
+        "alt": "Granica między zmiennymi środowiskowymi widocznymi na kliencie a dostępnymi tylko na serwerze w Next.js",
+        "caption": "Prefiks NEXT_PUBLIC_ jest łatwo dodać przez pomyłkę — a wtedy sekret trafia prosto do przeglądarki.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/nextjs-sekrety-menedzer-vs-env.svg",
+        "alt": "Porównanie pliku .env a dedykowanego menedżera sekretów z audytem dostępu i rotacją",
+        "caption": "Menedżer sekretów dodaje audyt dostępu i automatyczną rotację, których zwykły plik .env nie oferuje.",
+        "insertAfterParagraph": 4
+      }
+    ],
+    "date": "2026-07-16",
+    "category": "Bezpieczeństwo",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/nextjs-sekrety-bezpieczenstwo-cover.svg",
+    "tags": [
+      "Next.js",
+      "Bezpieczeństwo",
+      "Sekrety"
+    ],
+    "author": {
+      "name": "Nina Kaczmarek",
+      "role": "Security Engineer"
+    },
+    "coverAlt": "Schemat bezpiecznego przechowywania zmiennych środowiskowych i sekretów w aplikacji Next.js"
+  },
+  {
+    "id": 18,
+    "title": "Passkeys — uwierzytelnianie bez hasła",
+    "content": "Hasła są problemem bezpieczeństwa, który istnieje głównie dlatego, że ludzie są ludźmi — używają tego samego hasła w wielu serwisach, wybierają proste kombinacje łatwe do zapamiętania i padają ofiarą phishingu, który podszywa się pod prawdziwą stronę logowania. Passkeys, oparte na standardzie WebAuthn, eliminują ten problem u źródła, zastępując coś, co użytkownik zna (hasło) czymś, co użytkownik ma (klucz kryptograficzny powiązany z urządzeniem) i czymś, czym jest (odcisk palca, rozpoznawanie twarzy) — bez przesyłania jakiegokolwiek sekretu przez sieć.\n\nMechanizm opiera się na kryptografii asymetrycznej: przy rejestracji urządzenie użytkownika generuje parę kluczy — prywatny, który nigdy nie opuszcza urządzenia (chroniony przez enklawę bezpieczeństwa procesora), i publiczny, który trafia na serwer. Podczas logowania serwer wysyła losowe wyzwanie (challenge), urządzenie podpisuje je kluczem prywatnym po lokalnym uwierzytelnieniu biometrycznym, a serwer weryfikuje podpis kluczem publicznym. Nawet jeśli baza danych serwera zostanie w całości wykradziona, atakujący dostaje tylko klucze publiczne — bezużyteczne bez odpowiadających im kluczy prywatnych zamkniętych w urządzeniach użytkowników.\n\nOdporność na phishing to być może największa praktyczna korzyść tego mechanizmu. Klasyczne hasło można wpisać na fałszywej stronie łudząco podobnej do prawdziwej — passkey jest kryptograficznie powiązany z konkretną domeną podczas rejestracji i po prostu nie zadziała na innej domenie, nawet wizualnie identycznej. Użytkownik nie musi rozpoznać phishingu wzrokowo, bo mechanizm techniczny robi to za niego, odmawiając podpisania wyzwania dla niewłaściwej domeny.\n\nWdrożenie po stronie developera wymaga biblioteki obsługującej WebAuthn API — SimpleWebAuthn to popularny wybór w ekosystemie JavaScript — oraz przechowywania po stronie serwera kluczy publicznych powiązanych z kontem użytkownika, wraz z licznikiem podpisów chroniącym przed atakami typu replay. Warto pamiętać, że passkey jest zwykle powiązany z konkretnym urządzeniem lub ekosystemem (np. synchronizowany przez iCloud Keychain albo Google Password Manager), więc proces onboardingu musi jasno komunikować użytkownikowi, jak dodać kolejne urządzenie i co zrobić w przypadku utraty dostępu do wszystkich zarejestrowanych urządzeń.\n\nNajwiększą praktyczną przeszkodą we wdrożeniu nie jest sama technologia, ale przyzwyczajenie użytkowników. Wiele osób ufa hasłom, bo je rozumie, a mechanizm oparty o biometrię i \"coś magicznego dziejącego się w tle\" budzi nieufność, dopóki nie zostanie użyty kilka razy. Dobra strategia wdrożenia oferuje passkeys jako opcję obok hasła przez przejściowy okres, zamiast wymuszać migrację od razu — pozwala to użytkownikom oswoić się z nowym mechanizmem we własnym tempie, jednocześnie zbierając dane o realnym wskaźniku adopcji przed pełnym przejściem.\n\nDla nowych projektów, które nie dźwigają bagażu istniejącej bazy haseł, passkeys jako jedyna metoda logowania od pierwszego dnia eliminują całą kategorię problemów bezpieczeństwa — nie trzeba haszować haseł, obsługiwać resetowania zapomnianego hasła ani martwić się o wycieki baz danych z hasłami w postaci, która nadaje się do złamania offline. To rzadka sytuacja, w której bezpieczniejsze rozwiązanie jest jednocześnie prostsze do zaimplementowania niż tradycyjna alternatywa.",
+    "contentImages": [
+      {
+        "url": "/images/posts/passkeys-kryptografia-asymetryczna-flow.svg",
+        "alt": "Przepływ logowania passkey — klucz prywatny na urządzeniu, klucz publiczny na serwerze, podpisane wyzwanie",
+        "caption": "Nawet wykradziona baza danych serwera zawiera tylko bezużyteczne klucze publiczne.",
+        "insertAfterParagraph": 1
+      },
+      {
+        "url": "/images/posts/passkeys-odpornosc-na-phishing.svg",
+        "alt": "Passkey odmawiający podpisania wyzwania na fałszywej domenie phishingowej",
+        "caption": "Passkey jest kryptograficznie powiązany z domeną — nie zadziała na łudząco podobnej stronie phishingowej.",
+        "insertAfterParagraph": 2
+      }
+    ],
+    "date": "2026-07-17",
+    "category": "Bezpieczeństwo",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/passkeys-uwierzytelnianie-cover.svg",
+    "tags": [
+      "Passkeys",
+      "WebAuthn",
+      "Bezpieczeństwo"
+    ],
+    "author": {
+      "name": "Nina Kaczmarek",
+      "role": "Security Engineer"
+    },
+    "coverAlt": "Uwierzytelnianie biometryczne passkey zastępujące tradycyjne hasło"
+  },
+  {
+    "id": 19,
+    "title": "Content Security Policy jako pierwsza linia obrony przed XSS",
+    "content": "Content Security Policy (CSP) to nagłówek HTTP, który mówi przeglądarce, skąd wolno ładować skrypty, style, obrazy i inne zasoby na danej stronie — a co ważniejsze, skąd nie wolno. To druga linia obrony po poprawnym escapowaniu danych wyjściowych: nawet jeśli gdzieś w kodzie prześlizgnie się luka XSS, dobrze skonfigurowana CSP może zablokować wykonanie wstrzykniętego skryptu, zanim wyrządzi jakąkolwiek szkodę.\n\nNajprostsza, ale najmniej bezpieczna polityka pozwala na 'unsafe-inline' dla skryptów — czyli dokładnie to, co CSP miało wyeliminować, bo inline'owe tagi script są głównym wektorem klasycznego XSS. Prawidłowo skonfigurowana polityka zamiast tego wymaga, żeby każdy skrypt pochodził z zaufanej domeny (script-src 'self' https://trusted-cdn.com) albo żeby inline'owy skrypt miał unikalny, generowany przy każdym żądaniu nonce, który atakujący nie może przewidzieć ani wstrzyknąć razem ze swoim złośliwym kodem.\n\nWdrożenie CSP opartej na nonce w Next.js wymaga wygenerowania losowego tokenu w middleware dla każdego żądania, dodania go do nagłówka Content-Security-Policy i przekazania tej samej wartości do wszystkich legalnych tagów script renderowanych przez aplikację. To wymaga trochę więcej pracy niż statyczna polityka, ale eliminuje potrzebę 'unsafe-inline' całkowicie — wstrzyknięty przez atakującego skrypt nie zna poprawnego nonce'a wygenerowanego dla tego konkretnego żądania, więc przeglądarka odmawia jego wykonania, niezależnie od tego, jak sprytnie został wstrzyknięty.\n\nDyrektywa report-uri (lub nowsza report-to) pozwala wdrażać CSP stopniowo i bezpiecznie, zanim zacznie się blokować cokolwiek na produkcji. Ustawiając politykę w trybie Content-Security-Policy-Report-Only, przeglądarka nie blokuje żadnych zasobów, ale wysyła raport o naruszeniach do wskazanego endpointu — dzięki temu można przez kilka dni zbierać dane o tym, co polityka by zablokowała, poprawić fałszywie pozytywne przypadki (np. zapomniana domena CDN), i dopiero potem przełączyć się na tryb wymuszający.\n\nCzęsty błąd we wdrażaniu CSP to skopiowanie gotowej, restrykcyjnej polityki z artykułu bez zrozumienia, jakie zasoby faktycznie ładuje dana aplikacja. Google Analytics, widżety czatu, fonty z zewnętrznych CDN-ów, obrazy z serwisu do przechowywania plików — każdy z tych elementów wymaga jawnego dodania odpowiedniej domeny do odpowiedniej dyrektywy. Polityka, która wygląda dobrze w teorii, ale blokuje połowę funkcjonalności produkcyjnej aplikacji, prowadzi zwykle do jej całkowitego wyłączenia przez sfrustrowany zespół — gorszy efekt niż brak CSP od początku.\n\nCSP nie jest substytutem poprawnego escapowania danych i walidacji wejścia — to dodatkowa warstwa obrony na wypadek, gdyby pierwsza zawiodła. Zespoły, które traktują ją jako jedyną linię obrony przed XSS, wciąż są podatne na luki niezwiązane bezpośrednio z wykonaniem skryptu, takie jak wykradanie danych przez zmodyfikowany formularz czy manipulację DOM w granicach dozwolonej polityki. Prawidłowe podejście do bezpieczeństwa frontendowego zawsze łączy wiele warstw, z których CSP jest jedną z ważniejszych, ale nie jedyną.",
+    "contentImages": [
+      {
+        "url": "/images/posts/csp-nonce-blokada-xss.svg",
+        "alt": "Skrypt z poprawnym nonce wykonywany, wstrzyknięty skrypt bez nonce zablokowany przez CSP",
+        "caption": "Atakujący nie zna nonce'a wygenerowanego dla danego żądania — przeglądarka odmawia wykonania jego skryptu.",
+        "insertAfterParagraph": 2
+      },
+      {
+        "url": "/images/posts/csp-wdrozenie-report-only-etapy.svg",
+        "alt": "Etapowe wdrożenie CSP — tryb Report-Only zbierający dane przed przejściem do trybu wymuszającego",
+        "caption": "Tryb Report-Only pozwala zebrać dane o naruszeniach, zanim polityka zacznie cokolwiek blokować.",
+        "insertAfterParagraph": 3
+      }
+    ],
+    "date": "2026-07-19",
+    "category": "Bezpieczeństwo",
+    "readTime": "7 min czytania",
+    "imageUrl": "/images/posts/csp-content-security-policy-cover.svg",
+    "tags": [
+      "CSP",
+      "XSS",
+      "Bezpieczeństwo"
+    ],
+    "author": {
+      "name": "Nina Kaczmarek",
+      "role": "Security Engineer"
+    },
+    "coverAlt": "Nagłówek Content Security Policy blokujący nieautoryzowany skrypt jako pierwsza linia obrony przed XSS"
   }
 ]

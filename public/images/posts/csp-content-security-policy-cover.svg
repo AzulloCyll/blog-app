@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Content Security Policy — druga linia obrony</text>
+
+  <path d="M 450 110 L 550 150 L 550 260 Q 550 340 450 380 Q 350 340 350 260 L 350 150 Z" fill="url(#shield)" filter="url(#shadow)"/>
+  <text x="450" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="46" fill="white">🛡</text>
+
+  <g font-family="monospace" font-size="12" fill="#334155" text-anchor="middle">
+    <text x="450" y="420">script-src 'self' 'nonce-xyz123'</text>
+  </g>
+
+  <text x="450" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Blokuje wykonanie wstrzykniętego skryptu, nawet jeśli escapowanie zawiedzie</text>
+</svg>

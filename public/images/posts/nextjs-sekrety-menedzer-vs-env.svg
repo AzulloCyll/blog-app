@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="basic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#94a3b8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="advanced" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Plik .env kontra menedżer sekretów</text>
+
+  <rect x="90" y="110" width="330" height="270" rx="16" fill="url(#basic)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="255" y="150" font-size="14" font-weight="700">Plik .env</text>
+    <text x="255" y="210" font-size="12" opacity="0.9">✓ prosty, wystarcza dla</text>
+    <text x="255" y="230" font-size="12" opacity="0.9">małych projektów</text>
+    <text x="255" y="290" font-size="12" opacity="0.9">✗ brak audytu dostępu</text>
+    <text x="255" y="310" font-size="12" opacity="0.9">✗ ręczna rotacja</text>
+  </g>
+
+  <rect x="480" y="110" width="330" height="270" rx="16" fill="url(#advanced)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="white">
+    <text x="645" y="150" font-size="14" font-weight="700">Menedżer sekretów</text>
+    <text x="645" y="210" font-size="12" opacity="0.9">✓ audyt: kto i kiedy</text>
+    <text x="645" y="230" font-size="12" opacity="0.9">odczytał sekret</text>
+    <text x="645" y="290" font-size="12" opacity="0.9">✓ automatyczna rotacja</text>
+    <text x="645" y="310" font-size="12" opacity="0.9">✓ integracja z CI/CD</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Migracja warta rozważenia, gdy rośnie liczba sekretów i osób z dostępem</text>
+</svg>

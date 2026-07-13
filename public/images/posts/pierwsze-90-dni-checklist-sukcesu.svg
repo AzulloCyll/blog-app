@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Pytanie do menedżera na start: jak wygląda sukces?</text>
+
+  <rect x="150" y="100" width="600" height="320" rx="18" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <g font-family="system-ui, sans-serif" font-size="14" fill="#334155">
+    <rect x="185" y="135" width="30" height="30" rx="8" fill="url(#card)"/>
+    <text x="200" y="156" text-anchor="middle" fill="white" font-weight="700">30</text>
+    <text x="230" y="156">Jakie zachowania po 30 dniach?</text>
+
+    <rect x="185" y="215" width="30" height="30" rx="8" fill="url(#card)"/>
+    <text x="200" y="236" text-anchor="middle" fill="white" font-weight="700">60</text>
+    <text x="230" y="236">Jaka samodzielność po 60 dniach?</text>
+
+    <rect x="185" y="295" width="30" height="30" rx="8" fill="url(#card)"/>
+    <text x="200" y="316" text-anchor="middle" fill="white" font-weight="700">90</text>
+    <text x="230" y="316">Co znaczy „w pełni wdrożony”?</text>
+  </g>
+
+  <text x="450" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Jasna rozmowa na starcie oszczędza tygodni niepotrzebnego zgadywania</text>
+</svg>

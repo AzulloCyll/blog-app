@@ -65,17 +65,21 @@ describe('PostList Component', () => {
   it('loads more posts when button is clicked', () => {
     render(<PostList posts={posts} />);
 
-    const loadMoreButton = screen.getByRole('button', { name: 'Załaduj więcej wpisów' });
-    expect(loadMoreButton).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Załaduj więcej wpisów' })).toBeInTheDocument();
     expect(screen.queryByText('Przyszłość AI asystentów kodowania')).not.toBeInTheDocument();
 
-    fireEvent.click(loadMoreButton);
+    fireEvent.click(screen.getByRole('button', { name: 'Załaduj więcej wpisów' }));
 
     // Data is local, so the next page of posts appears immediately
     expect(screen.getByText('Przyszłość AI asystentów kodowania')).toBeInTheDocument();
 
-    // Load more button should disappear after all posts are loaded
-    expect(screen.queryByRole('button', { name: 'Załaduj więcej wpisów' })).not.toBeInTheDocument();
+    // Clicking until every post is loaded should eventually remove the button
+    let loadMoreButton = screen.queryByRole('button', { name: 'Załaduj więcej wpisów' });
+    while (loadMoreButton) {
+      fireEvent.click(loadMoreButton);
+      loadMoreButton = screen.queryByRole('button', { name: 'Załaduj więcej wpisów' });
+    }
+    expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(posts.length);
   });
 
   it('shows a results count while filtering', () => {

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dev" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Passkeys — logowanie bez hasła</text>
+
+  <rect x="350" y="110" width="200" height="280" rx="28" fill="url(#dev)" filter="url(#shadow)"/>
+  <rect x="370" y="140" width="160" height="200" rx="10" fill="#f8fafc"/>
+  <text x="450" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="60" fill="#0891b2">👆</text>
+
+  <text x="450" y="380" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="white">Touch ID</text>
+
+  <g font-family="system-ui, sans-serif" font-size="12" fill="#475569" text-anchor="middle">
+    <text x="150" y="200">🔑 Klucz prywatny</text>
+    <text x="150" y="220">nigdy nie opuszcza</text>
+    <text x="150" y="240">urządzenia</text>
+
+    <text x="750" y="200">🌐 Klucz publiczny</text>
+    <text x="750" y="220">na serwerze —</text>
+    <text x="750" y="240">bezużyteczny sam</text>
+  </g>
+
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Żaden sekret nigdy nie jest przesyłany przez sieć</text>
+</svg>

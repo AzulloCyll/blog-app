@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f5f9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="visible" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hidden" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#64748b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0000001a"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1e293b">Widzimy tylko efekt, nie proces</text>
+
+  <!-- iceberg-like split -->
+  <rect x="150" y="130" width="600" height="80" rx="12" fill="url(#visible)" filter="url(#shadow)"/>
+  <text x="450" y="177" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="white">Publiczny wizerunek: gotowy projekt, pewny thread na X</text>
+
+  <rect x="150" y="230" width="600" height="200" rx="12" fill="url(#hidden)" filter="url(#shadow)"/>
+  <g font-family="system-ui, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.9">
+    <text x="450" y="265" font-weight="700" font-size="13">Niewidoczny proces</text>
+    <text x="450" y="300">Setki godzin prób i błędów</text>
+    <text x="450" y="325">Pytania zadane po cichu, nie publicznie</text>
+    <text x="450" y="350">Momenty zwątpienia i cofnięte podejścia</text>
+    <text x="450" y="375">Pomoc kolegów, o której nikt nie pisze</text>
+  </g>
+
+  <text x="450" y="465" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Porównanie własnego procesu z cudzym efektem końcowym jest z definicji nieuczciwe</text>
+</svg>
